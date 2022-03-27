@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Symfony\Component\Console\Output\ConsoleOutput;
 class Xauth
 {
     /**
@@ -18,9 +18,18 @@ class Xauth
     public function handle(Request $request, Closure $next)
     {
 
+
+        $output = new ConsoleOutput();
+  $output->writeln('ch debug xauth middleware');
+  
+  $output->writeln($request->all());
+  $output->writeln(Auth::check());
+  $output->writeln(auth()->user());
+  $output->writeln(cache()->get('user'));
+
         if(!Auth::check()){
 
-            return redirect()->route('login', $request->language);
+            return redirect()->route('login-init', $request->language);
             
         };
         return $next($request);

@@ -16,9 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
 
             $table->id();
-            $table->string('first_name'); 
-            $table->string('last_name'); 
-            $table->enum('role', ['client', 'manager', 'seller', 'admin', 'superuser', 'system'])->default('client'); 
+            $table->string('retailer_name'); 
+            $table->enum('role', ['client', 'manager', 'retailer', 'admin', 'superuser', 'system'])->default('retailer'); 
             $table->string('address'); 
             $table->string('shipment_address')->nullable(); 
             $table->mediumText('technical_details')->nullable();

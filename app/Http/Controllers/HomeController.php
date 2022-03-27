@@ -11,6 +11,12 @@ use App\Http\Controllers\MailController;
 
 class HomeController extends Controller
 {
+    
+    public function login(Request $request){
+
+        return view('login');
+    }
+
     public function home(Request $request){
 
         

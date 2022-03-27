@@ -1,6 +1,24 @@
 {
   "Arabic translation here ": "-!!!-",
+  "auth init page ": "------------------------------------------------------------------",
 
+  "auth": {
+    "psexpress": "PSEXPRESS",
+    "sign_in": "تسجيل الدخول",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "forget_password": "لم اتدكر كلمة المرور",
+    "no_account_please_sign_up": "لا يوجد حساب ، الرجاء التسجيل",
+    "or_Sign_in_with": "أو تسجيل الدخول باستخدام",
+    "facebook": "الفيسبوك",
+    "sign_up": "تسجيل",
+    "shop_name": "اسم المحل",
+    "manager_name": "اسم البائع",
+    "phone": "الهاتف",
+    "address": "العنوان",
+    "have_account_please_sign_in": "لديك حساب ،الرجاء تسجيل الدخول",
+    "or_Sign_up_with": "أو سجل مع"
+  },
   "navbar": "-----------------------------------------------------------------------------",
 
   "SELL ON HITCOM": "بيع على هيتكوم",

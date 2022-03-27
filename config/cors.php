@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'acheter/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'acheter/*', 'sanctum/csrf-cookie', 'https://admin.psexpress.com.tn/*'],
 
     'allowed_methods' => ['*'],
 

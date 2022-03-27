@@ -11,7 +11,7 @@
         <h4 class='text-start fs-2  me-auto ms-0 text-uppercase '>
          <img src='{{ app()->environment('production') ? asset('public/media/ui/logo/hitcom-logo.jpg') : asset('media/ui/logo/hitcom-logo.jpg')}}' 
          style='width:3rem;height:3rem; border-radius:50%; border:1px #fff solid;padding:1px' alt=''/>
-         <span style='color:dodgerblue'>{{ __('hitcom') }} </span>
+         <span style='color:dodgerblue'>{{ __('psexpress') }} </span>
          </h4>
         
           <span class=' d-inline-block ms-5' style='font-size:0.9rem '> 

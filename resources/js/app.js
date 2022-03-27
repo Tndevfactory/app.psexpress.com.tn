@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import Vue from "vue";
 import store from "./store/index.js";
 import { gsap } from "gsap";
+import "./style/global.css";
 // import "dtoaster/dist/dtoaster.css";
 import "../css/dtoaster.css";
 import DToaster from "dtoaster";
@@ -13,6 +14,19 @@ import VueCookies from "vue-cookies";
 import * as ar from "./../lang/ar.json";
 import * as fr from "./../lang/fr.json";
 import * as en from "./../lang/en.json";
+
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+
+// Import Bootstrap an BootstrapVue CSS files (order is important)
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue);
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin);
+
+Vue.config.productionTip = false;
 
 console.clear();
 
@@ -50,6 +64,7 @@ window.axios.defaults.headers.common["Content-Type"] =
 
 // detect production mode
 let appEnv = document.querySelector('meta[name="app-env"]').content;
+window.axios.defaults.appEnv = appEnv;
 
 console.warn("Developer contact:");
 console.warn("Website: https://tndev-art.tn");
@@ -65,7 +80,9 @@ console.warn("Email: tndev8@gmail.com");
 // detect base url
 let url = document.querySelector('meta[name="base-url"]').content;
 
+window.axios.defaults.url = url;
 window.axios.defaults.baseURL = url + "api";
+window.axios.defaults.withCredentials = true;
 
 if (csrfToken) {
   window.axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken.content;
@@ -78,17 +95,21 @@ if (csrfToken) {
 // console.log("base url");
 // console.log(process.env.MIX_APP_ENV);
 //console.log(window.axios.defaults.baseURL);
-let t =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGE0NDM0MWUxYTgzYzgzMDhlOTAzNjlkN2JjZDY0ZjliMjlmMzVhY2MzNzlmOTE4MGQ4YTJjZjJmOWE1MDFkNjZjZjhlOGI0YjY4ZTExOTUiLCJpYXQiOjE2NDc1OTE4MDUuNDQzNDgzLCJuYmYiOjE2NDc1OTE4MDUuNDQzNDk2LCJleHAiOjE2NzkxMjc4MDUuMjYwMTk4LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.qxXnvZn2_13kDVSI_YTgy47Sw6NnMPZso4lX6KAd464NUXdy-zCT24E-uEHrgdiqOtQRjzxkH5N2ROajvVwNq-vw01s3Wt8GIAReViRIc9704XD1NQasvD8uGGw2gzdCIVUQrcidK9QN9dWmsKGYAkCi_ePiM6w-5OjwT9TTFhIxrBPPOKe0Pt0eM4mq_r6Anb5gnh_5pRLTHOXhrtbojJUcXIR4sh4TRb4pmmwrH8cxZ3bGJP4qoOOH4-ShRidIYLTrfTsz8b78yq0iWgOJo9XxR5rsET08oP0wU98Dr49E3Pr-nyzF7-hndvZGLXyPT-RzNsiqIqz8ajCuIQGVpEqRIchlXM1xUNGzxeEPYga4jizN00k6zg-rc06UxnU5o_lKlW1LPGbK16LPAgBHGarE8m2cW62_1XxaQgYLwbBCs-Hbbo_h6CvSI3rDBOQNpjY35XFwCNzmgjy-Y2CAs8aPlg-jHcejs46bU3QKAyuG7mGQ2WkjBaGa_bK4JyA8_KcnPJefg9RUsvubE0tpJQ1LX-VWLL_LlkReD3LhXVSOO2uo_pRnFXk_piC44_Ec4dXj70Um4HoP8Ag-_tWqD4eXnNCSdAGgOMKM9bYYLkM5nPCZ57u4n1n9a_8zGPGiEH14iaJd5qmnEBA9FLu3rQLaj4b5O93Zbk5UYDjXS38";
-Vue.$cookies.set("bearerToken", t);
+// let t =
+//   "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGE0NDM0MWUxYTgzYzgzMDhlOTAzNjlkN2JjZDY0ZjliMjlmMzVhY2MzNzlmOTE4MGQ4YTJjZjJmOWE1MDFkNjZjZjhlOGI0YjY4ZTExOTUiLCJpYXQiOjE2NDc1OTE4MDUuNDQzNDgzLCJuYmYiOjE2NDc1OTE4MDUuNDQzNDk2LCJleHAiOjE2NzkxMjc4MDUuMjYwMTk4LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.qxXnvZn2_13kDVSI_YTgy47Sw6NnMPZso4lX6KAd464NUXdy-zCT24E-uEHrgdiqOtQRjzxkH5N2ROajvVwNq-vw01s3Wt8GIAReViRIc9704XD1NQasvD8uGGw2gzdCIVUQrcidK9QN9dWmsKGYAkCi_ePiM6w-5OjwT9TTFhIxrBPPOKe0Pt0eM4mq_r6Anb5gnh_5pRLTHOXhrtbojJUcXIR4sh4TRb4pmmwrH8cxZ3bGJP4qoOOH4-ShRidIYLTrfTsz8b78yq0iWgOJo9XxR5rsET08oP0wU98Dr49E3Pr-nyzF7-hndvZGLXyPT-RzNsiqIqz8ajCuIQGVpEqRIchlXM1xUNGzxeEPYga4jizN00k6zg-rc06UxnU5o_lKlW1LPGbK16LPAgBHGarE8m2cW62_1XxaQgYLwbBCs-Hbbo_h6CvSI3rDBOQNpjY35XFwCNzmgjy-Y2CAs8aPlg-jHcejs46bU3QKAyuG7mGQ2WkjBaGa_bK4JyA8_KcnPJefg9RUsvubE0tpJQ1LX-VWLL_LlkReD3LhXVSOO2uo_pRnFXk_piC44_Ec4dXj70Um4HoP8Ag-_tWqD4eXnNCSdAGgOMKM9bYYLkM5nPCZ57u4n1n9a_8zGPGiEH14iaJd5qmnEBA9FLu3rQLaj4b5O93Zbk5UYDjXS38";
+// Vue.$cookies.set("bearerToken", t);
 let bearerToken = Vue.$cookies.get("bearerToken");
 // console.log(bearerToken);
-window.axios.defaults.headers.common["Authorization"] = "Bearer" + bearerToken;
+window.axios.defaults.headers.common["Authorization"] = bearerToken
+  ? "Bearer" + bearerToken
+  : "";
 //window.axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 //window.axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 // component  lives here -----------------------------------------------------
 
+// Auth zone ----------------------------------------------
+Vue.component("auth-ops", require("./components/auth/Auth.vue").default);
 // lab zone ----------------------------------------------
 Vue.component(
   "example-component",

@@ -23,9 +23,9 @@ export default {
       }
     },
   },
-  created() {
-    this.$i18n.locale = this.language;
-    this.setLang(this.language);
-  },
+  // created() {
+  //   this.$i18n.locale = this.language;
+  //   this.setLang(this.language);
+  // },
 };
 </script>

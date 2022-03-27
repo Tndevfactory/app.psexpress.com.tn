@@ -45,7 +45,7 @@ $menu_categories = session()->get('menu');
         <meta name="app-env" content="{{ config('app.env') }}">
 
         @yield('meta')
-        <title>Hitcom | @yield('title')</title>
+        <title>app.psexpress | @yield('title')</title>
 
       <link rel="icon"  type="image/x-icon" 
       href="{{ app()->environment('production') ? asset('public/favicon.ico') : asset('favicon.ico')  }}"/>
@@ -62,7 +62,7 @@ $menu_categories = session()->get('menu');
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/css/flag-icons.min.css" integrity="sha512-UwbBNAFoECXUPeDhlKR3zzWU3j8ddKIQQsDOsKhXQGdiB5i3IHEXr9kXx82+gaHigbNKbTDp3VY/G6gZqva6ZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link  rel="stylesheet"  href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
         {{-- <link  rel="stylesheet"  href="{{ app()->environment('production') ? 'public/'.asset('css/app.css') : asset('css/app.css') }}"/> --}}
             
@@ -89,12 +89,10 @@ $menu_categories = session()->get('menu');
         /* font-family: 'IBM Plex Sans Arabic', sans-serif; */
         /* font-family: 'Open Sans', sans-serif; */
         font-family: 'Open Sans', sans-serif;
-        font-size: 16px;
-
+        font-size: calc(13px + 6 * ((100vw - 320px) / 1880));
         color:rgb(49, 48, 48);
         line-height:26px;
         overflow-x: hidden;
-        
         background-color:  {{ $theme->name == 'dark' ? 'rgb(225, 233, 236)!important' :  'rgb(241, 246, 255)'  }} ;
        
     }
@@ -134,7 +132,7 @@ $menu_categories = session()->get('menu');
 
                  body{
        
-                font-size: 15px;
+                  font-size: calc(15px + 6 * ((100vw - 320px) / 1880));
                 }
 
               
@@ -536,9 +534,11 @@ $menu_categories = session()->get('menu');
  
 
    
-        <div id='app'> {{-- all vue application could be placed in content section --}}
+    <div id='app'> {{-- all vue application could be placed in content section --}}
 
-         @include('components.navbar') 
+      @if(Request::segment(2))
+              @include('components.navbar') 
+      @endif
 
                 <div class='container my-2 '>
                      @if(session()->get('success'))
@@ -581,13 +581,14 @@ $menu_categories = session()->get('menu');
          </main>
              
         
+      @if(Request::segment(2))
+              @include('components.footer')
+      @endif
 
-        @include('components.footer')
-
-      </div>   {{-- end vue js zone --}}
-
-      <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
-
+    </div>   {{-- end vue js zone --}}
+       @if(Request::segment(2))
+         <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+       @endif
         <div class='cookie  bg-primary ' style='position:fixed; bottom:0px;left:0px;width:100%'></div> 
        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -603,7 +604,7 @@ $menu_categories = session()->get('menu');
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
         <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/iconify/2.0.0/iconify.min.js" integrity="sha512-lYMiwcB608+RcqJmP93CMe7b4i9G9QK1RbixsNu4PzMRJMsqr/bUrkXUuFzCNsRUo3IXNUr5hz98lINURv5CNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="{{ app()->environment('production') ? asset('public/js/app.js') : asset('js/app.js')}}"></script>
         
      
@@ -688,21 +689,23 @@ $menu_categories = session()->get('menu');
 <script>
 
   //scroll to top :
-  mybutton = document.getElementById("myBtn");
+  let mybutton = document.getElementById("myBtn");
 
   // When the user scrolls down 20px from the top of the document, show the button
   window.onscroll = function() {scrollFunction()};
 
   function scrollFunction() {
     
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
-       // console.log('visible scrolltotop')
-    } else {
-        mybutton.style.display = "none";
-      //  console.log('hidden scrolltotop')
+    if (mybutton) {
+    
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+        // console.log('visible scrolltotop')
+      } else {
+          mybutton.style.display = "none";
+        //  console.log('hidden scrolltotop')
+      }
     }
-
   }
 
   // When the user clicks on the button, scroll to the top of the document

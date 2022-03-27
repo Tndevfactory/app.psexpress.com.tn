@@ -46,7 +46,8 @@ use Symfony\Component\Console\Output\StreamOutput;
     Route::get('/t', [ThemeController::class, "SelectTheme"])->name('change-theme');
 
     //home zone
-    Route::get('/', [HomeController::class, "home"])->name('home');
+    Route::get('/', [HomeController::class, "login"])->name('login-init');
+    Route::get('/psexpress', [HomeController::class, "home"])->middleware('xauth')->name('home');
     Route::get('/about-us', [HomeController::class, "aboutUs"])->name('about-us');
     Route::get('/contact-us', [HomeController::class, "contactUs"])->name('contact-us');
     Route::get('/seller-application', [HomeController::class, "sellerApplication"])->name('seller-application');
@@ -318,17 +319,44 @@ use Symfony\Component\Console\Output\StreamOutput;
 				return "<h1>Cache cleared ,   $callResponse  </h1>";
 			});
 
-			Route::get('/composer-update', function() {
+
+			Route::get('/passport-install', function() {
                 $stream = fopen("php://output", "w");
-                Artisan::call('composer update', [
-                    // '--path' => 'database/migrations/customer',
-                    // '--force' => true,
+                Artisan::call('passport:install', [
+                    // '--connection' => 'database',
+                    //  '--queue' => 'default',
                     // '--database' => $connectionName
                 ], new StreamOutput($stream));
 
                 $callResponse = ob_get_clean();
 
-				return "<h1>Cache cleared ,   $callResponse  </h1>";
+				return "<h5>$callResponse</h5>";
+			});
+
+			Route::get('/key-generate', function() {
+                $stream = fopen("php://output", "w");
+                Artisan::call('key:generate', [
+                    // '--connection' => 'database',
+                    //  '--queue' => 'default',
+                    // '--database' => $connectionName
+                ], new StreamOutput($stream));
+
+                $callResponse = ob_get_clean();
+
+				return "<h5>$callResponse</h5>";
+			});
+
+			Route::get('/queue-work', function() {
+                $stream = fopen("php://output", "w");
+                Artisan::call('queue:work', [
+                    // '--connection' => 'database',
+                    //  '--queue' => 'default',
+                    // '--database' => $connectionName
+                ], new StreamOutput($stream));
+
+                $callResponse = ob_get_clean();
+
+				return "<h5>$callResponse</h5>";
 			});
 
 			Route::get('/queue-monitor', function() {

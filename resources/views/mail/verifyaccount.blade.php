@@ -25,6 +25,6 @@
       </div>
 
         <p class='t' style='margin-bottom:0;'>{{ __('Best Regards,')}} </p>
-        <span class='t' style='font-weight:500;'> HITCOM ADMIN</span>
+        <span class='t' style='font-weight:500;'> PSEXPRESS ADMIN</span>
     </body>
 </html>

@@ -18,7 +18,7 @@ $currency=session()->get('currency');
     <div class='px-3 px-md-4 container-fluid d-flex align-items-center justify-content-between'>
         
        <a href='{{ route('seller-application', ['currency' => session()->get('currency'), 'language' => Request()->language]) }}' class='text-decoration-none'>
-        <span class=' sell-on-hitcom' > ⭐️ {{ __('sell on hitcom')}} </span>
+        <span class=' sell-on-hitcom' > ⭐️ {{ __('sell on psexpress')}} </span>
        </a>
      
         <div class='d-flex z-index-9'>  
@@ -111,7 +111,7 @@ $currency=session()->get('currency');
           <img src='{{ app()->environment('production') ? asset('public/media/ui/logo/hitcom-logo.jpg') : asset('media/ui/logo/hitcom-logo.jpg')}}' 
               style='width:2.3rem;height:2.3rem; border-radius:50%; border:2px #fff solid;padding:0px; margin-top:-6px;' alt=''/>
 
-          <span class='text-lead h4 text-uppercase products-title  d-inline-block '>  {{ __('hitcom') }}</span>
+          <span class='text-lead h4 text-uppercase products-title  d-inline-block '>  {{ __('psexpress') }}</span>
           
         </a>
       </div>

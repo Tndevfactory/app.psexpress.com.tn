@@ -1,5 +1,24 @@
 {
   "French translation here ": "-!!!-",
+  "auth init page ": "------------------------------------------------------------------",
+
+  "auth": {
+    "psexpress": "PSEXPRESS",
+    "sign_in": "Connexion",
+    "email": "Email",
+    "password": "Mot de passe",
+    "forget_password": "mot de passe oublié",
+    "no_account_please_sign_up": "veuillez s'inscrire par ici",
+    "or_Sign_in_with": "Ou bien se connecter avec",
+    "facebook": "Facebook",
+    "sign_up": "Inscription",
+    "shop_name": "Nom boutique",
+    "manager_name": "Nom gérant",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "have_account_please_sign_in": "veuillez vous connecter par ici",
+    "or_Sign_up_with": "Ou bien s'inscrire avec"
+  },
 
   "navbar": "-----------------------------------------------------------------------------",
 
