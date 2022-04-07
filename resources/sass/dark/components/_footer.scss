@@ -1,0 +1,24 @@
+.dark {
+  .foot {
+    color: white;
+    background-image: linear-gradient(
+        to bottom,
+        #323232 0%,
+        #3f3f3f 40%,
+        #1c1c1c 150%
+      ),
+      linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(0, 0, 0, 0.15) 200%
+      ),
+      url("/media/ui/footer/footer.jpg");
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .copyright {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}

@@ -5,7 +5,7 @@ const state = {
   loading: false,
   success: "",
   error: "",
-  lang: "",
+  lang: "fr",
 };
 
 const getters = {
@@ -25,8 +25,13 @@ const mutations = {
   setLang: (state, newLang) => (state.lang = newLang),
 };
 const actions = {
-  setLang({ commit, state }, newLang) {
+  setLang({ commit }, newLang) {
     commit("setLang", newLang);
+  },
+  resetMsg({ commit }, newLang) {
+    commit("setSuccess", "");
+    commit("setError", "");
+    commit("setLoading", false);
   },
 };
 

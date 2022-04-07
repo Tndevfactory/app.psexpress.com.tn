@@ -1,0 +1,10 @@
+// config dark
+@import "globals/config_dark.scss";
+
+// dark/components
+@import "components/header.scss";
+@import "components/navbar.scss";
+@import "components/footer.scss";
+
+// /dark/pages/
+@import "pages/login.scss";

@@ -24,7 +24,11 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        <img :src="publicUrl + 'logo/logo-icon.png'" alt="logo" class="logo" />
+        <img
+          :src="publicUrl + 'logo/newlogopsexpress.jpg'"
+          alt="logo"
+          class="logo"
+        />
       </div>
 
       <form @submit.stop.prevent="onSubmit" class="row gx-3 px-md-3">
@@ -34,6 +38,7 @@
           </span>
           <span class="form-title text-center d-block">
             <i class="fas fa-lock d-inline-block text-dark"></i>
+
             {{ $t("auth.sign_in") }}
           </span>
         </div>
@@ -49,35 +54,56 @@
             autocomplete="on"
             autofocus
           />
+          <div v-if="emailError" class="error">{{ emailError }}</div>
         </div>
 
-        <div class="col-md-12 pb-3">
+        <div class="col-md-12 pb-3 position-relative">
           <div class="d-flex justify-content-between align-items-center">
             <label for="password" class="form-label">
               {{ $t("auth.password") }}</label
             >
             <a
+              @click.stop.prevent="passwordForm"
               href="#"
               class="text-decoration-none text-primary"
-              style="font-size: 0.9rem"
+              style="font-size: calc(12px + 6 * ((100vw - 320px) / 1880))"
             >
               {{ $t("auth.forget_password") }}
             </a>
           </div>
 
           <input
-            type="password"
+            :type="inputType"
             class="form-control"
             v-model="credentials.password"
             required
             autocomplete="off"
           />
+          <i
+            v-if="inputText"
+            class="fa-solid fa-eye position-absolute"
+            style="top: 2.9rem; cursor: pointer"
+            :style="styleTogglePassword"
+            @click="handleInputText()"
+          ></i>
+          <i
+            v-if="!inputText"
+            class="fa-solid fa-eye-slash position-absolute"
+            style="top: 2.9rem; cursor: pointer"
+            :style="styleTogglePassword"
+            @click="handleInputText()"
+          ></i>
+          <div v-if="passwordError" class="error">{{ passwordError }}</div>
         </div>
 
         <div
-          class="col-12 d-flex justify-content-between align-items-center pb-2"
+          class="col-12 d-flex justify-content-between align-items-center pb-4"
         >
-          <button type="submit" class="btn btn-primary">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="font-size: calc(13px + 6 * ((100vw - 320px) / 1880))"
+          >
             {{ $t("auth.sign_in") }}
           </button>
 
@@ -85,25 +111,28 @@
             href="#"
             @click.stop.prevent="registerForm"
             class="text-decoration-none text-primary nowrap"
-            style="font-size: 0.9rem"
+            style="font-size: calc(12px + 6 * ((100vw - 320px) / 1880))"
           >
             {{ $t("auth.no_account_please_sign_up") }}</a
           >
         </div>
 
-        <div class="text-center d-block" style="font-size: 0.9rem">
+        <!-- <div class="text-center d-block" style="font-size: 0.9rem">
           {{ $t("auth.or_Sign_in_with") }}
         </div>
         <hr class="w-25 mx-auto" />
         <div
           class="d-flex flex-column align-items-center justify-content-center pb-2"
         >
-          <button class="btn btn-primary">
+          <button
+            class="btn btn-primary"
+            style="font-size: calc(13px + 6 * ((100vw - 320px) / 1880))"
+          >
             <i class="fa-brands fa-facebook-square me-2"></i>
 
             {{ $t("auth.facebook") }}
           </button>
-        </div>
+        </div> -->
       </form>
     </div>
   </div>
@@ -134,9 +163,11 @@ export default {
       credentials: {
         email: "",
         password: "",
+        language: this.lang,
       },
-      emailError: false,
-      passwordError: false,
+      emailError: "",
+      passwordError: "",
+      inputText: false,
       selectedLanguage: this.lang,
       url: window.axios.defaults.url,
       appEnv: window.axios.defaults.appEnv,
@@ -146,14 +177,7 @@ export default {
   props: ["csrfToken", "currency", "language", "productId"],
 
   computed: {
-    ...mapGetters([
-      "getConnectionStatus",
-      "getUser",
-      "loading",
-      "success",
-      "error",
-      "lang",
-    ]),
+    ...mapGetters(["getUser", "loading", "success", "error", "lang"]),
     classLanguage() {
       return {
         // active: this.isActive,
@@ -164,6 +188,15 @@ export default {
       return {
         direction: this.selectedLanguage === "ar" ? "rtl" : "ltr",
       };
+    },
+
+    styleTogglePassword() {
+      let pos = this.selectedLanguage === "ar" ? "left: 2rem" : "right: 2rem";
+      return pos;
+    },
+    inputType() {
+      let type = this.inputText ? "text" : "password";
+      return type;
     },
     styleBackgroundImage() {
       return {
@@ -240,12 +273,22 @@ export default {
     registerForm() {
       //   console.log("Emit register Form");
       this.$emit("register", true);
+
+      //   console.log(this.$emit("register", '1'));
+    },
+    passwordForm() {
+      console.log("Emit forgot Form");
+
+      this.$emit("forgot", true);
       //   console.log(this.$emit("register", '1'));
     },
     onSubmit(e) {
       //   let validCredentials = this.validate(this.credentials);
       //   console.log(validCredentials);
       this.setLogin(this.credentials);
+    },
+    handleInputText() {
+      this.inputText = !this.inputText;
     },
   },
 
@@ -305,5 +348,9 @@ export default {
 }
 .form-title {
   font-size: calc(15px + 6 * ((100vw - 320px) / 1880));
+}
+.error {
+  color: crimson;
+  font-size: calc(12px + 6 * ((100vw - 320px) / 1880));
 }
 </style>

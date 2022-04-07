@@ -1,0 +1,13 @@
+.light {
+  .header {
+    background-color: rgb(255, 192, 20);
+    padding-top: 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 700px) {
+      padding-top: 0.31rem;
+    }
+  }
+}

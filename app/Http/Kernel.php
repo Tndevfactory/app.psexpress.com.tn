@@ -73,6 +73,9 @@ class Kernel extends HttpKernel
         'account.verify' =>\App\Http\Middleware\Xverify::class,
         'xauth' =>\App\Http\Middleware\Xauth::class,
         'xguest' =>\App\Http\Middleware\Xguest::class,
+        'xverifyapi' =>\App\Http\Middleware\Xverifyapi::class,
+        'xauthapi' =>\App\Http\Middleware\Xauthapi::class,
+        'xguestapi' =>\App\Http\Middleware\Xguestapi::class,
         
     ];
 }

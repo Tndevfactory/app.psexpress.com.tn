@@ -4,6 +4,12 @@ import Vue from "vue";
 import store from "./store/index.js";
 import { gsap } from "gsap";
 import "./style/global.css";
+
+import SwiperCore, { Navigation, Autoplay } from "swiper";
+SwiperCore.use([Navigation, Autoplay]);
+import "swiper/scss";
+import "swiper/scss/navigation";
+import "swiper/scss/pagination";
 // import "dtoaster/dist/dtoaster.css";
 import "../css/dtoaster.css";
 import DToaster from "dtoaster";
@@ -31,6 +37,7 @@ Vue.config.productionTip = false;
 console.clear();
 
 Vue.use(VueCookies);
+Vue.$cookies.config("1d");
 
 // // set default config
 // Vue.$cookies.config("7d");
@@ -44,6 +51,10 @@ Vue.use(DToaster, {
   position: "top-right", //toasts container position on the screen
   containerOffset: "45px", //toasts container offset from top/bottom of the screen
 });
+
+window.gsap = require("gsap").default;
+window.Swiper = require("swiper").default;
+window.bootstrap = require("bootstrap").default;
 
 window.Vue = require("vue").default;
 Vue.use(Vuex);
@@ -119,6 +130,15 @@ Vue.component(
 // todos zone ------------------------------------------
 Vue.component("todos-api", require("./components/todos/Todos.vue").default);
 
+// verify activation zone ------------------------------------------
+Vue.component("verify-ops", require("./components/verify/Verify.vue").default);
+
+// reset password ------------------------------------------
+Vue.component(
+  "update-password",
+  require("./components/verify/UpdatePassword.vue").default
+);
+
 // common zone ------------------------------------------
 
 Vue.component(
@@ -189,3 +209,27 @@ const i18n = new VueI18n({
 // });
 
 const app = new Vue({ i18n, store }).$mount("#app");
+
+const mySswiper = new Swiper(".swiper", {
+  loop: true,
+  speed: 400,
+  spaceBetween: 8,
+  autoplay: {
+    delay: 2000,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+
+  breakpoints: {
+    // when window width is >= 640px
+    640: {
+      slidesPerView: 4,
+    },
+  },
+});
+
+// mySswiper.on("click", function (mySswiper, event) {
+//   console.log("slide clicked", event);
+// });

@@ -1,13 +1,20 @@
 <template>
   <div>
-    <Login v-if="isLogin" :language="language" @register="registerForm" />
-    <Register v-if="isRegister" :language="language" @login="loginForm" />
+    <Login
+      v-if="isLogin"
+      :language="lang"
+      @forgot="passwordForm"
+      @register="registerForm"
+    />
+    <Register v-if="isRegister" :language="lang" @login="loginForm" />
+    <Forgot v-if="isPasswordForget" :language="lang" @login="loginForm" />
   </div>
 </template>
 <script>
 import Modal from "./Modal.vue";
 import Login from "./Login.vue";
 import Register from "./Register.vue";
+import Forgot from "./Forgot.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -17,12 +24,14 @@ export default {
     Modal,
     Login,
     Register,
+    Forgot,
   },
 
   data() {
     return {
       isLogin: true,
       isRegister: false,
+      isPasswordForget: false,
     };
   },
 
@@ -30,36 +39,27 @@ export default {
 
   computed: {
     ...mapGetters([
-      "getConnectionStatus",
+      "getAuthCheck",
+      "getBearerToken",
       "getUser",
       "loading",
       "success",
       "error",
       "lang",
     ]),
-    classLanguage() {
-      return {
-        // active: this.isActive,
-        // "bg-primary": this.language === "ar" ? true : false,
-      };
-    },
-    styleLanguage() {
-      return {
-        direction: this.selectedLanguage === "ar" ? "rtl" : "ltr",
-      };
-    },
-    publicUrl() {
-      let publicMedia = this.appEnv === "local" ? "media/" : "public/media/";
-      let publicPath = this.url + publicMedia;
-      return publicPath;
-    },
   },
 
   methods: {
+    beforePageDestroyed: function (event) {
+      // Vue.$cookies.set("app_closed", "88");
+      // localStorage.removeItem("vuex");
+      // console.log("beforePageDestroyed");
+    },
     registerForm(eventRegister) {
       // console.log("receive emit registerForm");
       // console.log(eventRegister);
       this.isLogin = !eventRegister;
+      this.isPasswordForget = !eventRegister;
       this.isRegister = eventRegister;
     },
     loginForm(eventLogin) {
@@ -67,6 +67,14 @@ export default {
       // console.log(eventLogin);
       this.isLogin = eventLogin;
       this.isRegister = !eventLogin;
+      this.isPasswordForget = !eventLogin;
+    },
+    passwordForm(event) {
+      console.log("eventPasswordForget");
+      console.log(event);
+      this.isLogin = !event;
+      this.isRegister = !event;
+      this.isPasswordForget = event;
     },
     ...mapActions(["setLogin", "setLang"]),
 
@@ -87,22 +95,15 @@ export default {
   },
 
   created() {
-    this.$i18n.locale = this.language;
-    this.selectedLanguage = this.language;
-    this.setLang(this.selectedLanguage);
+    this.$i18n.locale = this.lang;
+    this.setLang(this.lang);
     this.url = window.axios.defaults.url;
     this.appEnv = window.axios.defaults.appEnv;
     // console.log(this.appEnv);
     // console.log(this.url);
+    window.addEventListener("beforeunload", this.beforePageDestroyed);
+
+    // console.log(this.getUser);
   },
 };
 </script>
-
-<style scoped>
-.logo {
-  height: 4rem;
-  width: 4rem;
-  display: inline-block;
-  margin: 1px auto;
-}
-</style>

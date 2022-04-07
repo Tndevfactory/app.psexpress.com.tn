@@ -15,5 +15,5 @@ export default new Vuex.Store({
     cart,
     common,
   },
-  // plugins: [createPersistedState()],
+  plugins: [createPersistedState()],
 });

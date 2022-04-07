@@ -1,10 +1,11 @@
 {
   "Arabic translation here ": "-!!!-",
+
   "auth init page ": "------------------------------------------------------------------",
 
   "auth": {
     "psexpress": "PSEXPRESS",
-    "sign_in": "تسجيل الدخول",
+    "sign_in": "الدخول",
     "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
     "forget_password": "لم اتدكر كلمة المرور",

@@ -134,10 +134,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["cartCount"]),
+    ...mapActions(["cartCount", "resetMsg"]),
   },
 
   created() {
+    this.resetMsg();
     this.$i18n.locale = this.language;
     this.cartCount();
     // let bearerToken = Vue.$cookies.get("bearerToken");

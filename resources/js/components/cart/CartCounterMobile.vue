@@ -87,10 +87,11 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["cartCount", "setEuroCoefficient"]),
+    ...mapActions(["cartCount", "setEuroCoefficient", "resetMsg"]),
   },
 
   created() {
+    this.resetMsg();
     this.$i18n.locale = this.language;
     this.cartCount();
     this.setEuroCoefficient();

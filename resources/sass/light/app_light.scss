@@ -1,0 +1,11 @@
+// config light
+@import "globals/config_light.scss";
+
+// light/components
+@import "components/header.scss";
+@import "components/navbar.scss";
+@import "components/footer.scss";
+
+// /light/pages/
+@import "pages/login.scss";
+@import "pages/home.scss";

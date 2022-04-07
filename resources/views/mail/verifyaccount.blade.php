@@ -14,7 +14,7 @@
 
     <body dir="{{  $data_mail['language']  === 'ar' ? 'rtl' : 'ltr' }}">
 
-       <h5 class='t'> {{ __('Welcome')}} {{ $data_mail['first_name'] }},</h5>
+       <h5 class='t'> {{ $data_mail['welcome'] }} {{ $data_mail['first_name'] }},</h5>
 
        <p class='t'>{{ __($data_mail['content']) }} </p>
       
@@ -24,7 +24,7 @@
         </a>
       </div>
 
-        <p class='t' style='margin-bottom:0;'>{{ __('Best Regards,')}} </p>
-        <span class='t' style='font-weight:500;'> PSEXPRESS ADMIN</span>
+        <p class='t' style='margin-bottom:0;'>{{ $data_mail['regards'] }} </p>
+        <span class='t' style='font-weight:500;'>PSEXPRESS TEAM</span>
     </body>
 </html>

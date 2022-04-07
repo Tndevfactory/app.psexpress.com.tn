@@ -15,7 +15,27 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+         $schedule->command('message:daily')
+         ->daily()
+            ->appendOutputTo('scheduler.log');
+
+        $schedule->command('queue:restart')
+            ->yearly();
+            //  ->appendOutputTo('scheduler.log');
+
+        // $schedule->command('queue:work --daemon')
+        //     ->everyMinute()
+        //     ->withoutOverlapping();
+        $schedule->command('queue:listen')
+        ->yearly();
+            
+         
+            //  ->appendOutputTo('scheduler.log');
+    }
+
+    public function scheduleTimezone()
+    {
+         return 'Africa/Tunis';
     }
 
     /**

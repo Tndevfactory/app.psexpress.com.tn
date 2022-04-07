@@ -1,0 +1,42 @@
+.light {
+  .categories-title {
+    background-color: #2a2a2a;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(61, 61, 61, 0.1) 0px 3px 3px;
+    font-weight: 500;
+    letter-spacing: 0.61px;
+    font-size: 1.4rem;
+  }
+  .products-title {
+    background-color: #201f1f;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(61, 61, 61, 0.1) 0px 3px 3px;
+    font-weight: 500;
+    letter-spacing: 0.61px;
+    font-size: 1.4rem;
+  }
+
+  .login-init {
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    padding: 0px 5rem;
+    height: 100vh;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .login-init {
+      overflow: auto;
+      overflow-x: hidden;
+      /* display:block; */
+      padding: 0px 17px;
+    }
+  }
+}

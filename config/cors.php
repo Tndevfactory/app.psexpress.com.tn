@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'acheter/*', 'sanctum/csrf-cookie', 'https://admin.psexpress.com.tn/*'],
+    'paths' => ['http://localhost:8080/*','api/*', 'acheter/*', 'sanctum/csrf-cookie', 'https://admin.psexpress.com.tn/*'],
 
     'allowed_methods' => ['*'],
 

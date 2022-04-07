@@ -33,6 +33,7 @@ class Shop extends Model
         'shop_image',
         
         'active',
+        'user_id',
        
     ];
 }

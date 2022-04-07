@@ -1,0 +1,82 @@
+.light {
+  .navbar-block {
+    background-color: rgb(250, 254, 255);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 1px 1px 1px rgba($color: #000000, $alpha: 0.5);
+    z-index: 888;
+  }
+  .navbar-block-menu {
+    padding: 0.8rem;
+    background-color: #ffffff;
+    @media (max-width: 700px) {
+      padding: 1rem;
+    }
+  }
+  .second-navbar {
+    background-color: rgb(255, 255, 255);
+    z-index: 199;
+    font-size: 0.8rem;
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+  .navbar-under {
+    background-color: transparent;
+    position: static;
+    height: 1rem;
+  }
+
+  .search-bar {
+    width: 80%;
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+  }
+
+  .dropdown {
+    display: inline-block;
+    transition: 0.5s ease;
+    z-index: 999;
+  }
+  .dropdown:hover > .dropdown-menu {
+    margin-top: 0;
+    display: block !important;
+    z-index: 999;
+  }
+  .dropdown:hover > .btn-light {
+    box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+  .dropdown-l2:hover > .dropdown-l3 {
+    margin-top: 0;
+    display: block !important;
+    z-index: 999;
+  }
+
+  .dropdown > .dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+  }
+
+  .dropdown-l3-ltr {
+    position: absolute;
+    top: -0.5rem;
+    transform: translateX(9.2rem);
+    margin: 0;
+    min-width: 40rem;
+    padding: 1rem;
+    z-index: 999;
+  }
+  .dropdown-l3-rtl {
+    position: absolute;
+    top: -0.5rem;
+    transform: translateX(-9.2rem);
+    margin: 0;
+    min-width: 40rem;
+    padding: 1rem;
+    z-index: 999;
+  }
+}

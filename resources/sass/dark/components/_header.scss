@@ -1,0 +1,25 @@
+.dark {
+  /* header-bar style */
+  .header-bar {
+    height: 8vh;
+    background-color: rgba(0, 212, 255, 1);
+  }
+
+  .cart-counter {
+    top: -5px;
+    left: 100% !important;
+    font-size: 0.7rem;
+  }
+
+  .currency {
+    inset: -10px auto auto -1px !important;
+    z-index: 9999 !important;
+    min-width: 3rem;
+  }
+
+  .language {
+    inset: -10px auto auto -1px !important;
+    z-index: 9999 !important;
+    min-width: 3rem;
+  }
+}

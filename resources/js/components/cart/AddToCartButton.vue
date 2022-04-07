@@ -18,11 +18,12 @@ export default {
   computed: mapGetters(["cart", "loading", "success", "error"]),
 
   methods: {
-    ...mapActions(["setCart"]),
+    ...mapActions(["setCart", "resetMsg"]),
   },
 
   created() {
     this.$i18n.locale = this.language;
+    this.resetMsg();
   },
 };
 </script>

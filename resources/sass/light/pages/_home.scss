@@ -1,0 +1,25 @@
+.light {
+  .card-product {
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    @media only screen and (max-width: 600px) {
+      box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .buy-button-div {
+    visibility: hidden;
+    background-color: #f6d100;
+    .buy-button-link {
+      background-color: transparent;
+      text-decoration: none;
+      color: #000000;
+    }
+  }
+  .card-product:hover .buy-button-div {
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  }
+}

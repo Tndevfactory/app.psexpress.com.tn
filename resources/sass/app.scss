@@ -1,8 +1,24 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "variables";
 
-// Variables
-@import 'variables';
+@import "~bootstrap/scss/bootstrap";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// fontawesone
+@import "/fontawesome61/css/all.min.css";
+
+// materialDesign
+@import "/materialDesign65/scss/materialdesignicons.scss";
+@import url("~animate.css/animate.min.css");
+
+@import "fonts";
+
+// light theme
+@import "light/app_light.scss";
+
+// dark theme
+@import "dark/app_dark.scss";
+
+// scrolltop
+@import "scrolltop";
+
+// rtl directive
+@import "rtl";

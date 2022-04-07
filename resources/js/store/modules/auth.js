@@ -2,71 +2,371 @@ import axios from "axios";
 import common from "./common";
 
 const state = {
-  ConnectionStatus: false,
+  authCheck: false,
+  bearerToken: "",
+  verifTokenPk: "",
   user: {},
 };
 
 const getters = {
-  getConnectionStatus: (state) => state.ConnectionStatus,
+  getAuthCheck: (state) => state.authCheck,
+  getBearerToken: (state) => state.bearerToken,
+  getVerifTokenPk: (state) => state.VerifTokenPk,
   getUser: (state) => state.user,
 };
 
 const mutations = {
-  setConnectionStatus: (state, ConnectionStatus) =>
-    (state.ConnectionStatus = ConnectionStatus),
+  setAuthCheck: (state, authCheck) => (state.authCheck = authCheck),
   setLogin: (state, user) => (state.user = user),
+  setRegister: (state, user) => (state.user = user),
+  setBearerToken: (state, bearerToken) => (state.bearerToken = bearerToken),
+  setVerifTokenPk: (state, verifTokenPk) => (state.bearerToken = verifTokenPk),
 };
 
 const actions = {
-  // async setConnectionStatus({ commit }) {
-  //   return 1;
-  // },
-
   async setLogin({ commit }, credentials) {
-    console.log(credentials);
     let lang = common.state.lang;
+    let cred = { ...credentials, lang };
 
     commit("setLoading", true);
     let url = "/login";
 
     try {
-      const response = await axios.post(url, credentials);
+      const response = await axios.post(url, cred);
 
       if (response.data.response_code === 200) {
-        commit("setConnectionStatus", response.data.backend_response);
-        commit("setLogin", response.data.user);
+        console.log(response);
 
+        commit("setAuthCheck", response.data.auth_check);
+        commit("setLogin", response.data.user);
+        commit("setBearerToken", response.data.access_token);
         Vue.$cookies.set("bearerToken", response.data.access_token);
+        Vue.$cookies.set("authCheck", response.data.auth_check);
+        Vue.$cookies.set("user", response.data.user);
         commit("setLoading", false);
         commit("setSuccess", response.data.backend_response);
-        console.log(response);
+        window.location.href = "http://127.0.0.1:8000/fr/shop";
       } else if (response.data.response_code === 403) {
-        console.log(response.data.backend_response);
-        commit("setConnectionStatus", response.data.backend_response);
-        commit("setError", response.data.backend_response);
+        console.log(response);
+        Vue.$cookies.remove("bearerToken");
+        Vue.$cookies.remove("authCheck");
+        Vue.$cookies.remove("user");
+        commit("setAuthCheck", response.data.auth_check);
+        commit("setLogin", response.data.user);
+        commit("setBearerToken", response.data.access_token);
         commit("setLoading", false);
-      } else {
-        commit("setConnectionStatus", response.data.backend_response);
         commit(
           "setError",
           response.data.backend_response
             ? response.data.backend_response
             : "something went wrong"
         );
+      } else {
+        Vue.$cookies.remove("bearerToken");
+        Vue.$cookies.remove("authCheck");
+        Vue.$cookies.remove("user");
+        commit("setAuthCheck", response.data.auth_check);
+        commit("setLogin", response.data.user);
+        commit("setBearerToken", response.data.access_token);
         commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
       }
     } catch (err) {
-      commit("setConnectionStatus", response.data.backend_response);
-      console.log(response);
+      Vue.$cookies.remove("bearerToken");
+      Vue.$cookies.remove("authCheck");
+      Vue.$cookies.remove("user");
+      commit("setAuthCheck", response.data.auth_check);
+      commit("setLogin", response.data.user);
+      commit("setBearerToken", response.data.access_token);
+      commit("setLoading", false);
       commit(
         "setError",
         response.data.backend_response
           ? response.data.backend_response
           : "something went wrong"
       );
-      commit("setLoading", false);
     }
 
+    setTimeout(() => {
+      commit("setSuccess", "");
+      commit("setError", "");
+    }, 4000);
+  },
+  async setRegister({ commit }, credentials) {
+    let lang = common.state.lang;
+    let cred = { ...credentials, lang };
+
+    commit("setLoading", true);
+    let url = "/register";
+
+    try {
+      const response = await axios.post(url, cred);
+
+      if (response.data.response_code === 200) {
+        console.log(response);
+
+        commit("setAuthCheck", response.data.auth_check);
+        commit("setRegister", response.data.user);
+        commit("setBearerToken", response.data.access_token);
+        commit("setVerifTokenPk", response.data.verif_token_pk);
+        Vue.$cookies.set("bearerToken", response.data.access_token);
+        Vue.$cookies.set("verifToken", response.data.verif_token_pk);
+        Vue.$cookies.set("authCheck", response.data.auth_check);
+        Vue.$cookies.set("user", response.data.user);
+        commit("setLoading", false);
+        commit("setSuccess", response.data.backend_response);
+
+        setTimeout(() => {
+          commit("setSuccess", "");
+          commit("setError", "");
+        }, 3000);
+
+        window.location.href = "http://127.0.0.1:8000/fr/shop";
+      } else if (response.data.response_code === 403) {
+        console.log(response);
+        Vue.$cookies.remove("verifToken");
+        Vue.$cookies.remove("bearerToken");
+        Vue.$cookies.remove("authCheck");
+        Vue.$cookies.remove("user");
+        commit("setAuthCheck", response.data.auth_check || "");
+        commit("setLogin", response.data.user || "");
+        commit("setBearerToken", response.data.access_token || "");
+        commit("setVerifTokenPk", response.data.verif_token_pk || "");
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      } else {
+        Vue.$cookies.remove("verifToken");
+        Vue.$cookies.remove("bearerToken");
+        Vue.$cookies.remove("authCheck");
+        Vue.$cookies.remove("user");
+        commit("setAuthCheck", response.data.auth_check || "");
+        commit("setLogin", response.data.user || "");
+        commit("setBearerToken", response.data.access_token || "");
+        commit("setVerifTokenPk", response.data.verif_token_pk || "");
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      }
+    } catch (err) {
+      Vue.$cookies.remove("verifToken");
+      Vue.$cookies.remove("bearerToken");
+      Vue.$cookies.remove("authCheck");
+      Vue.$cookies.remove("user");
+      commit("setAuthCheck", response.data.auth_check || "");
+      commit("setLogin", response.data.user || "");
+      commit("setBearerToken", response.data.access_token || "");
+      commit("setVerifTokenPk", response.data.verif_token_pk || "");
+      commit("setLoading", false);
+      commit(
+        "setError",
+        response.data.backend_response
+          ? response.data.backend_response
+          : "something went wrong"
+      );
+    }
+
+    setTimeout(() => {
+      commit("setSuccess", "");
+      commit("setError", "");
+    }, 4000);
+  },
+  async updVerifiedAt({ commit }, token) {
+    commit("setLoading", true);
+    let url = "/update-verify-at";
+
+    try {
+      const response = await axios.post(url, token);
+
+      if (response.data.response_code === 200) {
+        console.log(response);
+
+        commit("setLoading", false);
+        commit("setSuccess", response.data.backend_response);
+        window.location.href = "http://127.0.0.1:8000/fr/shop";
+      } else if (response.data.response_code === 403) {
+        console.log(response);
+
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      } else {
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      }
+    } catch (err) {
+      commit("setLoading", false);
+      commit(
+        "setError",
+        response.data.backend_response
+          ? response.data.backend_response
+          : "something went wrong"
+      );
+    }
+    setTimeout(() => {
+      commit("setSuccess", "");
+      commit("setError", "");
+    }, 4000);
+  },
+  async resendVerifiedAtLink({ commit }, token) {
+    commit("setLoading", true);
+    let url = "/update-verify-at";
+
+    try {
+      const response = await axios.post(url, token);
+
+      if (response.data.response_code === 200) {
+        console.log(response);
+
+        commit("setLoading", false);
+        commit("setSuccess", response.data.backend_response);
+        window.location.href = "http://127.0.0.1:8000/fr/shop";
+      } else if (response.data.response_code === 403) {
+        console.log(response);
+
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      } else {
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      }
+    } catch (err) {
+      commit("setLoading", false);
+      commit(
+        "setError",
+        response.data.backend_response
+          ? response.data.backend_response
+          : "something went wrong"
+      );
+    }
+    setTimeout(() => {
+      commit("setSuccess", "");
+      commit("setError", "");
+    }, 4000);
+  },
+  async sendMailResetPassword({ commit }, credentials) {
+    let lang = common.state.lang;
+    let cred = { ...credentials, lang };
+    commit("setLoading", true);
+    let url = "/send-mail-reset-password";
+
+    try {
+      const response = await axios.post(url, cred);
+
+      if (response.data.response_code === 200) {
+        console.log(response);
+
+        commit("setLoading", false);
+        commit("setSuccess", response.data.backend_response);
+        // window.location.href = "http://127.0.0.1:8000/fr/shop";
+      } else if (response.data.response_code === 403) {
+        console.log(response);
+
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      } else {
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      }
+    } catch (err) {
+      commit("setLoading", false);
+      commit(
+        "setError",
+        response.data.backend_response
+          ? response.data.backend_response
+          : "something went wrong"
+      );
+    }
+    setTimeout(() => {
+      commit("setSuccess", "");
+      commit("setError", "");
+    }, 4000);
+  },
+  async updatePassword({ commit }, credentials) {
+    let lang = common.state.lang;
+    let cred = { ...credentials, lang };
+    commit("setLoading", true);
+    let url = "/update-password";
+
+    try {
+      const response = await axios.post(url, cred);
+
+      if (response.data.response_code === 200) {
+        console.log(response);
+
+        commit("setLoading", false);
+        commit("setSuccess", response.data.backend_response);
+        // window.location.href = "http://127.0.0.1:8000/fr/shop";
+      } else if (response.data.response_code === 403) {
+        console.log(response);
+
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      } else {
+        commit("setLoading", false);
+        commit(
+          "setError",
+          response.data.backend_response
+            ? response.data.backend_response
+            : "something went wrong"
+        );
+      }
+    } catch (err) {
+      commit("setLoading", false);
+      commit(
+        "setError",
+        response.data.backend_response
+          ? response.data.backend_response
+          : "something went wrong"
+      );
+    }
     setTimeout(() => {
       commit("setSuccess", "");
       commit("setError", "");

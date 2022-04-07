@@ -23,7 +23,11 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        <img :src="publicUrl + 'logo/logo-icon.png'" alt="logo" class="logo" />
+        <img
+          :src="publicUrl + 'logo/newlogopsexpress.jpg'"
+          alt="logo"
+          class="logo"
+        />
       </div>
 
       <form @submit.stop.prevent="onSubmit" class="row">
@@ -39,26 +43,26 @@
         <div class="col-md-12 pb-2">
           <div class="row">
             <div class="col-12 col-md-6">
-              <label for="fname" class="form-label">
+              <label for="fr_shop_name" class="form-label">
                 {{ $t("auth.shop_name") }}
               </label>
               <input
                 type="text"
                 class="form-control"
-                v-model="credentials.fname"
+                v-model="credentials.fr_shop_name"
                 required
                 autocomplete="on"
                 autofocus
               />
             </div>
             <div class="col-12 col-md-6">
-              <label for="lname" class="form-label">
+              <label for="retailer_name" class="form-label">
                 {{ $t("auth.manager_name") }}
               </label>
               <input
                 type="text"
                 class="form-control"
-                v-model="credentials.lname"
+                v-model="credentials.retailer_name"
                 required
                 autocomplete="on"
               />
@@ -80,21 +84,21 @@
               />
             </div>
             <div class="col-12 col-md-6">
-              <label for="phone" class="form-label">
+              <label for="phone1" class="form-label">
                 {{ $t("auth.phone") }}
               </label>
               <input
                 type="text"
                 class="form-control"
-                v-model="credentials.phone"
+                v-model="credentials.phone1"
                 required
-                autocomplete="on"
+                autocomplete="off"
               />
             </div>
           </div>
         </div>
 
-        <div class="col-md-12 pb-3">
+        <div class="col-md-12 pb-3 position-relative">
           <div class="d-flex justify-content-start align-items-center">
             <label for="password" class="form-label">
               {{ $t("auth.password") }}</label
@@ -102,14 +106,28 @@
           </div>
 
           <input
-            type="password"
+            :type="inputType"
             class="form-control"
             v-model="credentials.password"
             required
             autocomplete="off"
           />
+          <i
+            v-if="inputText"
+            class="fa-solid fa-eye position-absolute"
+            style="top: 2.9rem; cursor: pointer"
+            :style="styleTogglePassword"
+            @click="handleInputText()"
+          ></i>
+          <i
+            v-if="!inputText"
+            class="fa-solid fa-eye-slash position-absolute"
+            style="top: 2.9rem; cursor: pointer"
+            :style="styleTogglePassword"
+            @click="handleInputText()"
+          ></i>
         </div>
-        <div class="col-md-12 pb-2">
+        <div class="col-md-12 pb-3">
           <label for="address" class="form-label">
             {{ $t("auth.address") }}
           </label>
@@ -123,9 +141,13 @@
         </div>
 
         <div
-          class="col-12 d-flex justify-content-between align-items-center pb-2"
+          class="col-12 d-flex justify-content-between align-items-center pb-4"
         >
-          <button type="submit" class="btn btn-primary nowrap">
+          <button
+            type="submit"
+            class="btn btn-primary nowrap"
+            style="font-size: calc(13px + 6 * ((100vw - 320px) / 1880))"
+          >
             {{ $t("auth.sign_up") }}
           </button>
           <a
@@ -138,18 +160,21 @@
           >
         </div>
 
-        <div class="text-center d-block" style="font-size: 0.9rem">
+        <!-- <div class="text-center d-block" style="font-size: 0.9rem">
           {{ $t("auth.or_Sign_up_with") }}
         </div>
         <hr class="w-25 mx-auto" />
         <div
           class="d-flex flex-column align-items-center justify-content-center pb-2"
         >
-          <button class="btn btn-primary">
+          <button
+            class="btn btn-primary"
+            style="font-size: calc(13px + 6 * ((100vw - 320px) / 1880))"
+          >
             <i class="fa-brands fa-facebook-square me-2"></i>
             {{ $t("auth.facebook") }}
           </button>
-        </div>
+        </div> -->
       </form>
     </div>
   </div>
@@ -179,12 +204,13 @@ export default {
       isModalVisible: false,
       credentials: {
         email: "",
-        fname: "",
-        lname: "",
-        phone: "",
+        retailer_name: "",
+        fr_shop_name: "",
+        phone1: "",
         address: "",
         password: "",
       },
+      inputText: false,
       emailError: false,
       passwordError: false,
       selectedLanguage: "fr",
@@ -196,14 +222,7 @@ export default {
   props: ["csrfToken", "currency", "language", "productId"],
 
   computed: {
-    ...mapGetters([
-      "getConnectionStatus",
-      "getUser",
-      "loading",
-      "success",
-      "error",
-      "lang",
-    ]),
+    ...mapGetters(["getUser", "loading", "success", "error", "lang"]),
     classLanguage() {
       return {
         // active: this.isActive,
@@ -215,7 +234,14 @@ export default {
         direction: this.selectedLanguage === "ar" ? "rtl" : "ltr",
       };
     },
-
+    styleTogglePassword() {
+      let pos = this.selectedLanguage === "ar" ? "left: 2rem" : "right: 2rem";
+      return pos;
+    },
+    inputType() {
+      let type = this.inputText ? "text" : "password";
+      return type;
+    },
     styleBackgroundImage() {
       return {
         "background-image":
@@ -232,7 +258,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(["setLogin", "setLang"]),
+    ...mapActions(["setRegister", "setLang"]),
 
     showModal() {
       this.isModalVisible = true;
@@ -296,7 +322,11 @@ export default {
     onSubmit(e) {
       //   let validCredentials = this.validate(this.credentials);
       //   console.log(validCredentials);
-      this.setLogin(this.credentials);
+      this.setRegister(this.credentials);
+    },
+
+    handleInputText() {
+      this.inputText = !this.inputText;
     },
   },
 
