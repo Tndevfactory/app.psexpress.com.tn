@@ -6,72 +6,44 @@ const state = {
   compta: [],
   cartCounter: 0,
   cartTotal: 0,
-  euroCoefficient: 0,
 };
 
 const getters = {
-  cart: (state) => state.cart,
-  compta: (state) => state.compta,
-  cartCounter: (state) => state.cartCounter,
-  cartTotal: (state) => state.cartTotal,
-  euroCoefficient: (state) => state.euroCoefficient,
+  getCart: (state) => state.cart,
+  getCompta: (state) => state.compta,
+  getCartCounter: (state) => state.cartCounter,
+  getCartTotal: (state) => state.cartTotal,
 };
 
 const mutations = {
   setCompta: (state, compta) => (state.compta = compta),
   setCart: (state, cartItem) => (state.cart = cartItem),
-  cartCount: (state, cartCounter) => (state.cartCounter = cartCounter),
-  cartTotal: (state, cartTotal) => (state.cartTotal = cartTotal),
-  setEuroCoefficient: (state, euroCoefficient) =>
-    (state.euroCoefficient = euroCoefficient),
-
-  newTodo: (state, todo) => state.todos.unshift(todo),
-
-  removeTodo: (state, id) =>
-    (state.todos = state.todos.filter((todo) => todo.id !== id)),
-
-  updateTodo: (state, updTodo) => {
-    const index = state.todos.findIndex((todo) => todo.id === updTodo.id);
-    if (index !== -1) {
-      state.todos.splice(index, 1, updTodo);
-    }
-  },
+  setCartCount: (state, cartCounter) => (state.cartCounter = cartCounter),
+  setCartTotal: (state, cartTotal) => (state.cartTotal = cartTotal),
 };
 
 const actions = {
-  async setEuroCoefficient({ commit }) {
-    return 1;
-  },
-  async setCompta({ commit }) {
-    return 1;
-  },
   async setCart({ commit }, productId) {
-    // console.log(common.state.lang);
-    let lang = common.state.lang;
+    let pr = [common.state.lang, productId];
 
     commit("setLoading", true);
     let url = "/add-to-cart";
-    let pid = { params: { productId: productId } };
+    let pid = { params: { productId: pr } };
     try {
       const response = await axios.get(url, pid);
 
-      if (response.status === 200) {
+      if (response.data.response_code === 200) {
         commit("setCart", response.data.cart);
         commit("setCompta", response.data.compta);
+        commit("setCartCount", response.data.cart_counter);
+        commit("setCartTotal", response.data.total_cart);
 
-        commit("cartCount", response.data.cart_counter);
-        commit("cartTotal", response.data.total_cart);
         commit("setLoading", false);
         commit("setSuccess", response.data.responseBackend);
-        console.log(response);
       } else if (response.data.response_code === 403) {
-        console.log(response);
-        console.log("setcart-action");
         commit("setError", response.data.responseBackend);
         commit("setLoading", false);
       } else {
-        console.log(response);
-        console.log("setcart-action");
         commit("setError", response.data.responseBackend);
         commit("setLoading", false);
       }
@@ -83,25 +55,27 @@ const actions = {
     setTimeout(() => {
       commit("setSuccess", "");
       commit("setError", "");
+      commit("setLoading", false);
     }, 4000);
   },
+  async deleteAllCart({ commit }) {
+    console.log("deleteAllCart");
+    let pr = [common.state.lang];
 
-  async cartCount({ commit }) {
     commit("setLoading", true);
-    let url = "/check-cart-count";
+    let url = "/delete-all-cart";
+    let pid = { params: { lang: pr } };
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(url, pid);
 
-      // let bearerToken = Vue.$cookies.get("bearerToken");
-      // console.log(bearerToken);
-
-      if (response.status === 200) {
-        commit("cartCount", response.data.cart_counter);
-        commit("cartTotal", response.data.total_cart);
-        commit("setEuroCoefficient", response.data.euroCoefficient);
+      if (response.data.response_code === 200) {
         commit("setCart", response.data.cart);
         commit("setCompta", response.data.compta);
+        commit("setCartCount", response.data.cart_counter);
+        commit("setCartTotal", response.data.total_cart);
+
         commit("setLoading", false);
+        commit("setSuccess", response.data.responseBackend);
       } else if (response.data.response_code === 403) {
         commit("setError", response.data.responseBackend);
         commit("setLoading", false);
@@ -117,31 +91,79 @@ const actions = {
     setTimeout(() => {
       commit("setSuccess", "");
       commit("setError", "");
+      commit("setLoading", false);
     }, 4000);
   },
+  async deleteItemCart({ commit }, productId) {
+    let pr = [common.state.lang, productId];
 
-  async filterTodos({ commit }, e) {
-    // Get selected number
-    const limit = parseInt(
-      e.target.options[e.target.options.selectedIndex].innerText
-    );
+    commit("setLoading", true);
+    let url = "/delete-item-cart";
+    let pid = { params: { productId: pr } };
+    try {
+      const response = await axios.get(url, pid);
 
-    const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`
-    );
+      if (response.data.response_code === 200) {
+        commit("setCart", response.data.cart);
+        commit("setCompta", response.data.compta);
+        commit("setCartCount", response.data.cart_counter);
+        commit("setCartTotal", response.data.total_cart);
 
-    commit("setTodos", response.data);
+        commit("setLoading", false);
+        commit("setSuccess", response.data.responseBackend);
+      } else if (response.data.response_code === 403) {
+        commit("setError", response.data.responseBackend);
+        commit("setLoading", false);
+      } else {
+        commit("setError", response.data.responseBackend);
+        commit("setLoading", false);
+      }
+    } catch (err) {
+      commit("setError", response.data.responseBackend);
+      commit("setLoading", false);
+    }
+
+    setTimeout(() => {
+      commit("setSuccess", "");
+      commit("setError", "");
+      commit("setLoading", false);
+    }, 4000);
   },
+  async updateQtyItemCart({ commit }, productId) {
+    let pr = [common.state.lang, ...productId];
+    // console.log("updateQty");
+    // console.log(pr);
+    commit("setLoading", true);
+    let url = "/update-qty-item-cart";
+    let pid = { params: { productId: pr } };
+    try {
+      const response = await axios.get(url, pid);
 
-  async updateTodo({ commit }, updTodo) {
-    const response = await axios.put(
-      `https://jsonplaceholder.typicode.com/todos/${updTodo.id}`,
-      updTodo
-    );
+      if (response.data.response_code === 200) {
+        commit("setCart", response.data.cart);
+        commit("setCompta", response.data.compta);
+        commit("setCartCount", response.data.cart_counter);
+        commit("setCartTotal", response.data.total_cart);
 
-    console.log(response.data);
+        commit("setLoading", false);
+        commit("setSuccess", response.data.responseBackend);
+      } else if (response.data.response_code === 403) {
+        commit("setError", response.data.responseBackend);
+        commit("setLoading", false);
+      } else {
+        commit("setError", response.data.responseBackend);
+        commit("setLoading", false);
+      }
+    } catch (err) {
+      commit("setError", response.data.responseBackend);
+      commit("setLoading", false);
+    }
 
-    commit("updateTodo", response.data);
+    setTimeout(() => {
+      commit("setSuccess", "");
+      commit("setError", "");
+      commit("setLoading", false);
+    }, 4000);
   },
 };
 

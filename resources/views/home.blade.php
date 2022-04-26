@@ -34,312 +34,259 @@ $currency=session()->get('currency');
 
 <div class='container'>
 
-  <div class="row">
-  <div class="col  bg-light pt-3">
+  <div class="row ">
+  <div class="col-12 col-md-2  ">
       
-      <ul class="home-category-menu list-unstyled bg-white d-none d-md-block" aria-labelledby="dropdownMenuButton1">
-        <li class="dropdown-l2 position-relative">
-          <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Phone</a>
-            <div class="container bg-danger dropdown-l3
-             {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} 
+      <ul class="home-category-menu list-unstyled  d-none d-md-block mt-4 bg-ehite" style='border:1px solid rgba(202, 194, 194, 0.5);min-height:94%' aria-labelledby="dropdownMenuButton1">
+        <li class="dropdown-l2-home position-relative">
+          <a class="dropdown-item" href="#" >
+            <i class='mdi mdi-cellphone  text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>  {{ __('Téléphonie') }}</a>
+            <div class="container  dropdown-l3-home
+             {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl-home ' : 'dropdown-l3-ltr-home '}} 
             dropdown-menu">
-              <div class="row">
-                <div class="col bg-warning">
-                  Column
-                </div>
-                <div class="col bg-light">
-                  Column
-                </div>
-                <div class="col bg-info">
-                  Column
-                </div>
+            <div class="row row-cols-12 row-cols-md-2">
+              <div class="col ">
+               <a href="">{{ __('Smartphone') }}</a> 
               </div>
+              <div class="col ">
+                
+                <a href="" class='text-nowrap '>{{ __('Téléphone portable') }}</a> 
+              </div>
+              <div class="col ">
+                
+                <a href="">{{ __('Tablette tactile') }}</a> 
+              </div>
+              <div class="col ">
+               
+                <a href=""> {{ __('Accessoire téléphone') }}</a> 
+              </div>
+            </div>
 
             </div>
           
         </li>
-        <li class="dropdown-l2 position-relative">
-          <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Informatique</a>
+        <li class="dropdown-l2-home position-relative">
+          <a class="dropdown-item" href="#" >
+            <i class='mdi mdi-desktop-classic text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
+            {{ __('Informatique') }}</a>
         
-          <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-             <div class="row">
+          <ul class=" dropdown-l3-home {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl-home ' : 'dropdown-l3-ltr-home '}} 
+              dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <div class="row row-cols-12 row-cols-md-2">
                 <div class="col">
-                  Column
+                  <a href="">{{ __('Ordinateur portable') }}</a> 
                 </div>
                 <div class="col">
-                  Column
+                  <a href=""> {{ __('Ordinateur de bureau') }}</a> 
                 </div>
                 <div class="col">
-                  Column
+                  <a href=""> {{ __('Accessoires informatique') }}</a> 
                 </div>
               </div>
           </ul>
         
         </li>
-        <li class="dropdown-l2 position-relative">
-          <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Accessoire</a>
+        <li class="dropdown-l2-home position-relative">
+          <a class="dropdown-item" href="#" >
+            <i class='mdi mdi-play-network  text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
+            {{ __('Multimédia') }}</a>
         
-          <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <div class="row">
+          <ul class=" dropdown-l3-home {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl-home ' : 'dropdown-l3-ltr-home '}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <div class="row row-cols-12 row-cols-md-2">
               <div class="col">
-                Column
+                <a href="">{{ __('Televiseur') }}</a> 
               </div>
               <div class="col">
-                Column
+                <a href=""> {{ __('Video-projecteur') }}</a> 
               </div>
               <div class="col">
-                Column
+                <a href=""> {{ __('Appareil photo') }}</a> 
+              </div>
+              <div class="col">
+                <a href="">{{ __('Console de jeux') }}</a> 
+              </div>
+              <div class="col">
+                <a href="">{{ __('Audio et son') }}</a> 
+              </div>
+              <div class="col">
+                <a href="">{{ __('Recepteur') }}</a> 
               </div>
             </div>
           </ul>
         </li>
-        <li class="dropdown-l2 position-relative">
-          <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Accessoire</a>
+        <li class="dropdown-l2-home position-relative">
+          <a class="dropdown-item" href="#" >
+            <i class='mdi mdi-content-save-settings text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
+            {{ __('Stockage') }}</a>
         
-          <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <div class="row">
+          <ul class=" dropdown-l3-home {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl-home ' : 'dropdown-l3-ltr-home '}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <div class="row row-cols-12 row-cols-md-2">
               <div class="col">
-                Column
+                <a href=""> {{ __('Disque interne') }}</a> 
               </div>
               <div class="col">
-                Column
+                <a href="">{{ __('Disque dur externe') }}</a> 
               </div>
               <div class="col">
-                Column
+                <a href=""> {{ __('Cle usb') }}</a> 
               </div>
+              <div class="col">
+                <a href="">{{ __('Carte memoire') }}</a> 
+              </div>
+              <div class="col">
+                <a href="">{{ __('Cd et dvd') }}</a> 
+              </div>
+            
             </div>
           </ul>
         </li>
-        <li class="dropdown-l2 position-relative">
-          <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Accessoire</a>
+        <li class="dropdown-l2-home position-relative">
+          <a class="dropdown-item" href="#" >
+            <i class='mdi mdi-camera-lock text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
+            {{ __('Securite') }}</a>
         
-          <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <div class="row">
+          <ul class=" dropdown-l3-home {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl-home ' : 'dropdown-l3-ltr-home -home '}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <div class="row row-cols-12 row-cols-md-2">
               <div class="col">
-                Column
+                <a href=""> {{ __('Camera de surveillence') }}</a> 
               </div>
               <div class="col">
-                Column
+                <a href=""> {{ __('Systeme d\'alarme') }}</a> 
               </div>
               <div class="col">
-                Column
+                <a href="">{{ __('Onduleurs') }}</a> 
               </div>
+              
             </div>
           </ul>
         </li>
-        <li class="dropdown-l2 position-relative">
-          <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Accessoire</a>
-        
-          <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <div class="row">
-              <div class="col">
-                Column
-              </div>
-              <div class="col">
-                Column
-              </div>
-              <div class="col">
-                Column
-              </div>
-            </div>
-          </ul>
-        </li>
-        <li class="dropdown-l2 position-relative">
-          <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Accessoire</a>
-        
-          <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <div class="row">
-              <div class="col">
-                Column
-              </div>
-              <div class="col">
-                Column
-              </div>
-              <div class="col">
-                Column
-              </div>
-            </div>
-          </ul>
-        </li>
-        <li class="dropdown-l2 position-relative">
-          <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Accessoire</a>
-        
-          <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <div class="row">
-              <div class="col">
-                Column
-              </div>
-              <div class="col">
-                Column
-              </div>
-              <div class="col">
-                Column
-              </div>
-            </div>
-          </ul>
-        </li>
-        <li class="dropdown-l2 position-relative">
-          <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Accessoire</a>
-        
-          <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <div class="row">
-              <div class="col">
-                Column
-              </div>
-              <div class="col">
-                Column
-              </div>
-              <div class="col">
-                Column
-              </div>
-            </div>
-          </ul>
-        </li>
+     
       </ul>
    
   </div>
-  <div class="col-8">
+  <div class="col-12 col-md-10">
     @include('components.carousel')
-  </div>
-  <div class="col bg-light pt-3">
-
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel magnam, quae necessitatibus quis aliquam tempore consequuntur aspernatur soluta nisi veritatis. Tempora ipsum vitae voluptatem quod quo error odit impedit inventore?
-  </div>
+  </div> 
   
   </div>
 
-  
 
+<h2 class='mt-5 mb-3 categories-title text-center text-uppercase fs-5'> {{ __('Categories') }} </h2>
 
+<div class="row row-cols-2 row-cols-md-5 gx-3 gy-4 ">
 
-<h2 class='text-start fw-bold mt-5 mb-3 categories-title text-uppercase'> {{ __('Categories') }} </h2>
-
-<div class="row row-cols-2 row-cols-md-6 gx-2 gy-4 ">
-
-  @foreach ($categories as $category)
-      <div class="col mb-3">
-         <div class="card card-categorie text-white border border-0 h-100">
-              <img src="{{ app()->environment('production') ? asset('public/'.$category->category_image) : asset($category->category_image)}}" 
-              class="card-img" alt="...">
-              <div class="card-img-overlay ">
-                  
-                  <div style='background-color:rgba(0,0,0,0.5)' class="w-100">
-                   </div>
-                  <a href="" 
-                  class="stretched-link btn-sm">                
-                  </a>
-
-              </div>
+ 
+ @foreach ($stocks as $stock)
+      <div class="col mb-3" style='z-index:0 !important'> 
+         <div class="card card-categorie border border-0 ">
+             
+             <img src="{{ app()->environment('production') ? 
+              asset('public/'.$stock->stock_photo) : asset($stock->stock_photo)}}" 
+              class="card-img img-fluid " height=200 width=200 
+               style='height:auto;max-width:100%;display:block' alt={{ $stock->fr_stock_name }}
+              
+              >
+                  <a href=""   class="stretched-link ">  </a>
           </div>
-
-          <div class="info ">
-          <span class='text-center mt-1  d-block categories-title text-uppercase text-muted'> 
+          <span class='text-center d-block mt-2 categorie-caption text-uppercase '> 
                       @if(App::getLocale() === 'fr')
-                      {{ $category->fr_category_name }}
-
+                         {{ $stock->fr_stock_name }}
                       @elseif(App::getLocale() === 'en')
-                        {{ $category->en_category_name }}
+                         {{ $stock->en_stock_name  }}
                       @else
-                        {{ $category->ar_category_name }}
+                         {{ $stock->ar_stock_name }}
                       @endif 
            </span>
-        </div>
+        
       </div>
       
   @endforeach
   
 </div>
+{{-- end categories --}}
 
-<h2 class='text-start mt-5 mb-3 products-title text-uppercase'>  {{ __('Products') }} </h2>
+{{-- start deal of the day --}}
+<h2 class='mt-5 mb-3 categories-title text-center text-uppercase fs-5'> {{ __('Offre du jour') }} </h2>
+<h2 class=' categories-title text-center fs-5 text-danger' id="demo"> </h2>
 
-<div class="row row-cols-2 row-cols-md-6 gx-2 gy-4">
-
-
-  @foreach ($products as $product)
-  <div class="col">
-    <div class="card card-product h-100 shadow-sm position-relative">
+@include('components.carousel2')
+{{-- end deal of the day --}}
 
 
-      <img src="{{ 
-      app()->environment('production') ? asset(isset($product->images[0]->product_image) 
-      ? 'public/'.$product->images[0]->product_image : 'public/media/products/support.png') :
-       asset(isset($product->images[0]->product_image) ? $product->images[0]->product_image : 'media/products/support.png')}}"
-       class="card-img-top" alt="...">
+{{-- start new products --}}
 
-      <div class="card-body">
-         
-          <p class="card-text" style='font-size:0.9rem'>
-          
-             @if(App::getLocale() === 'fr')
-              {{ Str::limit($product->fr_description , 20)}}
+@include('components.products.new_products')
 
-              @elseif(App::getLocale() === 'en')
-                {{ Str::limit($product->en_description , 20)}}
-              @else
-                {{ Str::limit($product->ar_description , 20)}}
-              @endif 
+{{-- end new products --}}
 
-          </p>
+{{-- start all products --}}
 
-          <div class='price'>
-            <span class="card-text">
-                  <span class='fw-bold text-secondary d-none '> {{ __('Price') }}:  </span> 
-                  <span class='price-value text-success fs-6 nowrap fw-bold' >  
-                    
-                         {{ number_format($product->euro_price,3,',',' ') }}<span class="mx-1"> DT</span> 
-                  </span> 
-            </span>
+@include('components.products.all_products')
 
-              @if($product->discount != '0')
-                  
-                    <span class="d-flex justify-content-center align-items-center position-absolute  " 
-                        style='color:white; background-color:rgb(255, 146, 73);font-weight:700;
-                         text-shadow:1px 1px 1px rgba(0,0,0,0.2);font-size:0.8rem; height:2rem;width:2rem;border-radius:0%;
-                         right:0px;top:0px;box-shadow:1px 1px 8px rgba(0,0,0,0.1);' >
-                      -{{ number_format($product->discount,0,'.',',') }}%
-                    </span>
+{{-- end all products --}}
 
-              @endif 
+{{-- start best sellers products --}}
 
-          </div>             {{-- end price --}}
+@include('components.products.bestsellers_products')
 
-              <div class='mt-3  buy-button-div ' >
-                      <a href='#'  class='buy-button-link' title='buy' >Acheter</a>
-              </div>
-          
-      </div>         {{-- end cardbody--}}
-     
+{{-- end best sellers products --}}
 
-    </div> {{-- end card --}}
-  </div>  {{-- en col --}}
-  @endforeach
+{{-- start brands --}}
 
+@include('components.products.brands')
+
+{{-- end  brands --}}
+
+
+<div class="pagination justify-content-center mt-4">
+  {{ $products->links() }}
 </div>
-<p class="mt-5 pt-5">
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellendus quaerat quos ipsum quasi, laudantium asperiores eligendi cum voluptatum facilis veniam nesciunt magni veritatis assumenda sunt quo aut itaque temporibus.
-</p>
-<p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellendus quaerat quos ipsum quasi, laudantium asperiores eligendi cum voluptatum facilis veniam nesciunt magni veritatis assumenda sunt quo aut itaque temporibus.
-</p>
-<p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellendus quaerat quos ipsum quasi, laudantium asperiores eligendi cum voluptatum facilis veniam nesciunt magni veritatis assumenda sunt quo aut itaque temporibus.
-</p>
-<p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellendus quaerat quos ipsum quasi, laudantium asperiores eligendi cum voluptatum facilis veniam nesciunt magni veritatis assumenda sunt quo aut itaque temporibus.
-</p>
-<p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellendus quaerat quos ipsum quasi, laudantium asperiores eligendi cum voluptatum facilis veniam nesciunt magni veritatis assumenda sunt quo aut itaque temporibus.
-</p>
-<p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellendus quaerat quos ipsum quasi, laudantium asperiores eligendi cum voluptatum facilis veniam nesciunt magni veritatis assumenda sunt quo aut itaque temporibus.
-</p>
-<p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellendus quaerat quos ipsum quasi, laudantium asperiores eligendi cum voluptatum facilis veniam nesciunt magni veritatis assumenda sunt quo aut itaque temporibus.
-</p>
-<p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellendus quaerat quos ipsum quasi, laudantium asperiores eligendi cum voluptatum facilis veniam nesciunt magni veritatis assumenda sunt quo aut itaque temporibus.
-</p>
+
+<div class="my-3  ">
+
+  <h6>Acheter en ligne sur Jumia Psexpress:</h6>
+  <p>
+    Psexpress est le premier site de vente en gros en Tunisie, notre plate-forme permet de mettre en relation les detaillants et les vendeurs dans le but de réaliser de très bonnes affaires tout en bénéficiant de l'expertise Psexpress. Vous cherchez un ordinateur, un smartphone, une tablette, ou encore une paire de chaussure? vous bénéficierez toujours des prix les plus bas, parmi nos milliers de produits en ligne. Psexpress permet l'achat en ligne de manière simple et pratique avec des délais de livraison courts. De plus, nous vous assurons des transactions sécurisées et fiables. Avec Psexpress vous allez pouvoir effectuer vos achats au meilleur prix, en toute sécurité et sans sortir de chez vous!
+  </p>
 </div>
+
+@endsection
+
+@section('js')
+<script>
+      // Set the date we're counting down to
+    var countDownDate = new Date("Apr 27, 2022 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+      // Get today's date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="demo"
+      document.getElementById("demo").innerHTML = days + "jours " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "Fin de l'offre";
+      }
+    }, 1000);
+</script>
+
+
+
+
 @endsection
 
 

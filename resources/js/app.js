@@ -5,11 +5,6 @@ import store from "./store/index.js";
 import { gsap } from "gsap";
 import "./style/global.css";
 
-import SwiperCore, { Navigation, Autoplay } from "swiper";
-SwiperCore.use([Navigation, Autoplay]);
-import "swiper/scss";
-import "swiper/scss/navigation";
-import "swiper/scss/pagination";
 // import "dtoaster/dist/dtoaster.css";
 import "../css/dtoaster.css";
 import DToaster from "dtoaster";
@@ -53,7 +48,7 @@ Vue.use(DToaster, {
 });
 
 window.gsap = require("gsap").default;
-window.Swiper = require("swiper").default;
+
 window.bootstrap = require("bootstrap").default;
 
 window.Vue = require("vue").default;
@@ -120,15 +115,8 @@ window.axios.defaults.headers.common["Authorization"] = bearerToken
 // component  lives here -----------------------------------------------------
 
 // Auth zone ----------------------------------------------
-Vue.component("auth-ops", require("./components/auth/Auth.vue").default);
-// lab zone ----------------------------------------------
-Vue.component(
-  "example-component",
-  require("./components/lab/ExampleComponent.vue").default
-);
-
-// todos zone ------------------------------------------
-Vue.component("todos-api", require("./components/todos/Todos.vue").default);
+Vue.component("auth-ops", require("./components/auth/Auth.vue").default); // login register
+Vue.component("account-auth", require("./components/auth/Account.vue").default); // profiles logout
 
 // verify activation zone ------------------------------------------
 Vue.component("verify-ops", require("./components/verify/Verify.vue").default);
@@ -138,6 +126,15 @@ Vue.component(
   "update-password",
   require("./components/verify/UpdatePassword.vue").default
 );
+
+// lab zone ----------------------------------------------
+Vue.component(
+  "example-component",
+  require("./components/lab/ExampleComponent.vue").default
+);
+
+//home zone ------------------------------------------
+// Vue.component("home-deal", require("./components/home/Deal.vue").default);
 
 // common zone ------------------------------------------
 
@@ -155,8 +152,25 @@ Vue.component(
   "success-message",
   require("./components/common/SuccessMessage.vue").default
 );
+Vue.component(
+  "cart-sidebar",
+  require("./components/common/CartSidebar.vue").default
+);
+
+// Wishlist zone ------------------------------------------
+
+Vue.component(
+  "wish-list",
+  require("./components/wishlist/Wishlist.vue").default
+);
+
+// pay zone ------------------------------------------
+
+Vue.component("pay-ops", require("./components/pay/PayOps.vue").default);
 
 // cart zone ------------------------------------------
+
+Vue.component("cart-count", require("./components/cart/Counter.vue").default);
 
 Vue.component(
   "cart-counter",
@@ -209,27 +223,3 @@ const i18n = new VueI18n({
 // });
 
 const app = new Vue({ i18n, store }).$mount("#app");
-
-const mySswiper = new Swiper(".swiper", {
-  loop: true,
-  speed: 400,
-  spaceBetween: 8,
-  autoplay: {
-    delay: 2000,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-
-  breakpoints: {
-    // when window width is >= 640px
-    640: {
-      slidesPerView: 4,
-    },
-  },
-});
-
-// mySswiper.on("click", function (mySswiper, event) {
-//   console.log("slide clicked", event);
-// });

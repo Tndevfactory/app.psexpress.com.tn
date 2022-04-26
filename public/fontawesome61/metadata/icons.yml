@@ -10293,7 +10293,7 @@ file-image:
     - 5.0.0
     - 5.10.2
     - 6.0.0-beta1
-  label: Image File
+  label: Photo File
   search:
     terms: []
   styles:
@@ -14360,7 +14360,7 @@ image:
     - 5.0.0
     - 5.10.1
     - 6.0.0-beta1
-  label: Image
+  label: Photo
   search:
     terms: []
   styles:
@@ -14379,7 +14379,7 @@ image-portrait:
     - 5.0.0
     - 5.0.3
     - 6.0.0-beta1
-  label: Image portrait
+  label: Photo portrait
   search:
     terms: []
   styles:

@@ -16,7 +16,7 @@
         />
       </div>
 
-      <form @submit.stop.prevent="onSubmit" class="row gx-3 px-md-3">
+      <form @submit.stop.prevent="submit" class="row gx-3 px-md-3">
         <div class="col-md-12 mb-2">
           <span class="psexpress_title text-center d-block pb-3 text-uppercase">
             {{ $t("auth.psexpress") }}
@@ -32,24 +32,21 @@
             votre boite email et de clicker sur le lien d'activation du compte
           </span>
           <span class="mt-3 d-inline-block">
-            <b-icon
-              icon="bell-fill"
-              class="border border-info rounded p-2"
-              variant="info"
-            ></b-icon>
-            SPAM : parfois les mails de verification atterisse dans le dosdier,
-            n'oublier de verufier le dossier spam de votre mesagerie
+            <i icon="bell-fill" class="mdi mdi-information-variant me-1"></i>:
+            Parfois les mails de verification atterissent dans le dossier,
+            n'oublie pas de verifier le
+            <span class="fw-bold">dossier spam de votre mesagerie</span>
           </span>
           <span class="mt-3 d-inline-block">
-            le lien d'activation expire au bout de 5mn, vius pouvez cliquer sur
-            le boyton de renvoi de lien d;activation cidessous
+            le lien d'activation expire au bout de 5mn, vous pouvez cliquer sur
+            le bouton de renvoi de lien d'activation ci-dessous
           </span>
         </div>
 
         <div class="col-12 pb-2 d-grid">
           <button type="submit" class="btn btn-primary d-block">
             resend verification link
-            <b-icon icon="exclamation-triangle" class="mb-1"></b-icon>
+            <i icon="bell-fill" class="mdi mdi-information-variant ms-1"></i>
           </button>
         </div>
       </form>
@@ -111,13 +108,16 @@ export default {
   },
 
   methods: {
-    ...mapActions(["updVerifiedAt", "setLang", "resetMsg"]),
+    ...mapActions(["updVerifiedAt", "setLang", "resetMsg", "resendVerifToken"]),
 
     changeLanguage: function (e) {
       this.$i18n.locale = this.selectedLanguage;
       this.setLang(this.selectedLanguage);
       //   console.log(this.selectedLanguage);
       //   console.log(e);
+    },
+    submit() {
+      this.resendVerifToken();
     },
   },
 

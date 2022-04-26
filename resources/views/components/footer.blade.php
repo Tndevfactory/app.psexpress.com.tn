@@ -6,22 +6,22 @@
       <div class="col-6 col-md-3  mb-3 d-flex flex-column  justify-content-center align-items-center px-5">
         <img src="{{ app()->environment('production') ? asset('public/media/png/delivery.png') :
         asset('/media/png/delivery.png')}}"  alt="logo psexpress" style='height:35px;width:35px'>
-          <span class="value-text  mt-3 " >Livraison gratuite à partir de 300DT</span>
+          <span class="value-text  mt-3 text-center" >Livraison gratuite à partir de 300DT</span>
       </div>
       <div class="col-6 col-md-3 mb-3 d-flex flex-column  justify-content-center align-items-center px-5">
         <img src="{{ app()->environment('production') ? asset('public/media/png/Genuine.png') :
         asset('/media/png/Genuine.png')}}"  alt="logo psexpress" style='height:35px;width:35px'>
-          <span class="value-text mt-3">Garantie 1 ans</span>
+          <span class="value-text mt-3 text-center">Garantie 1 ans</span>
       </div>
       <div class="col-6 col-md-3 mb-3 d-flex flex-column  justify-content-center align-items-center px-5">
         <img src="{{ app()->environment('production') ? asset('public/media/png/services.png') :
         asset('/media/png/services.png')}}"  alt="logo psexpress" style='height:35px;width:35px'>
-          <span class="value-text  mt-3">Service après-vente 7/7</span>
+          <span class="value-text  mt-3 text-center">Service après-vente 7/7</span>
       </div>
       <div class="col-6 col-md-3 mb-3 d-flex flex-column  justify-content-center align-items-center px-5">
         <img src="{{ app()->environment('production') ? asset('public/media/png/money.png') :
         asset('/media/png/money.png')}}"  alt="logo psexpress" style='height:35px;width:35px'>
-          <span class="value-text  mt-3">Paiement à la livraison, En ligne</span>
+          <span class="value-text  mt-3 text-center">Paiement à la livraison, En ligne</span>
       </div>
      
     </div>
@@ -37,7 +37,7 @@
         <span class="mdi mdi-email-plus-outline d-block"> <a href="mailto:team@psexpress.com.tn"  target="_blank" class="info-link  text-decoration-none text-white"> team@psexpress.com.tn</a></span>
         <span class="mdi mdi-google-maps d-block "> 
           <a href=" https://www.google.tn/maps/place/Psexpress/@36.8519697,10.2654375,17z/data=!3m1!4b1!4m5!3m4!1s0x12e2b5856ff17ecb:0x703b88463328308!8m2!3d36.8519697!4d10.2676262
-          "   target="_blank" class=" info-link text-decoration-none text-white"> Immeuble El Mesk Bloc C-C14 , 1073 Montplaisir, Tunis</a> </span> 
+          "   target="_blank" class=" info-link text-decoration-none text-white"> Immeuble El Mesk Bloc C-C14, 1073 Montplaisir</a> </span> 
         </div>
         <div class="social mt-2  d-flex justify-content-center">
           <a href="#">

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Image;
+use App\Models\Photo;
 use App\Models\Stock;
 use App\Models\Category;
 use App\Models\Wishlist;
@@ -25,11 +25,12 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'fr_product_name',
-        'en_product_name',
-        'ar_product_name',
+        'fr_product_ref',
+        'en_product_ref',
+        'ar_product_ref',
 
         'product_slug',
+        'product_sku',
 
         'fr_description',
         'en_description',
@@ -37,17 +38,48 @@ class Product extends Model
 
         'price',
         'discount',
-        
-        
+
+
         'status',
+
+        'seuil0',
+        'price_seuil0',
+
+        'seuil1',
+        'price_seuil1',
+
+        'seuil2',
+        'price_seuil2',
        
+
+        'photo1',
+        'photo2',
+        'photo3',
+
+        'color',
+        'weight',
+        'dimension',
+        'brand',
+      
+        'flash_sale',
+       'day_deal',
+
+        'tax',
+        'fee',
+        
+        'shop_id',
+        'substock_id',
+        'stock_id'
+     
+
+
     ];
 
     public function getEuroPriceAttribute(){
 
         $currency = DB::table('currencies')->where('name','euro')->first();
         return $this->price * $currency->value_in_dollar;
-        
+
     }
 
    public function subcategory(){
@@ -60,7 +92,7 @@ class Product extends Model
    }
 
    public function images(){
-    return $this->hasMany(Image::class);
+    return $this->hasMany(Photo::class);
     }
 
    public function ratingproducts(){
@@ -73,5 +105,5 @@ class Product extends Model
     public function wishlists(){
         return $this->hasMany(Wishlist::class);
         }
-    
+
 }

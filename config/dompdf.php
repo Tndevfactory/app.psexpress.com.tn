@@ -152,7 +152,7 @@ return array(
         "default_font" => "serif",
 
         /**
-         * Image DPI setting
+         * Photo DPI setting
          *
          * This setting determines the default DPI setting for images and fonts.  The
          * DPI may be overridden for inline images by explictly setting the

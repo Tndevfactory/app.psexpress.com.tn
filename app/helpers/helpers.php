@@ -32,8 +32,7 @@ function numericFormat($value){
  */
 function currencyFormat($value){
     
-    $value *=  1;
-    
+       
     return number_format($value, 3,","," " ) ;
 }
 

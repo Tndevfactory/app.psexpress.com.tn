@@ -14,34 +14,56 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
+           
             $table->id();
 
-            $table->string('fr_product_name');
-            $table->string('en_product_name');
-            $table->string('ar_product_name');
+            $table->string('fr_product_ref');
+            $table->string('en_product_ref');
+            $table->string('ar_product_ref');
            
-            $table->string('product_slug');
+            $table->string('product_slug')->unique();
+            $table->string('product_sku');
 
             $table->mediumText('fr_description');
             $table->mediumText('en_description');
             $table->mediumText('ar_description');
 
-            $table->decimal('price', 20,2);
-            $table->decimal('discount', 20,2)->nullable();
-            
+            $table->decimal('price', 20,2); 
 
+            $table->decimal('seuil0', 20,2)->nullable();
+            $table->decimal('price_seuil0', 20,2)->nullable();
+           
+            $table->decimal('seuil1', 20,2)->nullable();
+            $table->decimal('price_seuil1', 20,2)->nullable();
+
+            $table->decimal('seuil2', 20,2)->nullable();
+            $table->decimal('price_seuil2', 20,2)->nullable();
+           
+            $table->decimal('discount', 20,2)->nullable(); 
+
+            $table->string('photo1')->default('media/users/empty-user.jpg');
+            $table->string('photo2')->default('media/users/empty-user.jpg');
+            $table->string('photo3')->default('media/users/empty-user.jpg');
+
+            $table->string('color')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('dimension')->nullable();
+            $table->string('brand')->nullable();
+          
+            $table->string('flash_sale')->nullable();
+            $table->string('day_deal')->nullable();
+
+            $table->string('tax')->nullable();
+            $table->string('fee')->nullable();
+            
             $table->enum('status', ['sold', 'available', 'stolen', 'damaged', 'on_demand','other'])->default('available'); 
            
-            $table->foreignId('subcategory_id');
+            $table->foreignId('substock_id');
            
             $table->foreignId('stock_id');
 
-            $table->foreignId('seller_id');
+            $table->foreignId('shop_id');
 
-            $table->foreignId('fee_id');
-
-            $table->foreignId('tax_id');
-            
             $table->timestamps();
             
             $table->softDeletes();

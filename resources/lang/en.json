@@ -38,8 +38,11 @@
   "profile seller": "profile seller",
   "profile client": "profile client",
 
-  "cart- counter--section": "---------------------------------------",
-  "counter": {
+  "cart--section": "---------------------------------------",
+
+  "cart": {
+    "cart": "cart",
+    "Add_to_cart": "Add to cart",
     "Items": "Items",
     "Total": "Total"
   },
@@ -63,7 +66,6 @@
 
   "Products": "Products",
   "Price": "Price",
-  "Add to cart": "Add to cart",
 
   "email welcome": "-----------------------------------------------------------------------------",
 
@@ -123,7 +125,7 @@
   "price range": "rang de prix",
 
   "product": "produit",
-  "cart": "panier",
+
   "search": "recherche",
   "wishlist": "liste de souhaits",
 

@@ -1,49 +1,47 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\PayController;
 
 use App\Http\Controllers\HomeController;
-
-use Laravel\Socialite\Facades\Socialite;
-
-use App\Http\Controllers\Api\LoginController;
-use App\Http\Controllers\SocialiteController;
-
+use App\Http\Controllers\StockController;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
 use Symfony\Component\Console\Output\StreamOutput;
 
 
+Route::Redirect('/', '/fr');
+
+    Route::group(['prefix'=>'{language}'], function(){
 
 
-    Route::Redirect('/', '/fr'); 
-
-    Route::group(['prefix'=>'{language}'], function(){ 
-
-
-    //home zone
+    //login zone
     Route::get('/', [HomeController::class, "login"])->name('login-init');
     Route::get('/verify', [LoginController::class, "verify"])->name('verify');
     Route::get('/reset-password-api', [LoginController::class, "resetPassword"])->name('reset-password-api');
-        
+    Route::get('/logout', [LoginController::class, "logout"])->name('logout');
 
+    //home zone
     Route::get('/shop', [HomeController::class, "home"])->middleware(['xauthapi','xverifyapi'])->name('home');
     Route::get('/about-us', [HomeController::class, "aboutUs"])->name('about-us');
     Route::get('/contact-us', [HomeController::class, "contactUs"])->name('contact-us');
-   
-        
-    // // admin zone --------------------------------------
-    // Route::prefix('admin')->middleware(['xauth', 'admin.role', 'account.verify'])->group(function(){
-     
 
-    //     // admin profile area--------------------------------------
-    //    // Route::get('/manage-profile/{id?}',[AdminController::class, "adminManageProfile"])->name('admin-manage-profile');
-       
-    // });// end admin zone--------------------------------------
+    // Stock categories zone
+    Route::get('/category/{slug}', [StockController::class, "showCategories"])->name('show-category');
+
+    // paiement zone --------------------------------------
+    Route::get('/paiement', [PayController::class, "paiementView"])->name('paiement');
 
 
+     // seller profile area--------------------------------------
+    // Route::get('/manage-profile/{id?}',[AdminController::class, "adminManageProfile"])->name('admin-manage-profile');
+
+    // });// end seller zone--------------------------------------
 
 
-    
+
+
+
 
 
     // ----------------------------------------------------------------------------
@@ -105,7 +103,7 @@ use Symfony\Component\Console\Output\StreamOutput;
 
 				return "<h1>response artisan:   $callResponse  </h1>";
 			});
-            
+
 			Route::get('/migrate', function() {
                 $stream = fopen("php://output", "w");
                 Artisan::call('migrate', [
@@ -262,6 +260,6 @@ use Symfony\Component\Console\Output\StreamOutput;
 
 
 
-}); // end group lang prefix 
+}); // end group lang prefix
 
 

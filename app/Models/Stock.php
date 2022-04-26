@@ -17,14 +17,18 @@ class Stock extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'stock_name',
+
+       
+
         'stock_slug',
-        'color',
-        'dimension',
-        'weight',
-        'constructor',
-        'motif',
-        
+
+        'fr_stock_name',
+        'en_stock_name',
+        'ar_stock_name',
+
+       'stock_photo',
+        'icon',
+
     ];
     public function products(){
         return $this->hasMany(Product::class);

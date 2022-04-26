@@ -6,29 +6,47 @@ use App\Http\Controllers\Api\CartController;
 
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\ProductController;
 
 
 // auth api zone ------------------------------------------------------------
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::post('/update-verify-at', [LoginController::class, "updateVerifyAt"])->name('update-verify-at');
-Route::get('/verify-resend', [LoginController::class, "resendToken"])->name('verify-resend');
+Route::post('/update-verify-at', [LoginController::class, "updateVerifyAt"]);
+Route::get('/verify-resend', [LoginController::class, "resendToken"]);
+Route::get('/logout', [LoginController::class, "logout"]);
 
-Route::post('/send-mail-reset-password', [LoginController::class, "sendPasswordResetPassword"])->name('send-mail-reset-password');
-Route::post('/update-password', [LoginController::class, "updatePassword"])->name('update-password');
+Route::post('/send-mail-reset-password', [LoginController::class, "sendPasswordResetPassword"]);
+Route::post('/update-password', [LoginController::class, "updatePassword"]);
 
 Route::post('/register', [LoginController::class, 'register'])->name('register');
-Route::get('/logout', [LoginController::class, 'logout'])->middleware(['xauthapi'])->name('logout');
-Route::get('/users', [LoginController::class, 'users'])->middleware(['xauthapi'])->name('users');
+Route::get('/logout', [LoginController::class, 'logout'])->middleware(['xauthapi']);
+Route::get('/users', [LoginController::class, 'users'])->middleware(['xauthapi']);
 
 
 // cart api zone ------------------------------------------------------------
-Route::get('/check-cart-count', [CartController::class, "checkCartCount"])->name('check-cart-count');
-Route::get('/add-to-cart', [CartController::class, "addToCart"])->name('add-to-cart');
+Route::get('/check-cart-count', [CartController::class, "checkCartCount"]);
+Route::get('/add-to-cart', [CartController::class, "addToCart"]);
+Route::get('/delete-all-cart', [CartController::class, "deleteAllCart"]);
+Route::get('/delete-item-cart', [CartController::class, "deleteItemCart"]);
+Route::get('/update-qty-item-cart', [CartController::class, "updateQtyItemCart"]);
 
 
 
 // admin  zone 
-Route::get('/test-admin', [AdminController::class, "testAdmin"])->name('test-admin');
+Route::post('/admin-login', [AdminController::class, "adminLogin"]);
+Route::get('/admin-logout', [AdminController::class, "adminLogout"]);
+
+// stock  zone 
+Route::get('/api-all-stocks', [ProductController::class, "apiAllStocks"]);
+Route::post('/api-create-stock', [ProductController::class, "apiCreateStock"]);
+
+// substock  zone 
+Route::get('/api-all-substocks', [ProductController::class, "apiAllSubstocks"]);
+Route::post('/api-create-substock', [ProductController::class, "apiCreateSubstock"]);
+
+// product  zone 
+Route::get('/api-all-products', [ProductController::class, "apiAllProducts"]);
+Route::post('/api-create-product', [ProductController::class, "apiCreateProduct"]);
 
 

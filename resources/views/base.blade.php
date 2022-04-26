@@ -41,6 +41,18 @@ $menu_categories = session()->get('menu');
    {{-- default always light class ltr  --}}  
  class="{{ App::getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
     <head>
+          <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJ8WZSD3X7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-HJ8WZSD3X7');
+    </script>
+
+      <meta name="google-site-verification" content="YFiMm06vQYnYBOup02ruZlmWvsAyhjt_hmxOdZld7UE" />
+      
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -250,14 +262,13 @@ $menu_categories = session()->get('menu');
   
   </script>
 
-       
-     @yield('js')
-
+@yield('js')
+     
     
      <script src="{{ app()->environment('production') ? asset('public/js/manifest.js') : asset('js/manifest.js')}}"></script>
      <script src="{{ app()->environment('production') ? asset('public/js/vendor.js') : asset('js/vendor.js')}}"></script>
      <script src="{{ app()->environment('production') ? asset('public/js/app.js') : asset('js/app.js')}}"></script>
-     
+    
     
     </body>
 </html>

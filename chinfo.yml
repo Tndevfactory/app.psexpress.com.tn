@@ -113,14 +113,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 
                 <?php
-         
+
                   {{-- var_dump(Session::all()); --}}
                   {{-- var_dump(Auth::check()); --}}
                   {{-- var_dump(Auth::user()); --}}
                   {{-- var_dump(Auth::user()->role); --}}
                   {{-- var_dump(Auth::id()); --}}
 
-                           
+
               ?>
 
 
@@ -148,9 +148,9 @@ let bigQuery=''
 let clearFilterSection=document.querySelector('.clear-filter-section')
 let clearFilterButton=document.querySelector('.clear-filter-btn')
 
-bigQuery = JSON.parse(localStorage.getItem("arrayBigQuery")) ; 
+bigQuery = JSON.parse(localStorage.getItem("arrayBigQuery")) ;
 
-if(bigQuery !== null){ 
+if(bigQuery !== null){
     if(Object.keys(bigQuery).length > 0 ){ clearFilterSection.style.visibility='visible'} else { clearFilterSection.style.visibility='hidden' }
     clearFilterButton.addEventListener('click', () => {localStorage.clear();  location.reload()})
   }else{
@@ -167,20 +167,20 @@ let rating5filtre=''
 let rating5=document.querySelector('.rating5')
 
     rating5.addEventListener('change', function (e) {
-      
-      if (this.checked) { rating5filtre={[e.target.dataset.key] : e.target.value } } else { rating5filtre='' } 
-           localStorage.setItem("rating5filtre", JSON.stringify(rating5filtre)); 
+
+      if (this.checked) { rating5filtre={[e.target.dataset.key] : e.target.value } } else { rating5filtre='' }
+           localStorage.setItem("rating5filtre", JSON.stringify(rating5filtre));
            location.reload()
            biqueryCollect()
-            
+
       })
     //reload
-    rating5filtreStorage = JSON.parse(localStorage.getItem("rating5filtre")) 
-    
+    rating5filtreStorage = JSON.parse(localStorage.getItem("rating5filtre"))
+
     if(rating5filtreStorage !== null && Object.keys(rating5filtreStorage).length > 0){
-     
-        if(rating5filtreStorage.rating5 === 'rating5'){ 
-          rating5.checked=true  
+
+        if(rating5filtreStorage.rating5 === 'rating5'){
+          rating5.checked=true
           }
     };
 
@@ -188,19 +188,19 @@ let rating4filtre=''
 let rating4=document.querySelector('.rating4')
 
     rating4.addEventListener('change', function (e) {
-      
+
       if (this.checked) { rating4filtre={[e.target.dataset.key] : e.target.value }
-         } else { rating4filtre='' } 
-           localStorage.setItem("rating4filtre", JSON.stringify(rating4filtre)); 
+         } else { rating4filtre='' }
+           localStorage.setItem("rating4filtre", JSON.stringify(rating4filtre));
            location.reload()
            biqueryCollect()
-            
+
       })
     //reload
-    rating4filtreStorage = JSON.parse(localStorage.getItem("rating4filtre")) 
+    rating4filtreStorage = JSON.parse(localStorage.getItem("rating4filtre"))
     if(rating4filtreStorage !== null && Object.keys(rating4filtreStorage).length > 0){
-        if(rating4filtreStorage.rating4 === 'rating4'){ 
-          rating4.checked=true  
+        if(rating4filtreStorage.rating4 === 'rating4'){
+          rating4.checked=true
           }
     };
 
@@ -208,19 +208,19 @@ let rating3filtre=''
 let rating3=document.querySelector('.rating3')
 
     rating3.addEventListener('change', function (e) {
-      
+
       if (this.checked) { rating3filtre={[e.target.dataset.key] : e.target.value }
-         } else { rating3filtre='' } 
-           localStorage.setItem("rating3filtre", JSON.stringify(rating3filtre)); 
+         } else { rating3filtre='' }
+           localStorage.setItem("rating3filtre", JSON.stringify(rating3filtre));
            location.reload()
            biqueryCollect()
-            
+
       })
     //reload
-    rating3filtreStorage = JSON.parse(localStorage.getItem("rating3filtre")) 
+    rating3filtreStorage = JSON.parse(localStorage.getItem("rating3filtre"))
     if(rating3filtreStorage !== null && Object.keys(rating3filtreStorage).length> 0){
-        if(rating3filtreStorage.rating3 === 'rating3'){ 
-          rating3.checked=true  
+        if(rating3filtreStorage.rating3 === 'rating3'){
+          rating3.checked=true
           }
     };
 
@@ -233,14 +233,14 @@ let amount=document.querySelector('#amount')
     inputPricerange.addEventListener('change', function (e) {
       e.stopPropagation()
             pricerange ={[e.target.dataset.key] : e.target.value }
-            localStorage.setItem("pricerange", JSON.stringify(pricerange)); 
+            localStorage.setItem("pricerange", JSON.stringify(pricerange));
             location.reload()
         biqueryCollect()
 
       })
 
 //reload
-  let priceRangeStorage = JSON.parse(localStorage.getItem("pricerange")) 
+  let priceRangeStorage = JSON.parse(localStorage.getItem("pricerange"))
 
   if(priceRangeStorage !== null && Object.keys(priceRangeStorage).length > 0){
       inputPricerange.value = priceRangeStorage.pricerange
@@ -248,7 +248,7 @@ let amount=document.querySelector('#amount')
       queryArray.push(priceRangeStorage)
       localStorage.setItem("queryArray", JSON.stringify(queryArray));
   }
- 
+
  // tri
 
 
@@ -256,23 +256,23 @@ let triSelect=document.querySelector('.tri')
 
 
     triSelect.addEventListener('change', function (e) {
-      
+
             triElem ={[e.target.dataset.key] : e.target.value }
-            localStorage.setItem("triSelectStorage", JSON.stringify(triElem)); 
+            localStorage.setItem("triSelectStorage", JSON.stringify(triElem));
              location.reload()
              biqueryCollect()
 
       })
 //reload
-  let triSelectStorage = JSON.parse(localStorage.getItem("triSelectStorage")) 
+  let triSelectStorage = JSON.parse(localStorage.getItem("triSelectStorage"))
 
   if(triSelectStorage !== null && Object.keys(triSelectStorage).length > 0){
       triSelect.value = triSelectStorage.tri
-      
+
       queryArray.push(triSelectStorage)
       localStorage.setItem("queryArray", JSON.stringify(queryArray));
-      
-      
+
+
   }
 
 
@@ -288,9 +288,9 @@ subcategory.forEach(v =>{
     e.preventDefault();
     let subcategoryslugElem ={ 'subcategoryslug' : e.target.dataset.subcategoryslug }
     localStorage.setItem("subcategoryslug", JSON.stringify(subcategoryslugElem));
-    location.reload() 
+    location.reload()
       biqueryCollect()
-     
+
 
   })
 })
@@ -299,18 +299,18 @@ subcategory.forEach(v =>{
 // language
 let lang=document.querySelector('.lang').dataset.lang;
 
-// assemble all array in one 
+// assemble all array in one
 
 function biqueryCollect(){
-  
-let categoryslugStorage = JSON.parse(localStorage.getItem("categoryslug")) 
-let subcategoryslugStorage = JSON.parse(localStorage.getItem("subcategoryslug")) 
 
-rating5filtreStorage = JSON.parse(localStorage.getItem("rating5filtre")) 
-rating4filtreStorage = JSON.parse(localStorage.getItem("rating4filtre")) 
-rating3filtreStorage = JSON.parse(localStorage.getItem("rating3filtre")) 
+let categoryslugStorage = JSON.parse(localStorage.getItem("categoryslug"))
+let subcategoryslugStorage = JSON.parse(localStorage.getItem("subcategoryslug"))
 
-priceRangeStorage = JSON.parse(localStorage.getItem("pricerange")) 
+rating5filtreStorage = JSON.parse(localStorage.getItem("rating5filtre"))
+rating4filtreStorage = JSON.parse(localStorage.getItem("rating4filtre"))
+rating3filtreStorage = JSON.parse(localStorage.getItem("rating3filtre"))
+
+priceRangeStorage = JSON.parse(localStorage.getItem("pricerange"))
 triSelectStorage = JSON.parse(localStorage.getItem("triSelectStorage"))
 
 if(categoryslugStorage !== null && Object.keys(categoryslugStorage).length > 0){arrayBigQuery=[...arrayBigQuery, categoryslugStorage] }
@@ -322,7 +322,7 @@ if(rating3filtreStorage !== null && Object.keys(rating3filtreStorage).length > 0
 if(priceRangeStorage !== null && Object.keys(priceRangeStorage).length > 0){arrayBigQuery=[...arrayBigQuery, priceRangeStorage]}
 if(triSelectStorage !== null && Object.keys(triSelectStorage).length > 0){arrayBigQuery=[...arrayBigQuery,triSelectStorage] }
 
-localStorage.setItem("arrayBigQuery", JSON.stringify(arrayBigQuery)); 
+localStorage.setItem("arrayBigQuery", JSON.stringify(arrayBigQuery));
 
 }
 
@@ -345,9 +345,9 @@ let j=1;
       console.log(queryString)
     }
 
-    
 
-    
+
+
 
 }
 uriConnection()
@@ -368,13 +368,13 @@ let output=''
     },
   })
   .then(res => res.json())
-  
+
   .then(data => {
-   
-       
-      function renderData() { 
-        output=''; 
-        data.map((item,i) => { 
+
+
+      function renderData() {
+        output='';
+        data.map((item,i) => {
 
           if(queryString.includes('subcategoryslug')){
 
@@ -402,7 +402,7 @@ let output=''
                   console.log(v.en_pricr)
                   console.log(v.images[0].product_image)
                   }); --}}
-                  
+
 
             }
 
@@ -410,9 +410,9 @@ let output=''
 
 
           }
-            
-          
-          
+
+
+
           })
         }
 
@@ -429,43 +429,43 @@ let output=''
 function swr(){
   fetch('https://jsonplaceholder.typicode.com/posts')
   .then(res => res.json()  )
-  
+
   .then(data => {
 
-        
+
     let output=''
-    
+
     data.map((post,i) =>{
       output+=`
                  <div class="col" key="${i}" >
                     <div class="card shadow-md">
                         <img src="https://picsum.photos/500/300" class="card-img-top" alt="...">
-                      
+
                         <div class="card-body">
                             <h5 class="card-titl fs-6"><p> ${post.title} <p></h5>
-                        
+
                               <div class='price d-flex justify-content-between'>
                                 <span class="card-text fs-6">Price: 150$</span>
                                 <span class="card-text  fs-6">-35%</span>
                                  <p> {{ __('test internationalization') }} <p>
                               </div>
-                            
+
                         </div>
                         <div class='btn'>
-                        
+
                             <a href='#' title='details'> <span class="fas fa-eye text-info"></span> </a>
                                 <a href='#' title='wish list'> <span class="fas fa-heart text-danger mx-4"></span></a>
                                 <a href='#'  title='add to cart'> <span class="fas fa-cart-plus text-success "></span></a>
                         </div>
                     </div>
                  </div>
-     
+
       `})
-      
-     
+
+
 
       products.innerHTML=output
-  
+
   })
   .catch(err => console.log(err))
 
@@ -486,7 +486,7 @@ let  minus=document.querySelectorAll('.minus')
 let  plus=document.querySelectorAll('.plus')
 
  minus.forEach((elem,i) => {
-    
+
      elem.addEventListener("click", (e) => {
         let inputOld = parseInt(e.target.parentElement.nextElementSibling.value)
        inputOld-=1
@@ -498,7 +498,7 @@ let  plus=document.querySelectorAll('.plus')
 
  })
  plus.forEach((elem,i) => {
-    
+
      elem.addEventListener("click", (e) => {
         let inputOld = parseInt(e.target.parentElement.previousElementSibling.value)
        inputOld+=1
@@ -518,12 +518,12 @@ let baseUrl=document.querySelector('meta[name="base-url"]').getAttribute('conten
 let buttonGetCart=document.querySelector('.get-cart')
 
 console.log(cart.dataset.total);
- 
+
 
 function cartList(){
 
   cart.innerHTML=' <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>';
-  
+
 
   fetch(`${baseUrl}api/cart`,{
     method: 'GET',
@@ -535,7 +535,7 @@ function cartList(){
     },
   })
   .then(res => res.json())
-  
+
   .then(data => {
 
     setTimeout( renderData ,5000)
@@ -545,33 +545,33 @@ function cartList(){
       function renderData() {
 
         output=''
-    
+
         data.map((item,i) =>{
 
           output+=`
                     <div class="col"  >
                         <div class="card shadow-md ">
                             <img src="https://picsum.photos/500/300" class="card-img-top" alt="...">
-                          
+
                             <div class="card-body">
                                 <h5 class="card-title test fs-6"><p > ${item.email} <p></h5>
-                            
+
                                   <div class='price d-flex justify-content-between'>
                                     <span class="card-text fs-6">Price: 150$</span>
                                     <span class="card-text  fs-6">-35%</span>
                                     <p> {{ __('test internationalization') }} <p>
                                   </div>
-                                
+
                             </div>
                             <div class='btn'>
-                            
+
                                 <a href='#' title='details'> <span class="fas fa-eye text-info"></span> </a>
                                     <a href='#' title='wish list'> <span class="fas fa-heart text-danger mx-4"></span></a>
                                     <a href='#'  title='add to cart'> <span class="fas fa-cart-plus text-success "></span></a>
                             </div>
                         </div>
                     </div>
-        
+
           `})
 
           cart.innerHTML=output;
@@ -584,10 +584,10 @@ function cartList(){
           });
 
         }
-     
-          
-          
-      
+
+
+
+
       })
   .catch(err => console.log(err))
 
@@ -651,11 +651,11 @@ best way to add package @@@@@@@@@@@@@@@@@@@@@@
 
 1 copy in composer the package
 
-run cron 
+run cron
 hitcom.com.tn
 cd /home3/hxynpjkf/public_html && php composer.phar update --no-dev > /home3/hxynpjkf/public_html/composer.txt
 cd /home3/hxynpjkf/public_html && php artisan schedule:work  --no-dev > /home3/hxynpjkf/public_html/scheduler_cron.txt
- 
+
 psexpress.com.tn
  (/home/rlbufmvu)
  cd /home/rlbufmvu/public_html && php composer.phar update --no-dev > /home3/hxynpjkf/public_html/composer.txt
@@ -680,11 +680,114 @@ use Symfony\Component\Console\Output\ConsoleOutput;
  sudo kill -9 `sudo lsof -t -i:8000`
 
  kill task ----------------------------------------------
- ps -ax | grep application name 
+ ps -ax | grep application name
  kill -9 1317
 
  --------------------------------------------------------
- php artisan schedule:list   
+ php artisan schedule:list
 
  ---------------------process activated by me ch
  ps -u `whoami`
+
+   async filterTodos({ commit }, e) {
+    // Get selected number
+    const limit = parseInt(
+      e.target.options[e.target.options.selectedIndex].innerText
+    );
+
+    const response = await axios.get(
+      `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`
+    );
+
+    commit("setTodos", response.data);
+  },
+
+  async updateTodo({ commit }, updTodo) {
+    const response = await axios.put(
+      `https://jsonplaceholder.typicode.com/todos/${updTodo.id}`,
+      updTodo
+    );
+
+    console.log(response.data);
+
+    commit("updateTodo", response.data);
+  },
+
+
+
+ ----- laravel shared hosting
+  change dns from oxahost page not cpanel
+  serveur dns under domaines rubrique
+  original
+  Serveurs DNS 1 ns101.oxa.host
+  Serveurs DNS 2 ns100.oxa.host
+
+  to
+  ns1.vercel-dns.com
+  ns2.vercel-dns.com
+
+
+  install laravel custom from softaculos inside a folder in chosen domain// change php8 cpanel
+  copy content of public directory under domain directly
+  create symlink below from cron
+
+  copy htaccess content below in begining of htaccess laravel
+  htaccess below bypass composer check
+
+  add in composer.json in section config
+ "platform-check": false
+
+   # php -- BEGIN cPanel-generated handler, do not edit
+   # Set the “ea-php80” package as the default “PHP” programming language.
+   <IfModule mime_module>
+   AddHandler application/x-httpd-ea-php80___lsphp .php .php8 .phtml
+   </IfModule>
+   # php -- END cPanel-generated handler, do not edit
+
+
+   ln -s  /home3/hxynpjkf/next.hitcom.com.tn/ch/public/img  /home3/hxynpjkf/next.hitcom.com.tn/
+   ln -s  /home3/hxynpjkf/next.hitcom.com.tn/ch/public/js  /home3/hxynpjkf/next.hitcom.com.tn/
+   ln -s  /home3/hxynpjkf/next.hitcom.com.tn/ch/public/css  /home3/hxynpjkf/next.hitcom.com.tn/
+   ln -s  /home3/hxynpjkf/next.hitcom.com.tn/ch/storage/app/public/storage  /home3/hxynpjkf/next.hitcom.com.tn/
+
+download version localy
+ install package
+ upload ftp again
+
+ or use cron
+  cd /home3/hxynpjkf/public_html && php composer.phar update --no-dev > /home3/hxynpjkf/public_html/composer.txt
+  cd /home3/hxynpjkf/public_html && php artisan schedule:work  --no-dev > /home3/hxynpjkf/public_html/scheduler_cron.txt
+
+
+---- stock app.psexpress
+Téléphonie
+		Smartphone
+		Téléphone portable
+		Tablette tactile
+		Accessoire téléphone
+
+Informatique
+			Ordinateur portable
+			Ordinateur de bureau
+			Accessoires informatique
+
+Multimédia
+			Televiseur
+			Video-projecteur
+			Appareil photo
+			Console de jeux
+			Audio & son
+			Recepteur
+
+Securite
+		camera de surveillence
+		Systeme d'alarme
+		Onduleurs
+
+Stockage
+		Disque interne
+		Disque dur externe
+		Cle usb
+		Carte memoire
+	 cd & dvd
+

@@ -14,23 +14,20 @@ $currency=session()->get('currency');
 
 @endphp
 
-<nav class="header">
+<nav class="header ">
   <div class="container px-3 d-flex justify-content-between align-items-center  ">
 
-    <div class="info">
-      <p>
-        cepturi reprehenderit tempora asperiores, veritatis minus consequuntur consequatur accusamus recusandae!
-        cepturi reprehenderit tempora asperiores,
-      </p>
+    <div class="info d-flex justify-content-center align-items-center">
+      <a href='#' class='text-decoration-none'>
+       <i class='mdi mdi-star-circle text-white'></i> <span class='text-white fw-bold'>Vendre sur psexpress</span> 
+      </a>
     </div>
      
-     <div class="config ">
+     <div class="config d-flex align-items-center justify-content-center">
       
-       <a href="#" class="d-none d-md-inline-block mx-2">
-         <i class='mdi mdi-alarm-light-outline fs-5  '></i>
-       </a>
+      
 
-      <ul class="d-inline-block  d-none d-md-inline-block">
+      <ul class=" lang_dropdown m-0  d-none d-md-inline-block">
    
         <li class="dropdown">
           <a class="dropdown-toggle" href="#"  data-bs-toggle="dropdown" >
@@ -70,9 +67,10 @@ $currency=session()->get('currency');
       <div class="col-md-2  d-flex justify-content-start align-items-center">
         
         <div class="d-inline-block mb-1 mb-md-0 ">
-          <img src="{{ app()->environment('production') ? asset('public/media/logo/newlogopsexpress.jpg') : asset('/media/logo/newlogopsexpress.jpg')}}"
+          <img src="{{ app()->environment('production') ? asset('public/media/logo/newlogopsexpress.jpg') : 
+              asset('/media/logo/newlogopsexpress.jpg')}}"
            alt="logo psexpress" style='height:35px;width:35px'>
-          <h4 class="d-inline-block text-capitalize" style='color:orange'>psexpress</h4>
+          <h4 class="d-inline-block text-capitalize" style='color:#000000'>psexpress</h4>
         </div>
       </div>
       <div class="col-md-8 ">
@@ -80,26 +78,38 @@ $currency=session()->get('currency');
         <form>
           <div class="input-group  search-bar mx-auto ">
             <div class="dropdown d-none d-md-inline-block  {{ App::getLocale() === 'ar' ? 'ms-md-2 ' : 'me-md-2 '}} ">
-              <button class="btn btn-light  dropdown-toggle"  style='background:rgb(233, 240, 246);' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-light  dropdown-toggle"  
+                 style='background:rgb(233, 240, 246);' type="button" id="dropdownMenuButton1"
+                 data-bs-toggle="dropdown" aria-expanded="false">
                <i class='mdi mdi-menu mx-1 fs-5'></i>
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="{{ App::getLocale() === 'ar' ? 'text-align:right; direction: rtl' : 'text-align:left; direction: ltr'}}">
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" 
+                style="{{ App::getLocale() === 'ar' ? 'text-align:right; direction: rtl' : 'text-align:left; direction: ltr'}}">
+              
                 <li class="dropdown-l2 position-relative" >
-                  <a class="dropdown-item" href="#" style='font-size:0.9rem; '>
-                    <i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2 ' : 'me-2'}} '></i>Phone</a>
+                  <a class="dropdown-item" href="#" >
                   
-                    <div class="container bg-danger dropdown-l3
+                    <i class='mdi mdi-cellphone text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2 ' : 'me-2'}} '></i>
+                    {{ __('Téléphonie') }}</a>
+                  
+                    <div class="container  dropdown-l3
                      {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} 
                     dropdown-menu">
-                      <div class="row">
-                        <div class="col bg-warning">
-                          Column
-                        </div>
-                        <div class="col bg-light">
-                          Column
+                      <div class="row row-cols-12 row-cols-md-2">
+                        <div class="col ">
+                         <a href="">{{ __('Smartphone') }}</a> 
                         </div>
                         <div class="col ">
-                          Column
+                          
+                          <a href="" class='text-nowrap '>{{ __('Téléphone portable') }}</a> 
+                        </div>
+                        <div class="col ">
+                          
+                          <a href="">{{ __('Tablette tactile') }}</a> 
+                        </div>
+                        <div class="col ">
+                         
+                          <a href=""> {{ __('Accessoire téléphone') }}</a> 
                         </div>
                       </div>
         
@@ -107,35 +117,93 @@ $currency=session()->get('currency');
                   
                 </li>
                 <li class="dropdown-l2 position-relative">
-                  <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Phone</a>
-                  <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                     <div class="row">
+                  <a class="dropdown-item" href="#" >
+                    <i class='mdi mdi-desktop-classic text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
+                    {{ __('Informatique') }}</a>
+                  <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} 
+                      dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                     <div class="row row-cols-12 row-cols-md-2">
                         <div class="col">
-                          Column
+                          <a href="">{{ __('Ordinateur portable') }}</a> 
                         </div>
                         <div class="col">
-                          Column
+                          <a href=""> {{ __('Ordinateur de bureau') }}</a> 
                         </div>
                         <div class="col">
-                          Column
+                          <a href=""> {{ __('Accessoires informatique') }}</a> 
                         </div>
                       </div>
                   </ul>
                 
                 </li>
                 <li class="dropdown-l2 position-relative">
-                  <a class="dropdown-item" href="#" style='font-size:0.9rem'><i class='mdi mdi-account-circle text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>Phone</a>
+                  <a class="dropdown-item" href="#" >
+                    <i class='mdi mdi-play-network text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
+                    {{ __('Multimédia') }}</a>
                   <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <div class="row">
+                    <div class="row row-cols-12 row-cols-md-2">
                       <div class="col">
-                        Column
+                        <a href="">{{ __('Televiseur') }}</a> 
                       </div>
                       <div class="col">
-                        Column
+                        <a href=""> {{ __('Video-projecteur') }}</a> 
                       </div>
                       <div class="col">
-                        Column
+                        <a href=""> {{ __('Appareil photo') }}</a> 
                       </div>
+                      <div class="col">
+                        <a href="">{{ __('Console de jeux') }}</a> 
+                      </div>
+                      <div class="col">
+                        <a href="">{{ __('Audio et son') }}</a> 
+                      </div>
+                      <div class="col">
+                        <a href="">{{ __('Recepteur') }}</a> 
+                      </div>
+                    </div>
+                  </ul>
+                </li>
+                <li class="dropdown-l2 position-relative">
+                  <a class="dropdown-item" href="#" >
+                    <i class='mdi mdi-content-save-settings text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
+                    {{ __('Stockage') }}</a>
+                  <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <div class="row row-cols-12 row-cols-md-2">
+                      <div class="col">
+                        <a href=""> {{ __('Disque interne') }}</a> 
+                      </div>
+                      <div class="col">
+                        <a href="">{{ __('Disque dur externe') }}</a> 
+                      </div>
+                      <div class="col">
+                        <a href=""> {{ __('Cle usb') }}</a> 
+                      </div>
+                      <div class="col">
+                        <a href="">{{ __('Carte memoire') }}</a> 
+                      </div>
+                      <div class="col">
+                        <a href="">{{ __('Cd et dvd') }}</a> 
+                      </div>
+                    
+                    </div>
+                  </ul>
+                </li>
+                <li class="dropdown-l2 position-relative">
+                  <a class="dropdown-item" href="#" >
+                    <i class='mdi mdi-camera-lock text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
+                    {{ __('Securite') }}</a>
+                  <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <div class="row row-cols-12 row-cols-md-2">
+                      <div class="col">
+                        <a href=""> {{ __('Camera de surveillence') }}</a> 
+                      </div>
+                      <div class="col">
+                        <a href=""> {{ __('Systeme d\'alarme') }}</a> 
+                      </div>
+                      <div class="col">
+                        <a href="">{{ __('Onduleurs') }}</a> 
+                      </div>
+                      
                     </div>
                   </ul>
                 </li>
@@ -143,7 +211,7 @@ $currency=session()->get('currency');
             </div>
             <input type="text" class="form-control border border-1 border-warning" placeholder="Recherche" 
             aria-label="Recherche" aria-describedby="button-addon2">
-            <button class="btn btn-warning" type="button" id="button-addon2"><i class='mdi mdi-magnify fs-5 text-white'></i></button>
+            <a href='#' class="btn " type="button" id="button-addon2" style="background-color: #fd8617"><i class='mdi mdi-magnify fs-5 text-white'></i></a>
           </div>
        </form>
      
@@ -152,24 +220,14 @@ $currency=session()->get('currency');
         <a class="btn btn-light d-md-none d-inline-block mt-1" style='background:rgb(233, 240, 246);' data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
           <i class='mdi mdi-menu  text-dark fs-5'></i>
         </a>
-        <div class="d-inline-block mt-3 mt-md-0">
-          <a class="text-decoration-none "  href="#">
-            <i class='mdi mdi-heart  text-dark fs-4'></i>
-          </a>
-          <a class="text-decoration-none mx-3"  href="#">
-            <i class='mdi mdi-cart text-dark fs-4 '></i>
-          </a>
-          <div class="dropdown ">
-            <a class="text-decoration-none "  href="#" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class='mdi mdi-account-circle text-dark fs-4'></i>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="min-width: 2rem">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
-              <li><a class="dropdown-item" href="#">Theme</a></li>
-              <li><a class="dropdown-item" href="#">Language</a></li>
-            </ul>
-          </div>
+        <div class="d-inline-block mt-3 mt-md-0 ">
+         
+          
+          <wish-list></wish-list>
+          <cart-count></cart-count>
+          <account-auth></account-auth>
+          <cart-sidebar></cart-sidebar>
+         
        
 
         </div>
@@ -178,7 +236,7 @@ $currency=session()->get('currency');
     </div>
  
   </div>  {{-- flexbox-menu --}}
-  <nav class="second-navbar">
+  {{-- <nav class="second-navbar">
     <div class="container  ">
       <div class="mx-auto d-flex justify-content-center align-items-center">
 
@@ -196,7 +254,8 @@ $currency=session()->get('currency');
         </a>
       </div>
     </div>
-  </nav>
+  </nav> --}}
+
   </nav>
   
 <nav class="navbar-under"></nav>

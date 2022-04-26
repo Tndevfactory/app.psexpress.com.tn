@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Image;
+use App\Models\Photo;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Wishlist extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'product_id',
         'user_id',
@@ -26,6 +26,6 @@ class Wishlist extends Model
         return $this->belongsTo(User::class);
     }
 
-   
+
 
 }

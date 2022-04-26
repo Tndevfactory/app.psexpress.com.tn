@@ -1,4 +1,40 @@
 .light {
+  .dropdown-l2-home {
+    font-size: 13px;
+    color: #222;
+  }
+  .dropdown-l2-home:hover > .dropdown-l3-home {
+    margin-top: 0;
+    display: block !important;
+    z-index: 999;
+  }
+
+  .dropdown-l3-ltr-home {
+    position: absolute;
+    top: -10px;
+    border: none;
+    transform: translateX(8.3rem);
+    margin: 0;
+    min-width: 20rem;
+    padding: 1rem;
+    z-index: 999;
+    a {
+      white-space: nowrap;
+      text-decoration: none;
+      font-size: 13px;
+      color: #222;
+      transition: 0.2s;
+      &:hover {
+        color: rgb(243, 139, 12);
+      }
+    }
+  }
+  .dropdown-l3-rtl-home {
+    @extend .dropdown-l3-ltr-home;
+
+    transform: translateX(-8.2rem);
+  }
+
   .card-product {
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
@@ -7,19 +43,53 @@
     }
   }
 
+  .card-categorie {
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    transition: 0.215s;
+  }
+  .card-categorie:hover {
+    box-shadow: 1px 1px 18px rgba(0, 0, 0, 0.6);
+  }
+  .categorie-caption {
+    background-color: #232004;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(61, 61, 61, 0.1) 0px 3px 3px;
+    font-weight: 500;
+    letter-spacing: 0.61px;
+    font-size: 1rem;
+  }
+
   .buy-button-div {
-    visibility: hidden;
-    background-color: #f6d100;
+    position: absolute;
+
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    opacity: 0;
+    transition: 0.5s;
     .buy-button-link {
-      background-color: transparent;
+      background-color: rgb(243, 152, 7);
       text-decoration: none;
-      color: #000000;
+      color: #1f1e1e;
+      width: 46% !important;
+      text-align: center;
+      border-radius: 0.21rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        background-color: lighten(rgba(246, 139, 17, 20), 10);
+      }
     }
   }
   .card-product:hover .buy-button-div {
-    visibility: visible;
-    display: flex;
-    justify-content: center;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    opacity: 1;
   }
 }

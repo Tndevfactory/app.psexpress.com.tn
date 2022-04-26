@@ -27,8 +27,10 @@ const mutations = {
 const actions = {
   setLang({ commit }, newLang) {
     commit("setLang", newLang);
+    // console.log("from setlang");
+    // console.log(this.getters.lang);
   },
-  resetMsg({ commit }, newLang) {
+  resetMsg({ commit }) {
     commit("setSuccess", "");
     commit("setError", "");
     commit("setLoading", false);

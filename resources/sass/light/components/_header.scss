@@ -1,7 +1,7 @@
 .light {
   .header {
-    background-color: rgb(255, 192, 20);
-    padding-top: 1rem;
+    background-color: #fd8617;
+    padding: 1rem;
     font-size: 0.9rem;
     display: flex;
     justify-content: center;
@@ -10,4 +10,10 @@
       padding-top: 0.31rem;
     }
   }
+  // .lang_dropdown {
+  //   z-index: 999;
+  //   .dropdown-menu {
+  //     z-index: 9;
+  //   }
+  // }
 }

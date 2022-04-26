@@ -27,10 +27,12 @@ class CreateOrdersTable extends Migration
             $table->string('total_ht');
             $table->string('total_ttc');
             $table->string('discount_amount');
+            $table->string('coupon_amount');
+            $table->string('coupon_code');
 
            
             $table->foreignId('user_id');
-            $table->foreignId('coupon_id');
+            
 
             $table->timestamps();
             $table->softDeletes();

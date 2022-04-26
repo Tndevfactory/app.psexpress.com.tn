@@ -182,40 +182,31 @@ class LoginController extends Controller
 
  public function logout(Request $request)
  {
-  // $output = new ConsoleOutput();
-  // $output->writeln('ch debug logout');
+ 
+   
+  // if(Auth::check()){
+
+  //   $logoutStatus = Auth::user()->token()->revoke();
+    
+
+  // }
+ 
+
   
-  // $output->writeln($request->all());
-  // $output->writeln(Auth::check());
-  // $output->writeln(auth()->user());
-
-   Cache::forget('user');
-   Cache::forget('Bearer_token');
-   Cache::forget('language');
-
-
-
-   if (Auth::check()) {
-     $logoutStatus = Auth::user()->token()->revoke();
+    Cache::forget('user');
+    Cache::forget('Bearer_token');
+    Cache::forget('language');
 
      $data = [
        "backend_response" => 'logout successfuly',
        "user" => null,
        "access_token" => null,
+       "verifTokenPk" => null,
        "auth_check" => false,
        "response_code" => 200,
        ];
          return response()->json($data,200);
-   }else{
-    $data = [
-      "backend_response" => 'non authentified',
-      "response_code" => 403,
-       "user" => null,
-       "access_token" => null,
-       "auth_check" => false,
-      ];
-        return response()->json($data,200);
-   }
+  
 
 }
  public function users(Request $request)
@@ -253,16 +244,14 @@ class LoginController extends Controller
       $user=cache()->get('user');
 
       $verif_token_pk=cache()->get('verif_token_pk');
-      $output = new ConsoleOutput();
-      $output->writeln('verif_token_pk');
-      $output->writeln($verif_token_pk);
-      $output->writeln("requestverifToken");
-      $output->writeln($request->verifToken);
-     
-    if($request->verifToken !== $verif_token_pk){
+
+    
+    if($request->tk !== $verif_token_pk){
       $data = [
         "backend_response" => 'token a expire, ou ne correspond pas ',
         "response_code" => 403,
+        "requestverifToken" => $request->token,
+        "verif_token_pk" => $verif_token_pk,
         
         ];
       return response()->json($data,200);
@@ -281,15 +270,18 @@ class LoginController extends Controller
           ];
         return response()->json($data,200);
       }
+
       $res=$user->update(['email_verified_at'=> Carbon::now()]);
      
 
-      $user_auth_expires_At = Carbon::now()->addMinutes(40000);
+      $user_auth_expires_At = Carbon::now()->addMinutes(400);
       Cache::put('user', $user,   $user_auth_expires_At );
 
       $data = [
-        "backend_response" => 'email verified-at update ',
+        "backend_response" => 'field verified-at updated ',
         "response_code" => 200,
+        "requestverifToken" => $request->token,
+        "verif_token_pk" => $verif_token_pk,
         
         ];
       return response()->json($data,200);
@@ -301,6 +293,7 @@ class LoginController extends Controller
 
  {
 
+
      
   $token=Str::random(30);  
   $expiresAt = Carbon::now()->addMinutes(10);
@@ -309,17 +302,19 @@ class LoginController extends Controller
   $lang=Cache::get('language') ?? 'fr';
 
   $data_mail=[
+      'welcome' => 'Bonjour,',
       'first_name' => cache()->get('user')->retailer_name,
       'recipient' => cache()->get('user')->email,
       'subject' => 'Activation account link',
       'content' => 'please click link below to activate your account',
+      'regards' => 'Cordialement,',
+      
       'token' => $token,
       'url' => config('app.url').$lang.'/verify?verifyToken='.$token,
       'language' => $request->language,
       'verif_token_pk' => $token,
   ];
-
-
+  
   // MailController::verifyAccount($data_mail_verify);
   dispatch(new VerifyMailJob($data_mail));
 
@@ -369,10 +364,10 @@ public function sendPasswordResetPassword(Request $request)
    $expiresAt = Carbon::now()->addMinutes(300);
    Cache::put('user', $user, $expiresAt);
      
- $token=Str::random(30);  
- $expiresAt = Carbon::now()->addMinutes(10);
- Cache::put('reset_token_pk', $token, $expiresAt);
- $lang=Cache::get('language') ?? 'fr';
+    $token=Str::random(30);  
+    $expiresAt = Carbon::now()->addMinutes(10);
+    Cache::put('reset_token_pk', $token, $expiresAt);
+    $lang=Cache::get('language') ?? 'fr';
 
  $data_mail=[
      

@@ -11,7 +11,7 @@ const state = {
 const getters = {
   getAuthCheck: (state) => state.authCheck,
   getBearerToken: (state) => state.bearerToken,
-  getVerifTokenPk: (state) => state.VerifTokenPk,
+  getVerifTokenPk: (state) => state.verifTokenPk,
   getUser: (state) => state.user,
 };
 
@@ -20,10 +20,66 @@ const mutations = {
   setLogin: (state, user) => (state.user = user),
   setRegister: (state, user) => (state.user = user),
   setBearerToken: (state, bearerToken) => (state.bearerToken = bearerToken),
-  setVerifTokenPk: (state, verifTokenPk) => (state.bearerToken = verifTokenPk),
+  setVerifTokenPk: (state, verifTokenPk) => (state.verifTokenPk = verifTokenPk),
 };
 
 const actions = {
+  async logout({ commit }) {
+    let lang = common.state.lang;
+
+    commit("setLoading", true);
+    let url = "/logout";
+
+    try {
+      const response = await axios.get(url);
+
+      if (response.data.response_code === 200) {
+        console.log(response);
+
+        commit("setAuthCheck", response.data.auth_check);
+        commit("setLogin", response.data.user);
+        commit("setBearerToken", response.data.access_token);
+        commit("setVerifTokenPk", response.data.verifTokenPk);
+
+        commit("setLoading", false);
+        commit("setSuccess", response.data.backend_response);
+        Vue.$cookies.remove("bearerToken");
+        Vue.$cookies.remove("authCheck");
+        Vue.$cookies.remove("user");
+
+        window.location.href = "http://127.0.0.1:8000/";
+      } else if (response.data.response_code === 403) {
+        console.log(response);
+
+        commit("setAuthCheck", response.data.auth_check);
+        commit("setLogin", response.data.user);
+        commit("setBearerToken", response.data.access_token);
+        commit("setLoading", false);
+        commit("setError", "something went wrong");
+      } else {
+        commit("setAuthCheck", response.data.auth_check);
+        commit("setLogin", response.data.user);
+        commit("setBearerToken", response.data.access_token);
+        commit("setLoading", false);
+        commit("setError", "something went wrong");
+      }
+    } catch (err) {
+      Vue.$cookies.remove("bearerToken");
+      Vue.$cookies.remove("authCheck");
+      Vue.$cookies.remove("user");
+      commit("setAuthCheck", response.data.auth_check);
+      commit("setLogin", response.data.user);
+      commit("setBearerToken", response.data.access_token);
+      commit("setLoading", false);
+      commit("setError", "something went wrong");
+    }
+
+    setTimeout(() => {
+      commit("setSuccess", "");
+      commit("setError", "");
+      commit("setLoading", false);
+    }, 4000);
+  },
   async setLogin({ commit }, credentials) {
     let lang = common.state.lang;
     let cred = { ...credentials, lang };
@@ -95,6 +151,7 @@ const actions = {
     setTimeout(() => {
       commit("setSuccess", "");
       commit("setError", "");
+      commit("setLoading", false);
     }, 4000);
   },
   async setRegister({ commit }, credentials) {
@@ -184,10 +241,12 @@ const actions = {
       commit("setError", "");
     }, 4000);
   },
-  async updVerifiedAt({ commit }, token) {
+  async updVerifiedAt({ commit }, t) {
+    console.log("token");
+    console.log(token);
     commit("setLoading", true);
     let url = "/update-verify-at";
-
+    let token = { tk: t };
     try {
       const response = await axios.post(url, token);
 
@@ -209,33 +268,26 @@ const actions = {
         );
       } else {
         commit("setLoading", false);
-        commit(
-          "setError",
-          response.data.backend_response
-            ? response.data.backend_response
-            : "something went wrong"
-        );
+        commit("setError", "something went wrong response_code !== 200");
       }
     } catch (err) {
       commit("setLoading", false);
-      commit(
-        "setError",
-        response.data.backend_response
-          ? response.data.backend_response
-          : "something went wrong"
-      );
+      commit("setError", "something went wrong error in request");
     }
+
     setTimeout(() => {
       commit("setSuccess", "");
       commit("setError", "");
     }, 4000);
   },
-  async resendVerifiedAtLink({ commit }, token) {
+  async resendVerifToken({ commit }) {
+    console.log("resendVerifiedAtLink");
+
     commit("setLoading", true);
-    let url = "/update-verify-at";
+    let url = "/verify-resend";
 
     try {
-      const response = await axios.post(url, token);
+      const response = await axios.get(url);
 
       if (response.data.response_code === 200) {
         console.log(response);
@@ -257,19 +309,12 @@ const actions = {
         commit("setLoading", false);
         commit(
           "setError",
-          response.data.backend_response
-            ? response.data.backend_response
-            : "something went wrong"
+          response.data.backend_response ?? "something went wrong"
         );
       }
     } catch (err) {
       commit("setLoading", false);
-      commit(
-        "setError",
-        response.data.backend_response
-          ? response.data.backend_response
-          : "something went wrong"
-      );
+      commit("setError", "something went wrong");
     }
     setTimeout(() => {
       commit("setSuccess", "");
