@@ -2,13 +2,36 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Stock;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+
+
+    public function showProduct(Request $requet){
+
+        $stocks= Stock::get();
+
+        $products = Product::orderBy(DB::raw('RAND()'))->paginate(15);
+
+        $product = Product::where('product_slug', 'gg1')->first();
+
+        return view('product', [
+
+            'products' => $products,
+            'product' => $product,
+            'stocks' => $stocks,
+
+        ]);
+       
+       
+    }
+
    public function apiAllProducts(Product $product){
 
     $products= Product::get();

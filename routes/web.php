@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\Api\LoginController;
-use App\Http\Controllers\Api\PayController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StockController;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\PayController;
+use App\Http\Controllers\SubstockController;
+use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\ProductController;
 use Symfony\Component\Console\Output\StreamOutput;
 
 
@@ -14,7 +16,7 @@ Route::Redirect('/', '/fr');
 
     Route::group(['prefix'=>'{language}'], function(){
 
-
+ 
     //login zone
     Route::get('/', [HomeController::class, "login"])->name('login-init');
     Route::get('/verify', [LoginController::class, "verify"])->name('verify');
@@ -27,7 +29,13 @@ Route::Redirect('/', '/fr');
     Route::get('/contact-us', [HomeController::class, "contactUs"])->name('contact-us');
 
     // Stock categories zone
-    Route::get('/category/{slug}', [StockController::class, "showCategories"])->name('show-category');
+    Route::get('/show-category/{slug}', [StockController::class, "showCategories"])->name('show-category');
+
+    // Stock subcategories zone
+    Route::get('/show-subcategory/{slug}', [SubstockController::class, "showSubCategories"])->name('show-subcategory');
+
+    // products zone
+    Route::get('/show-product/{slug}', [ProductController::class, "showProduct"])->name('show-product');
 
     // paiement zone --------------------------------------
     Route::get('/paiement', [PayController::class, "paiementView"])->name('paiement');

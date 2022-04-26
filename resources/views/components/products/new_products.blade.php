@@ -1,4 +1,4 @@
-<h2 class='mt-5 mb-3 categories-title text-center text-uppercase fs-5'>  {{ __('Products') }} </h2>
+<h2 class='mt-4 mb-3 bg-warning text-dark  py-2 text-center text-uppercase fs-5'>  {{ __('Nouvel arrivage') }} </h2>
 
 <div class="row row-cols-2 row-cols-md-6 gx-2 gy-4">
 

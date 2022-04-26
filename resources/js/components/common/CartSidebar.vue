@@ -2,7 +2,7 @@
   <div>
     <b-sidebar
       id="sidebar-backdrop"
-      title="Cart content"
+      title="Contenu du panier"
       :backdrop-variant="variant"
       backdrop
       shadow
@@ -10,7 +10,7 @@
       class="side"
       width="400px"
     >
-      <template #footer="{ hide }">
+      <!-- <template #footer="{ hide }">
         <div
           class="d-flex bg-light text-light justify-content-between align-items-center px-3 py-2"
         >
@@ -18,11 +18,11 @@
             >fermer</b-button
           >
         </div>
-      </template>
+      </template> -->
 
       <template #default="{ hide }">
         <div class="p-3">
-          <h4>{{ lang }}</h4>
+          <!-- <h4>{{ lang }}</h4> -->
           <div class="d-flex justify-content-end">
             <a
               class="btn btn-outline-danger btn-sm"
@@ -30,6 +30,7 @@
               >Delete all <i class="mdi mdi-trash-can-outline"></i
             ></a>
           </div>
+
           <table class="table table_cart my-2">
             <thead class="table-secondary fs-6">
               <tr>

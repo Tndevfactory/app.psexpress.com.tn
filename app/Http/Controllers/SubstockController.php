@@ -2,13 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stock;
+use App\Models\Product;
+use App\Models\Substock;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreSubstockRequest;
 use App\Http\Requests\UpdateSubstockRequest;
-use App\Models\Substock;
 
 class SubstockController extends Controller
 {
 
+
+    public function showSubCategories(){
+        $stocks= Stock::get();
+
+        $products = Product::orderBy(DB::raw('RAND()'))->paginate(15);
+
+
+        return view('subcategory', [
+
+            'products' => $products,
+            'stocks' => $stocks,
+
+        ]);
+    }
 
     public function apiAllSubstocks(Product $product){
 

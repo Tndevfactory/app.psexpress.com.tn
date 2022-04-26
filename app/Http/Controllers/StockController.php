@@ -3,12 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Stock;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
 {
-    public function showCategories(){
-        return view('categories.categories');
+    public function showCategories(Request $request){
+
+        $stocks= Stock::get();
+
+        $products = Product::orderBy(DB::raw('RAND()'))->paginate(15);
+
+
+        return view('category', [
+
+            'products' => $products,
+            'stocks' => $stocks,
+
+        ]);
+       
     }
 
 

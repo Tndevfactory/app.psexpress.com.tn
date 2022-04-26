@@ -206,10 +206,11 @@ $currency=session()->get('currency');
 {{-- end categories --}}
 
 {{-- start deal of the day --}}
-<h2 class='mt-5 mb-3 categories-title text-center text-uppercase fs-5'> {{ __('Offre du jour') }} </h2>
-<h2 class=' categories-title text-center fs-5 text-danger' id="demo"> </h2>
+<h2 class='mt-5 mb-3 categories-title text-center text-uppercase fs-5'> {{ __('Vente Flash') }} </h2>
+<h2 class=' fw-bold text-center fs-5 text-white bg-danger py-2 mb-4' id="demo"> </h2>
 
 @include('components.carousel2')
+
 {{-- end deal of the day --}}
 
 
@@ -219,15 +220,15 @@ $currency=session()->get('currency');
 
 {{-- end new products --}}
 
-{{-- start all products --}}
+{{-- start teasing1  --}}
 
-@include('components.products.all_products')
+@include('components.products.cta')
 
-{{-- end all products --}}
+{{-- end teasing1 products --}}
 
 {{-- start best sellers products --}}
 
-@include('components.products.bestsellers_products')
+@include('components.products.bestseller_products')
 
 {{-- end best sellers products --}}
 
@@ -237,6 +238,11 @@ $currency=session()->get('currency');
 
 {{-- end  brands --}}
 
+{{-- start all products --}}
+
+@include('components.products.all_products')
+
+{{-- end all products --}}
 
 <div class="pagination justify-content-center mt-4">
   {{ $products->links() }}
@@ -273,8 +279,10 @@ $currency=session()->get('currency');
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       // Display the result in the element with id="demo"
-      document.getElementById("demo").innerHTML = days + "jours " + hours + "h "
-      + minutes + "m " + seconds + "s ";
+      // document.getElementById("demo").innerHTML = days + "jours " + hours + "h "
+      // + minutes + "m " + seconds + "s ";
+      document.getElementById("demo").innerHTML = hours + " heures "
+      + minutes + " minutes " + seconds + " secondes ";
 
       // If the count down is finished, write some text
       if (distance < 0) {
