@@ -19,7 +19,7 @@ $currency=session()->get('currency');
 
     <div class="info d-flex justify-content-center align-items-center">
       <a href='#' class='text-decoration-none'>
-       <i class='mdi mdi-star-circle text-white'></i> <span class='text-white fw-bold'>Vendre sur psexpress</span> 
+       <i class='mdi mdi-star-circle text-white'></i> <span class='text-white fs-6'>Vendre sur psexpress</span> 
       </a>
     </div>
      

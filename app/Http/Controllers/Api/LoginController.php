@@ -115,9 +115,9 @@ class LoginController extends Controller
  public function login(Request $request)
  {
 
-  $output = new ConsoleOutput();
-    $output->writeln('lang');
-    $output->writeln($request->lang);
+  // $output = new ConsoleOutput();
+  //   $output->writeln('lang');
+  //   $output->writeln($request->lang);
 
     $lang=$request->lang;
 

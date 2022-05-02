@@ -8,13 +8,13 @@
  
 @endsection
 
-@section('title', 'seller_agrement')
+@section('title', 'seller_contract')
 
 @section('content')
 
 <div class="container">
 
-<div class="filtres d-flex justify-content-between">
+
 
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -23,43 +23,34 @@
     </ol>
   </nav>
 
-  <select class="form-select form-select-sm me-4 w-25" aria-label=".form-select-sm example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
+ 
 
-</div>
 
-  <div class="row row-cols-1 row-cols-md-2">
-    <div class="col-12 col-md-2 bg-light">
-      <h5>subcategories:</h5>
-      <ul class="list-group d-flex">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
-
-    </div>
+  <div class="">
+     <h1>agreement</h1> 
     
-    <div class="col-12 col-md-10 ">
-       
-      {{-- start category products --}}
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem, exercitationem aut adipisci non temporibus consequatur pariatur, alias rem accusantium amet ad dignissimos obcaecati reiciendis blanditiis nemo quos magnam voluptate soluta!
 
-        @include('components.products.category_products')
-
-        {{-- end category products --}}
-
-    </div>
-
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
   </div>
 
-  <div class="pagination justify-content-center mt-4">
-    {{ $products->links() }}
-  </div>
+
 </div>
   
 @endsection

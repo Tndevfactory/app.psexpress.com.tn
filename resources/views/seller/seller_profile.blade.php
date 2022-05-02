@@ -14,7 +14,7 @@
 
 <div class="container">
 
-<div class="filtres d-flex justify-content-between">
+
 
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -23,43 +23,62 @@
     </ol>
   </nav>
 
-  <select class="form-select form-select-sm me-4 w-25" aria-label=".form-select-sm example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
+ 
 
-</div>
+  <div class="row">
+   <div class="col">
+     <h2>seller profile</h2>
+     Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis minima quos architecto accusamus eaque necessitatibus, quaerat rem? Animi suscipit in perferendis iure natus nihil eum voluptatibus quia, laborum dolorem vitae!
 
-  <div class="row row-cols-1 row-cols-md-2">
-    <div class="col-12 col-md-2 bg-light">
-      <h5>subcategories:</h5>
-      <ul class="list-group d-flex">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
+     <div class="row row-cols-1 row-cols-md-2">
+       <div class="col-12 col-md-2">
 
-    </div>
-    
-    <div class="col-12 col-md-10 ">
-       
-      {{-- start category products --}}
+        <ul class="list-group">
+          <li class="list-group-item">An item</li>
+          <li class="list-group-item">A second item</li>
+          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">A fourth item</li>
+          <li class="list-group-item">And a fifth one</li>
+        </ul>
 
-        @include('components.products.category_products')
+       </div>
+       <div class="col-12 col-md-10">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
 
-        {{-- end category products --}}
-
-    </div>
-
+       </div>
+     </div>
+   </div>
   </div>
 
-  <div class="pagination justify-content-center mt-4">
-    {{ $products->links() }}
-  </div>
+
 </div>
   
 @endsection

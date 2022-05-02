@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\SellerController;
 use App\Http\Controllers\Api\PayController;
 use App\Http\Controllers\SubstockController;
 use App\Http\Controllers\Api\LoginController;
@@ -27,18 +28,22 @@ Route::Redirect('/', '/fr');
     Route::get('/shop', [HomeController::class, "home"])->middleware(['xauthapi','xverifyapi'])->name('home');
     Route::get('/about-us', [HomeController::class, "aboutUs"])->name('about-us');
     Route::get('/contact-us', [HomeController::class, "contactUs"])->name('contact-us');
-
+ 
     // Stock categories zone
-    Route::get('/show-category/{slug}', [StockController::class, "showCategories"])->name('show-category');
+    Route::get('/show-category/{slug}', [StockController::class, "showCategory"])->name('show-category');
 
     // Stock subcategories zone
-    Route::get('/show-subcategory/{slug}', [SubstockController::class, "showSubCategories"])->name('show-subcategory');
+    Route::get('/show-subcategory/{slug}', [SubstockController::class, "showSubCategory"])->name('show-subcategory');
 
     // products zone
     Route::get('/show-product/{slug}', [ProductController::class, "showProduct"])->name('show-product');
 
     // paiement zone --------------------------------------
     Route::get('/paiement', [PayController::class, "paiementView"])->name('paiement');
+
+    // seller zone --------------------------------------
+    Route::get('/seller-agreement', [SellerController::class, "sellerAgreement"])->name('seller-agreement');
+    Route::get('/seller-profile', [SellerController::class, "sellerProfile"])->name('seller-profile');
 
 
      // seller profile area--------------------------------------

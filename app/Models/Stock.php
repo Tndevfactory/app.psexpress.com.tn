@@ -19,7 +19,7 @@ class Stock extends Model
     protected $fillable = [
 
        
-
+        'id',
         'stock_slug',
 
         'fr_stock_name',

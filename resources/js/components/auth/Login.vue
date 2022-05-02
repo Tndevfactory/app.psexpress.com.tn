@@ -66,7 +66,7 @@
               @click.stop.prevent="passwordForm"
               href="#"
               class="text-decoration-none text-primary"
-              style="font-size: calc(12px + 6 * ((100vw - 320px) / 1880))"
+              style="font-size: 12px"
             >
               {{ $t("auth.forget_password") }}
             </a>
@@ -99,11 +99,7 @@
         <div
           class="col-12 d-flex justify-content-between align-items-center pb-4"
         >
-          <button
-            type="submit"
-            class="btn btn-primary"
-            style="font-size: calc(13px + 6 * ((100vw - 320px) / 1880))"
-          >
+          <button type="submit" class="btn btn-primary" style="font-size: 13px">
             {{ $t("auth.sign_in") }}
           </button>
 
@@ -111,7 +107,7 @@
             href="#"
             @click.stop.prevent="registerForm"
             class="text-decoration-none text-primary nowrap"
-            style="font-size: calc(12px + 6 * ((100vw - 320px) / 1880))"
+            style="font-size: 12px"
           >
             {{ $t("auth.no_account_please_sign_up") }}</a
           >

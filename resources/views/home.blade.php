@@ -186,7 +186,7 @@ $currency=session()->get('currency');
                style='height:auto;max-width:100%;display:block' alt={{ $stock->fr_stock_name }}
               
               >
-                  <a href=""   class="stretched-link ">  </a>
+                  <a href="{{ route('show-category', ['id'=> $stock->id,'slug'=>$stock->stock_slug ,'language' => Request()->language]) }}"   class="stretched-link ">  </a>
           </div>
           <span class='text-center d-block mt-2 categorie-caption text-uppercase '> 
                       @if(App::getLocale() === 'fr')

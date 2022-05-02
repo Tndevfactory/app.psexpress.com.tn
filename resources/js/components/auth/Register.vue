@@ -146,7 +146,7 @@
           <button
             type="submit"
             class="btn btn-primary nowrap"
-            style="font-size: calc(13px + 6 * ((100vw - 320px) / 1880))"
+            style="font-size: 13px"
           >
             {{ $t("auth.sign_up") }}
           </button>

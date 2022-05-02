@@ -4,24 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Stock;
 use App\Models\Product;
+use App\Models\Substock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
 {
-    public function showCategories(Request $request){
+    public function showCategory(Request $request){
 
-        $stocks= Stock::get();
+        $substocks = Substock::where('stock_id', $request->id)->get();
+        $products = Product::where('stock_id', $request->id)->orderBy(DB::raw('RAND()'))->paginate(15);
+        
+        $data=[
 
-        $products = Product::orderBy(DB::raw('RAND()'))->paginate(15);
-
-
-        return view('category', [
-
-            'products' => $products,
-            'stocks' => $stocks,
-
-        ]);
+                'products' => $products,
+                'substocks' => $substocks,
+        ];
+       
+        return view('category', $data );
        
     }
 
