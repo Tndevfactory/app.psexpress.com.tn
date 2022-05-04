@@ -1,4 +1,4 @@
-@extends('base')
+@extends('base') 
 
 @section('meta')
  <meta name="author" content="ch">
@@ -13,51 +13,67 @@
 
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
+            <li class="breadcrumb-item"><a href="{{ route('home',['language' => Request()->language]) }}">Home</a></li>
+             @if(App::isLocale('ar'))
+                {!!  "&nbsp;/&nbsp;" !!}
+              @endif
+            <li class="breadcrumb-item"><a href="{{ route('show-category',['slug'=>$stock->stock_slug ,'language' => Request()->language]) }}" 
+                class=" "> {{ $stock->fr_stock_name  }} </a></li>
+             <li class="breadcrumb-item"><a href="{{ route('show-subcategory',['slug'=>$substock->substock_slug ,'language' => Request()->language]) }}" 
+                class=" "> {{ $substock->fr_substock_name  }} </a></li>
+
+             <li class="breadcrumb-item active" aria-current="page">{{ $product->fr_product_ref }}</li>
           </ol>
         </nav>
      
-    <div class="row row-cols-1 row-cols-md-2 bg-light">
+    <div class="row row-cols-1 row-cols-md-2 bg-white">
 
-        <div class="col-12 col-md-6 ">
+        <div class="col-12 col-md-6 bg-white ">
 
-            <div class="teasing1 my-4" >
- 
-                <img class='img-fluid d-block' style='width:100%;object-fit: cover;'
-                src="{{ app()->environment('production') ? asset('public/media/cta/teasing1.webp') : asset('media/cta/teasing1.webp')}}" class="d-block w-100" alt="...">
-                
-            </div>
-
-            <div class="row mt-3">
-                <div class="col">
-                    <img class='img-fluid d-block' style='width:100%;object-fit: cover;'
-                    src="{{ app()->environment('production') ? asset('public/media/cta/teasing1.webp') : asset('media/cta/teasing1.webp')}}" class="d-block w-100" alt="...">
-     
-                </div>
-                <div class="col">
-                    <img class='img-fluid d-block' style='width:100%;object-fit: cover;'
-                    src="{{ app()->environment('production') ? asset('public/media/cta/teasing1.webp') : asset('media/cta/teasing1.webp')}}" class="d-block w-100" alt="...">
-     
-                </div>
-                <div class="col">
-                    <img class='img-fluid d-block' style='width:100%;object-fit: cover;'
-                    src="{{ app()->environment('production') ? asset('public/media/cta/teasing1.webp') : asset('media/cta/teasing1.webp')}}" class="d-block w-100" alt="...">
-     
-                </div>
-            </div>
+            <img-screener product="{{ $product }}"/>
+                  
 
         </div>
 
-        <div class="col-12 col-md-6 ">
+        <div class="col-12 col-md-6 bg-white shadow-sm">
            
-            <h5>product:</h5>
-            <ul class="list-group d-flex">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
+            <h5 class='fs-5 text-muted mt-2 bg-light p-3'>{{  ucfirst($product->fr_product_ref) }} </h5>
+            <ul class="list-group d-flex bg-white">
+                <li class="list-group-item border border-0 "> <span class=' text-muted'>Description:</span>  <span class=''>{{ $product->fr_description  }}</span>   </li>
+                <li class="list-group-item border border-0 "> <span class=' text-muted'>Color:</span>  <span class=''>{{ $product->fr_description  }} </span>   </li>
+                <li class="list-group-item border border-0 "> <span class='text-muted'>Seuil et prix:</span>    </li>
+                
+                <li class="list-group-item border border-0 d-flex9 justify-content-between pe-4"> 
+                    <table class='table table-borderless'>
+                        <tr>    
+                            <td>  <span class=" text-center">1..{{ number_format($product->seuil0,0,',',' ') }}</span></td>
+                            <td>   <span class=" text-center" >{{ number_format($product->seuil1,0,',',' ') }}..{{ number_format($product->seuil2,0,',',' ') }}</span></td>
+                            <td> <span  class=" text-center" >{{ number_format($product->seuil2,0,',',' ') }}++</span></td>
+                        </tr>    
+                        <tr>    
+                            <td>  <span class="text-nowrap">{{ number_format($product->price_seuil0,3,',',' ') }} DT</span></td>
+                            <td>    <span class="text-nowrap">{{ number_format($product->price_seuil1,3,',',' ') }} DT</span></td>
+                            <td>  <span class="text-nowrap text-success">{{ number_format($product->price_seuil2,3,',',' ') }} DT</span></td>
+                        </tr>    
+                    </table>
+                                     
+                </li>
+                <li class="list-group-item border border-0 "> <span class='text-muted'>Description ch:</span>  <span class=''>{{ $product->fr_description  }}</span>   </li>
+                <li class="list-group-item border border-0 "> <span class='text-muted'>Color:</span>  <span class=''>{{ $product->fr_description  }} </span>   </li>
+               
+                <li class="list-group-item border border-0 "> <span class=' text-muted'>Description:</span>  <span class=''>{{ $product->fr_description  }}</span>   </li>
+                <li class="list-group-item border border-0 "> <span class=' text-muted'>Color:</span>  <span class=''>{{ $product->fr_description  }} </span>   </li>
+               
+                <li class="list-group-item border border-0 "> <span class=' text-muted'>Description:</span>  <span class=''>{{ $product->fr_description  }}</span>   </li>
+                <li class="list-group-item border border-0 "> <span class=' text-muted'>Color:</span>  <span class=''>{{ $product->fr_description  }} </span>   </li>
+               
+                <li class="list-group-item border border-0 d-flex gap-2"> 
+                  
+                    <add-to-cart language={{ Request()->language }} product-id={{ $product->id }} large=true ></add-to-cart> 
+                    <a href="{{ route('home',['language' => Request()->language]) }}" class="btn btn-outline-primary d-block">back to shop</a>
+                 </li>
+              
+                
             </ul>
 
 
@@ -66,33 +82,15 @@
     </div> {{-- end product row--}}
 
     
-    {{-- apercu et avis  --}}
-    <h2 class='mt-5 mb-3 text-dark  py-2 text-center text-uppercase fs-5'>  {{ __('Apercu Products') }} </h2>
+    {{--  avis rating --}}
+    {{-- <h2 class='mt-5 mb-3 text-dark  py-2 text-center text-uppercase fs-5'>  {{ __('Avis') }} </h2> --}}
 
-    <ul class="nav nav-pills nav-justified fw-bold">
-
-        <li  class="nav-item ">
-          <a class="nav-link btn tablinks apercu active" href="#">Apercu</a>
-        </li>
-
-        <li  class="nav-item ">
-          <a class="nav-link btn tablinks avis" href="#">Avis</a>
-        </li>
-       
-      </ul>
-
-      <!-- Tab content -->
-        <div id="London" class="tabcontent">
-            <h3>Details techniques</h3>
-            <p>details technique</p>
+     
+        <div id="avis" class="avis">
+            <h3>Avis </h3>
+            <p></p>
         </div>
-        
-        <div id="Paris" class="tabcontent">
-            <h3>Avis</h3>
-            <p>avis vendeurs</p>
-        </div>
-
-
+      
     {{-- produits similaires apercu et avis  --}}
 
      {{-- start similar products --}}
@@ -111,4 +109,5 @@
 </div> {{-- end container  --}}
 
 @endsection
+
 

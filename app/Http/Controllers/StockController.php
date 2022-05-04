@@ -10,18 +10,20 @@ use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
 {
-    public function showCategory(Request $request){
+    public function showStock(Request $request){
 
-        $substocks = Substock::where('stock_id', $request->id)->get();
-        $products = Product::where('stock_id', $request->id)->orderBy(DB::raw('RAND()'))->paginate(15);
-        
+        $stock = Stock::where('stock_slug', $request->slug)->first();
+        $substocks = Substock::where('stock_id', $stock->id)->withCount('products')->get();
+        $products = Product::where('stock_id', $stock->id)->orderBy(DB::raw('RAND()'))->paginate(6)->withQueryString();;
+      
         $data=[
 
                 'products' => $products,
                 'substocks' => $substocks,
+                'stock' => $stock,
         ];
        
-        return view('category', $data );
+        return view('stock', $data );
        
     }
 

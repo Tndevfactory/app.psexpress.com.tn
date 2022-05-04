@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Photo;
 use App\Models\Stock;
 use App\Models\Category;
+use App\Models\Substock;
 use App\Models\Wishlist;
 use App\Models\Subcategory;
 use App\Models\Ratingproduct;
@@ -75,35 +76,31 @@ class Product extends Model
 
     ];
 
-    public function getEuroPriceAttribute(){
+   
 
-        $currency = DB::table('currencies')->where('name','euro')->first();
-        return $this->price * $currency->value_in_dollar;
-
-    }
-
-   public function subcategory(){
-
-       return $this->belongsTo(Subcategory::class);
-   }
+  
    public function stock(){
 
        return $this->belongsTo(Stock::class);
    }
+   public function substock(){
 
-   public function images(){
-    return $this->hasMany(Photo::class);
-    }
+       return $this->belongsTo(Substock::class);
+   }
 
-   public function ratingproducts(){
-    return $this->hasMany(Ratingproduct::class);
-    }
-   public function commentproducts(){
-    return $this->hasMany(Commentproduct::class);
-    }
+//    public function images(){
+//     return $this->hasMany(Photo::class);
+//     }
 
-    public function wishlists(){
-        return $this->hasMany(Wishlist::class);
-        }
+//    public function ratingproducts(){
+//     return $this->hasMany(Ratingproduct::class);
+//     }
+//    public function commentproducts(){
+//     return $this->hasMany(Commentproduct::class);
+//     }
+
+//     public function wishlists(){
+//         return $this->hasMany(Wishlist::class);
+//         }
 
 }

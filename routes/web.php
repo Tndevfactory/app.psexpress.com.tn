@@ -30,10 +30,10 @@ Route::Redirect('/', '/fr');
     Route::get('/contact-us', [HomeController::class, "contactUs"])->name('contact-us');
  
     // Stock categories zone
-    Route::get('/show-category/{slug}', [StockController::class, "showCategory"])->name('show-category');
+    Route::get('/show-category/{slug}', [StockController::class, "showStock"])->name('show-category');
 
     // Stock subcategories zone
-    Route::get('/show-subcategory/{slug}', [SubstockController::class, "showSubCategory"])->name('show-subcategory');
+    Route::get('/show-subcategory/{slug}', [SubstockController::class, "showSubstock"])->name('show-subcategory');
 
     // products zone
     Route::get('/show-product/{slug}', [ProductController::class, "showProduct"])->name('show-product');

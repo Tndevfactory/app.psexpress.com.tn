@@ -38342,17 +38342,39 @@ textarea.form-control-lg {
 }
 
 body {
-  font-size: 14px !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
   font-family: "Roboto", Fallback, sans-serif;
   color: #313030 !important;
   line-height: 26px !important;
   overflow-x: hidden !important;
   background-color: white !important;
 }
+body .form-select {
+  box-shadow: none;
+  border-color: #b9baba;
+}
+body .form-select:hover {
+  box-shadow: none;
+  border-color: #b9baba;
+}
+body .form-select:focus {
+  box-shadow: none;
+  border-color: #b9baba;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  color: #ffaa00;
+}
 
 @media only screen and (max-width: 700px) {
   body {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 }
 .light .btn:focus,
@@ -38418,6 +38440,11 @@ body {
     padding: 1rem;
   }
 }
+.light .logo {
+  height: 35px !important;
+  width: 35px !important;
+  border-radius: 50%;
+}
 .light .second-navbar {
   background-color: white;
   z-index: 199;
@@ -38431,7 +38458,7 @@ body {
 .light .navbar-under {
   background-color: transparent;
   position: static;
-  height: 1rem;
+  min-height: 1rem;
 }
 .light .search-bar {
   width: 80%;

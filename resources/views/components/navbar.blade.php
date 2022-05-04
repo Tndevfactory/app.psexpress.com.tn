@@ -16,10 +16,11 @@ $currency=session()->get('currency');
 
 <nav class="header ">
   <div class="container px-3 d-flex justify-content-between align-items-center  ">
-
+    
     <div class="info d-flex justify-content-center align-items-center">
-      <a href='#' class='text-decoration-none'>
-       <i class='mdi mdi-star-circle text-white'></i> <span class='text-white fs-6'>Vendre sur psexpress</span> 
+      <a href="{{ route('seller-agreement', ['language' => Request()->language]) }}" class='text-decoration-none'>
+       <i class='mdi mdi-star-circle text-white'></i> 
+       <span class='text-white fs-6'>Vendre sur psexpress</span> 
       </a>
     </div>
      
@@ -67,10 +68,12 @@ $currency=session()->get('currency');
       <div class="col-md-2  d-flex justify-content-start align-items-center">
         
         <div class="d-inline-block mb-1 mb-md-0 ">
-          <img src="{{ app()->environment('production') ? asset('public/media/logo/newlogopsexpress.jpg') : 
-              asset('/media/logo/newlogopsexpress.jpg')}}"
-           alt="logo psexpress" style='height:35px;width:35px'>
-          <h4 class="d-inline-block text-capitalize" style='color:#000000'>psexpress</h4>
+          <a href="{{ route('home',['language' => Request()->language]) }}">
+            <img src="{{ app()->environment('production') ? asset('public/media/logo/newlogopsexpress.jpg') : 
+                asset('/media/logo/newlogopsexpress.jpg')}}"
+            alt="logo psexpress" class="logo">
+            <h4 class="d-inline-block text-capitalize" style='color:#000000'>psexpress</h4>
+         </a>
         </div>
       </div>
       <div class="col-md-8 ">
@@ -87,7 +90,7 @@ $currency=session()->get('currency');
                 style="{{ App::getLocale() === 'ar' ? 'text-align:right; direction: rtl' : 'text-align:left; direction: ltr'}}">
               
                 <li class="dropdown-l2 position-relative" >
-                  <a class="dropdown-item" href="#" >
+                  <a class="dropdown-item" href="{{ route('show-category', ['slug'=>'telephonie','language' => Request()->language]) }}" >
                   
                     <i class='mdi mdi-cellphone text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2 ' : 'me-2'}} '></i>
                     {{ __('Téléphonie') }}</a>
@@ -97,19 +100,19 @@ $currency=session()->get('currency');
                     dropdown-menu">
                       <div class="row row-cols-12 row-cols-md-2">
                         <div class="col ">
-                         <a href="">{{ __('Smartphone') }}</a> 
+                         <a href="{{ route('show-subcategory',['slug'=>'smartphone' ,'language' => Request()->language]) }}">{{ __('Smartphone') }}</a> 
                         </div>
                         <div class="col ">
                           
-                          <a href="" class='text-nowrap '>{{ __('Téléphone portable') }}</a> 
+                          <a href="{{ route('show-subcategory',['slug'=>'telephone-portable' ,'language' => Request()->language]) }}" class='text-nowrap '>{{ __('Téléphone portable') }}</a> 
                         </div>
                         <div class="col ">
                           
-                          <a href="">{{ __('Tablette tactile') }}</a> 
+                          <a href="{{ route('show-subcategory',['slug'=>'tablette' ,'language' => Request()->language]) }}">{{ __('Tablette tactile') }}</a> 
                         </div>
                         <div class="col ">
                          
-                          <a href=""> {{ __('Accessoire téléphone') }}</a> 
+                          <a href="{{ route('show-subcategory',['slug'=>'accessoire-telephone' ,'language' => Request()->language]) }}"> {{ __('Accessoire téléphone') }}</a> 
                         </div>
                       </div>
         
@@ -117,91 +120,91 @@ $currency=session()->get('currency');
                   
                 </li>
                 <li class="dropdown-l2 position-relative">
-                  <a class="dropdown-item" href="#" >
+                  <a class="dropdown-item" href="{{ route('show-category', ['slug'=>'infomatique','language' => Request()->language]) }}" >
                     <i class='mdi mdi-desktop-classic text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
                     {{ __('Informatique') }}</a>
                   <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} 
                       dropdown-menu" aria-labelledby="dropdownMenuButton1">
                      <div class="row row-cols-12 row-cols-md-2">
                         <div class="col">
-                          <a href="">{{ __('Ordinateur portable') }}</a> 
+                          <a href="{{ route('show-subcategory',['slug'=>'laptop' ,'language' => Request()->language]) }}">{{ __('Ordinateur portable') }}</a> 
                         </div>
                         <div class="col">
-                          <a href=""> {{ __('Ordinateur de bureau') }}</a> 
+                          <a href="{{ route('show-subcategory',['slug'=>'desktop' ,'language' => Request()->language]) }}"> {{ __('Ordinateur de bureau') }}</a> 
                         </div>
                         <div class="col">
-                          <a href=""> {{ __('Accessoires informatique') }}</a> 
+                          <a href="{{ route('show-subcategory',['slug'=>'accessoire-info' ,'language' => Request()->language]) }}"> {{ __('Accessoires informatique') }}</a> 
                         </div>
                       </div>
                   </ul>
                 
                 </li>
                 <li class="dropdown-l2 position-relative">
-                  <a class="dropdown-item" href="#" >
+                  <a class="dropdown-item" href="{{ route('show-category', ['slug'=>'multimedia','language' => Request()->language]) }}" >
                     <i class='mdi mdi-play-network text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
                     {{ __('Multimédia') }}</a>
                   <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <div class="row row-cols-12 row-cols-md-2">
                       <div class="col">
-                        <a href="">{{ __('Televiseur') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'televiseur' ,'language' => Request()->language]) }}">{{ __('Televiseur') }}</a> 
                       </div>
                       <div class="col">
-                        <a href=""> {{ __('Video-projecteur') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'video-projecteur' ,'language' => Request()->language]) }}"> {{ __('Video-projecteur') }}</a> 
                       </div>
                       <div class="col">
-                        <a href=""> {{ __('Appareil photo') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'appareil-photo' ,'language' => Request()->language]) }}"> {{ __('Appareil photo') }}</a> 
                       </div>
                       <div class="col">
-                        <a href="">{{ __('Console de jeux') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'console-jeux' ,'language' => Request()->language]) }}">{{ __('Console de jeux') }}</a> 
                       </div>
                       <div class="col">
-                        <a href="">{{ __('Audio et son') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'son' ,'language' => Request()->language]) }}">{{ __('Audio et son') }}</a> 
                       </div>
                       <div class="col">
-                        <a href="">{{ __('Recepteur') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'recepteur' ,'language' => Request()->language]) }}">{{ __('Recepteur') }}</a> 
                       </div>
                     </div>
                   </ul>
                 </li>
                 <li class="dropdown-l2 position-relative">
-                  <a class="dropdown-item" href="#" >
+                  <a class="dropdown-item" href="{{ route('show-category', ['slug'=>'stockage','language' => Request()->language]) }}" >
                     <i class='mdi mdi-content-save-settings text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
                     {{ __('Stockage') }}</a>
                   <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <div class="row row-cols-12 row-cols-md-2">
                       <div class="col">
-                        <a href=""> {{ __('Disque interne') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'disque-interne' ,'language' => Request()->language]) }}"> {{ __('Disque interne') }}</a> 
                       </div>
                       <div class="col">
-                        <a href="">{{ __('Disque dur externe') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'disque-dur-externe' ,'language' => Request()->language]) }}">{{ __('Disque dur externe') }}</a> 
                       </div>
                       <div class="col">
-                        <a href=""> {{ __('Cle usb') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'cle-usb' ,'language' => Request()->language]) }}"> {{ __('Cle usb') }}</a> 
                       </div>
                       <div class="col">
-                        <a href="">{{ __('Carte memoire') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'carte-memoire' ,'language' => Request()->language]) }}">{{ __('Carte memoire') }}</a> 
                       </div>
                       <div class="col">
-                        <a href="">{{ __('Cd et dvd') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'cd-et-dvd' ,'language' => Request()->language]) }}">{{ __('Cd et dvd') }}</a> 
                       </div>
                     
                     </div>
                   </ul>
                 </li>
                 <li class="dropdown-l2 position-relative">
-                  <a class="dropdown-item" href="#" >
+                  <a class="dropdown-item" href="{{ route('show-category', ['slug'=>'securite','language' => Request()->language]) }}" >
                     <i class='mdi mdi-camera-lock text-dark fs-6 {{ App::getLocale() === 'ar' ? 'ms-2' : 'me-2'}} '></i>
                     {{ __('Securite') }}</a>
                   <ul class=" dropdown-l3 {{ App::getLocale() === 'ar' ? 'dropdown-l3-rtl' : 'dropdown-l3-ltr'}} dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <div class="row row-cols-12 row-cols-md-2">
                       <div class="col">
-                        <a href=""> {{ __('Camera de surveillence') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'camera-de-surveillence' ,'language' => Request()->language]) }}"> {{ __('Camera de surveillence') }}</a> 
                       </div>
                       <div class="col">
-                        <a href=""> {{ __('Systeme d\'alarme') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'sys-alarme' ,'language' => Request()->language]) }}"> {{ __('Systeme d\'alarme') }}</a> 
                       </div>
                       <div class="col">
-                        <a href="">{{ __('Onduleurs') }}</a> 
+                        <a href="{{ route('show-subcategory',['slug'=>'onduleurs' ,'language' => Request()->language]) }}">{{ __('Onduleurs') }}</a> 
                       </div>
                       
                     </div>

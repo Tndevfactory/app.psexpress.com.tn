@@ -56,9 +56,9 @@
                     <tbody style='font-size:0.8rem'>
                       <tr>
                       
-                        <td class="text-nowrap">{{ number_format($product->price_seuil0,3,',',' ') }} DT</td>
-                        <td class="text-nowrap">{{ number_format($product->price_seuil1,3,',',' ') }} DT</td>
-                        <td class="text-nowrap text-success">{{ number_format($product->price_seuil2,3,',',' ') }} DT</td>
+                        <td class="text-nowrap">{{ number_format($product->price_seuil0,3,',',' ') }}</td>
+                        <td class="text-nowrap">{{ number_format($product->price_seuil1,3,',',' ') }}</td>
+                        <td class="text-nowrap text-success">{{ number_format($product->price_seuil2,3,',',' ') }}</td>
                       </tr>
                     
                     </tbody>
@@ -86,23 +86,24 @@
                     </tbody>
                   </table>
             </div>             {{-- end price --}}
-
-
-              <div class='buy-button-div-mobile row row-cols-2 gx-1 d-md-none d-flex' >
-                <div class="col-5 bg-info border-2 d-flex justify-content-center">
-                  <a href='#'  class='btn buy-button-link_mobile' title='details' style='font-size:0.8rem'>Voir</a>
-                </div>
-                <div class="col-5 offset-1 bg-warning border-2 d-flex justify-content-center">
-                  <a href='#'  class='btn buy-button-link_mobile  ' title='buy' style='font-size:0.8rem'>Acheter</a>
-                </div>
-              </div>
+            <div class='buy-button-div-mobile  d-md-none d-flex justify-content-between bg-white' >
+                
+              <a href='#'  class=' btn btn-outline-primary ' title='more detail' ><i class='mdi mdi-eye'></i></a>
         
-          
+              <add-to-cart language={{ Request()->language }} product-id={{ $product->id }}></add-to-cart> 
+        
+              <a href='#'  class=' btn btn-outline-danger  9buy-button-link' title='add to wish list' ><i class=' mdi mdi-cards-heart'></i></a>
+           
+          </div>
+    
+      
 
-              <div class='buy-button-div d-none d-md-flex' >
-                      {{-- <a href='#'  class=' btn btn-primary  9buy-button-link' title='buy' >Voir</a> --}}
-                      <add-to-cart language={{ Request()->language }} product-id={{ $product->id }}></add-to-cart> 
-              </div>
+          <div class='buy-button-div d-none d-md-flex bg-white' >
+                  <a href='{{ route('show-product', ['slug'=> $product->product_slug ,'language' => Request()->language]) }}' 
+                     class=' btn btn-outline-primary ' title='more detail' ><i class='mdi mdi-eye'></i></a>
+                  <add-to-cart language={{ Request()->language }} product-id={{ $product->id }}></add-to-cart> 
+                  <a href='#'  class=' btn btn-outline-danger  9buy-button-link' title='add to wish list' ><i class=' mdi mdi-cards-heart'></i></a>
+          </div>
           
       </div>         {{-- end cardbody--}}
      

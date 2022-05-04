@@ -19,7 +19,7 @@ import * as en from "./../lang/en.json";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
-import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 // Make BootstrapVue available throughout your project
@@ -135,6 +135,12 @@ Vue.component(
 
 //home zone ------------------------------------------
 // Vue.component("home-deal", require("./components/home/Deal.vue").default);
+
+//product zone ------------------------------------------
+Vue.component(
+  "img-screener",
+  require("./components/product_page/ImgScreener.vue").default
+);
 
 // common zone ------------------------------------------
 

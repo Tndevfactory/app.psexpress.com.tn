@@ -23,17 +23,38 @@
 
 body {
   // font-size: calc(13px + 6 * ((100vw - 320px) / 1880)) !important;
-  font-size: 14px !important;
+  font-size: 13px !important;
+
+  font-weight: 400 !important;
   font-family: "Roboto", Fallback, sans-serif;
   color: rgb(49, 48, 48) !important;
   line-height: 26px !important;
   overflow-x: hidden !important;
   background-color: rgb(255, 255, 255) !important;
+  .form-select {
+    box-shadow: none;
+    border-color: rgb(185, 186, 186);
+    &:hover {
+      box-shadow: none;
+      border-color: rgb(185, 186, 186);
+    }
+    &:focus {
+      box-shadow: none;
+      border-color: rgb(185, 186, 186);
+    }
+  }
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+a:hover {
+  color: rgb(255, 170, 0);
 }
 
 @media only screen and (max-width: 700px) {
   body {
     // font-size: calc(15px + 6 * ((100vw - 320px) / 1880)) !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 }

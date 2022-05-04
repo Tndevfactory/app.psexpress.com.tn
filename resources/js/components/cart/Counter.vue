@@ -10,6 +10,7 @@
       <div
         v-if="getCartCounter !== '' && getCartCounter !== 0"
         class="counter_count"
+        :style="styled"
       >
         {{ getCartCounter === 0 ? "" : getCartCounter }}
       </div>
@@ -45,6 +46,11 @@ export default {
       "error",
       "lang",
     ]),
+    styled() {
+      return {
+        left: this.lang === "ar" ? "0rem" : "1rem",
+      };
+    },
   },
 
   methods: {
@@ -60,6 +66,7 @@ export default {
     this.appEnv = window.axios.defaults.appEnv;
     // console.log(this.appEnv);
     // console.log(this.url);
+    //console.log(this.lang);
   },
 };
 </script>
@@ -69,6 +76,7 @@ export default {
   position: relative;
   color: #000;
   padding: 0 !important;
+  bottom: 2px;
   .counter_count {
     display: flex;
     justify-content: center;

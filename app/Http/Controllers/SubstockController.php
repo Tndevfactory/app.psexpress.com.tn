@@ -5,27 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\Stock;
 use App\Models\Product;
 use App\Models\Substock;
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\StoreSubstockRequest;
-use App\Http\Requests\UpdateSubstockRequest;
 
 class SubstockController extends Controller
 {
 
+        public function showSubstock(Request $request){
 
-    public function showSubCategories(){
-        $stocks= Stock::get();
+           
+            
+            $substock = Substock::where('substock_slug', $request->slug)->first();
 
-        $products = Product::orderBy(DB::raw('RAND()'))->paginate(15);
-
-
-        return view('subcategory', [
-
-            'products' => $products,
-            'stocks' => $stocks,
-
-        ]);
-    }
+            $stock = Stock::where('id', $substock->stock_id)->first();
+           
+            $products = Product::where('substock_id', $substock->id)->with('substock')->orderBy(DB::raw('RAND()'))->paginate(12)->withQueryString();;
+           
+            $data=[
+    
+                    'products' => $products,
+                    'substock' => $substock ,
+                    'stock' => $stock,
+                   
+            ];
+           // dd( $data );
+            return view('substock', $data );
+           
+        }
+   
 
     public function apiAllSubstocks(Product $product){
 

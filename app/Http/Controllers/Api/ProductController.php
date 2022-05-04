@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Stock;
 use App\Models\Product;
+use App\Models\Substock;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,19 +16,23 @@ class ProductController extends Controller
 
     public function showProduct(Request $requet){
 
-        $stocks= Stock::get();
+        $product = Product::where('product_slug', $requet->slug)->first();
+        $stock = Stock::where('id', $product->stock_id)->first();
+        $substock = Substock::where('id', $product->substock_id)->first();
 
-        $products = Product::orderBy(DB::raw('RAND()'))->paginate(15);
+        // similar product
+        $similar_products = Product::where('substock_id', $substock->id)->paginate(9);
 
-        $product = Product::where('product_slug', 'gg1')->first();
+        $data=[
 
-        return view('product', [
-
-            'products' => $products,
             'product' => $product,
-            'stocks' => $stocks,
+            'stock' => $stock,
+            'substock' => $substock,
+            'products' => $similar_products,
 
-        ]);
+        ];
+
+        return view('product', $data);
        
        
     }
