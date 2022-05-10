@@ -19,6 +19,7 @@
   <nav aria-label="breadcrumb"> 
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('home',['language' => Request()->language]) }}">Home</a></li>
+        @if(App::isLocale('ar'))   {!!  "&nbsp;/&nbsp;" !!}    @endif
       <li class="breadcrumb-item"><a href="{{ route('show-category',['slug'=>$stock->stock_slug ,'language' => Request()->language]) }}" 
          class=" "> {{ $stock->fr_stock_name  }} </a></li>
       <li class="breadcrumb-item active" aria-current="page">{{ $substock->fr_substock_name }}</li>
@@ -36,7 +37,7 @@
 
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col-12 col-md-2 bg-white shadow-sm">
-      <h6>Produits:</h6>
+   
       <ul class="list-group d-flex">
         <li class="list-group-item border border-0">{{ ucfirst($substock->fr_substock_name) }}</li>
         

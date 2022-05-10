@@ -19,25 +19,31 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('home',['language' => Request()->language]) }}">Home</a></li>
+        @if(App::isLocale('ar'))   {!!  "&nbsp;/&nbsp;" !!}    @endif
       <li class="breadcrumb-item active" aria-current="page">{{ $stock->fr_stock_name }}</li>
     </ol>
   </nav>
 
-  <form action="" class='form d-block' >
-    <select name="filter_category" class=" f-select form-select form-select-sm me-4 " aria-label=".form-select-sm example">
+  <form id="stock_form" method="GET" action="{{ route('stock-filter',['language' => Request()->language]) }}" class='stock_form d-block' >
+    <select id="stock_filter" onchange="myFunction()"  
+            name="q" 
+            class=" stock_filter form-select form-select-sm me-4 " 
+            aria-label=".form-select-sm example">
       <option selected disabled>Trier</option>
       <option value="priceD">prix descendant</option>
       <option value="priceA">prix descendant</option>
       <option value="nomA">par nom Ascendant</option>
       <option value="nomD">par nom Descendant</option>
     </select>
+
   </form>
 
 </div>
 
+
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col-12 col-md-2 bg-white shadow-sm">
-      <h6>Subcategories:</h6>
+      
       <ul class="list-group d-flex">
         @foreach ($substocks as $substock)
            <li class="list-group-item border border-0">

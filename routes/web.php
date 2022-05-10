@@ -31,6 +31,7 @@ Route::Redirect('/', '/fr');
  
     // Stock categories zone
     Route::get('/show-category/{slug}', [StockController::class, "showStock"])->name('show-category');
+    Route::get('/stock-filter', [StockController::class, "stockFilter"])->name('stock-filter');
 
     // Stock subcategories zone
     Route::get('/show-subcategory/{slug}', [SubstockController::class, "showSubstock"])->name('show-subcategory');

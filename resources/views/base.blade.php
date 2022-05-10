@@ -262,6 +262,17 @@ $menu_categories = session()->get('menu');
   
   </script>
 
+<script>
+
+  
+  function myFunction() {
+    var x = document.getElementById("stock_filter").value;
+    console.log(x);
+   
+    document.getElementById("stock_form").submit()
+  }
+  </script>
+
 @yield('js')
      
     

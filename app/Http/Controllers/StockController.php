@@ -10,6 +10,24 @@ use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
 {
+    public function stockFilter(Request $request){
+        dd($request->q);
+        $request->whenHas($request->q, fn ($value) => $model->$field = $value);
+
+        $stock = Stock::where('stock_slug', $request->slug)->first();
+        $substocks = Substock::where('stock_id', $stock->id)->withCount('products')->get();
+        $products = Product::where('stock_id', $stock->id)->orderBy(DB::raw('RAND()'))->paginate(6)->withQueryString();;
+      
+        $data=[
+
+                'products' => $products,
+                'substocks' => $substocks,
+                'stock' => $stock,
+        ];
+       
+        return view('stock', $data );
+       
+    }
     public function showStock(Request $request){
 
         $stock = Stock::where('stock_slug', $request->slug)->first();
