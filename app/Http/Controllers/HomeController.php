@@ -13,6 +13,21 @@ use App\Http\Controllers\MailController;
 class HomeController extends Controller
 {
 
+    public function preludeLogin(Request $request){
+        $stocks= Stock::get();
+        $products = Product::orderBy(DB::raw('RAND()'))->paginate(15);
+       
+
+        return view('prelude-login', [
+
+            'products' => $products,
+            'stocks' => $stocks,
+
+        ] );
+
+        
+    }
+
     public function login(Request $request){
 
         return view('login');

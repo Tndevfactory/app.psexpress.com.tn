@@ -38569,6 +38569,58 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.light .footer-pre {
+  color: white;
+  background-image: linear-gradient(to bottom, #323232 0%, #3f3f3f 40%, #1c1c1c 150%), linear-gradient(to top, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.15) 200%), url("/media/ui/footer/footer.jpg");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.light .value-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+@media (max-width: 700px) {
+  .light .value-text {
+    font-size: 0.7rem;
+  }
+}
+.light .info-link {
+  font-size: 0.8rem;
+}
+@media (max-width: 700px) {
+  .light .info-link {
+    font-size: 0.7rem;
+  }
+}
+.light .footer-list-header {
+  font-size: 1rem;
+  text-decoration: none;
+  color: white;
+}
+@media (max-width: 700px) {
+  .light .footer-list-header {
+    font-size: 0.8rem;
+  }
+}
+.light .footer-list-link {
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: white;
+  transition: 0.5 s;
+}
+@media (max-width: 700px) {
+  .light .footer-list-link {
+    font-size: 0.7rem;
+  }
+}
+.light .footer-list-link:hover {
+  color: orange;
+}
+.light .copyright {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .light .categories-title {
   background-color: #2a2a2a;
   -webkit-background-clip: text;

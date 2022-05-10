@@ -115,11 +115,11 @@ $menu_categories = session()->get('menu');
    
     <div id='app'> {{-- all vue application could be placed in content section --}}
 
-      @if(Request::segment(2) && Request::segment(2) !== 'verify' && Request::segment(2) !== 'reset-password-api')
+      @if(Request::segment(2) && Request::segment(2) !== 'verify'  && Request::segment(2) !== 'login' && Request::segment(2) !== 'prelude' && Request::segment(2) !== 'reset-password-api')
               @include('components.navbar') 
       @endif
 
-                <div class='container my-2 '>
+                <div class='container '>
                      @if(session()->get('success'))
                     <div class='  animate__animated animate__fadeOutUp animate__delay-3s alert alert-success fs-6  py-1 text-center' role="alert"> {{  session()->get('success')}}</div>
                     @endif
@@ -155,7 +155,7 @@ $menu_categories = session()->get('menu');
          </main>
              
         
-      @if(Request::segment(2) && Request::segment(2) !== 'verify' && Request::segment(2) !== 'reset-password-api')
+      @if(Request::segment(2)  && Request::segment(2) !== 'login' && Request::segment(2) !== 'verify' && Request::segment(2) !== 'prelude' && Request::segment(2) !== 'reset-password-api')
               @include('components.footer')
       @endif
 

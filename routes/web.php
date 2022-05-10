@@ -13,13 +13,16 @@ use App\Http\Controllers\Api\ProductController;
 use Symfony\Component\Console\Output\StreamOutput;
 
 
-Route::Redirect('/', '/fr');
+Route::Redirect('/', '/fr/prelude');
 
     Route::group(['prefix'=>'{language}'], function(){
 
  
+    //prelude-login
+    Route::get('/prelude', [HomeController::class, "preludeLogin"])->name('prelude');
+
     //login zone
-    Route::get('/', [HomeController::class, "login"])->name('login-init');
+    Route::get('/login', [HomeController::class, "login"])->name('login-init');
     Route::get('/verify', [LoginController::class, "verify"])->name('verify');
     Route::get('/reset-password-api', [LoginController::class, "resetPassword"])->name('reset-password-api');
     Route::get('/logout', [LoginController::class, "logout"])->name('logout');
