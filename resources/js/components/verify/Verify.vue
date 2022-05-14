@@ -101,7 +101,7 @@ export default {
       };
     },
     publicUrl() {
-      let publicMedia = this.appEnv === "local" ? "media/" : "public/media/";
+      let publicMedia = this.appEnv === "local" ? "media/" : "media/";
       let publicPath = this.url + publicMedia;
       return publicPath;
     },

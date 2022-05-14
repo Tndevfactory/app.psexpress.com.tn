@@ -14,7 +14,7 @@
     <h5 class="offcanvas-title text-uppercase " id="offcanvasWithBackdropLabel">
       <a class="text-decoration-none  navbar-brand"  href="{{ route('home', App::getLocale())}}"> 
 
-          <img src='{{ app()->environment('production') ? asset('public/media/ui/logo/hitcom-logo.jpg') : asset('media/ui/logo/hitcom-logo.jpg')}}' 
+          <img src='{{ app()->environment('production') ? asset('media/ui/logo/hitcom-logo.jpg') : asset('media/ui/logo/hitcom-logo.jpg')}}' 
               style='width:2.3rem;height:2.3rem; border-radius:50%; border:2px #fff solid;padding:0px; margin-top:-6px;' alt=''/>
 
           <span class='text-lead h4 text-uppercase products-title  d-inline-block '>  {{ __('hitcom') }}</span>

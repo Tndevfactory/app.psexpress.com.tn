@@ -35,7 +35,7 @@
   <div class="row g-0">
 
     <div class="col-md-2">
-      <img src="{{ app()->environment('production') ? asset(isset($product->images[0]->product_image) ? 'public/'.$product->images[0]->product_image : 'public/media/products/support.png') :
+      <img src="{{ app()->environment('production') ? asset(isset($product->images[0]->product_image) ? $product->images[0]->product_image : 'media/products/support.png') :
          asset(isset($product->images[0]->product_image) ? $product->images[0]->product_image : 'media/products/support.png')}}"
       class="img-fluid rounded-start" alt="...">
     </div>

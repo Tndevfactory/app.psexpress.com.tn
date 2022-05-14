@@ -65,7 +65,7 @@ export default {
   computed: {
     ...mapGetters(["getUser", "loading", "success", "error", "lang"]),
     publicUrl() {
-      let publicMedia = this.appEnv === "local" ? "" : "public/";
+      let publicMedia = this.appEnv === "local" ? "" : "";
       let publicPath = this.url + publicMedia;
       return publicPath;
     },

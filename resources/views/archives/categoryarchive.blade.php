@@ -306,7 +306,7 @@
                   echo $product->images[0]->product_image;
                   @endphp --}}
 
-                   <img src="{{ app()->environment('production') ? asset(isset($product->images[0]->product_image) ? 'public/'.$product->images[0]->product_image : 'public/media/products/support.png') :
+                   <img src="{{ app()->environment('production') ? asset(isset($product->images[0]->product_image) ? $product->images[0]->product_image : 'public/media/products/support.png') :
          asset(isset($product->images[0]->product_image) ? $product->images[0]->product_image : 'media/products/support.png')}}"
          class="card-img-top" alt="...">
 
@@ -445,7 +445,7 @@
         @for ($i =0 ; $i < 5 ; $i++)
           <div class="swiper-slide">
               <a href='#'> 
-                <img src="{{ app()->environment('production') ? asset('public/media/products/wood-bol-product-img-thumb.png') : asset('media/products/wood-bol-product-img-thumb.png')}}" class="img-fluid" alt="...">
+                <img src="{{ app()->environment('production') ? asset('media/products/wood-bol-product-img-thumb.png') : asset('media/products/wood-bol-product-img-thumb.png')}}" class="img-fluid" alt="...">
                 </a>
           </div>
         @endfor

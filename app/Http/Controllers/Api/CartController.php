@@ -85,7 +85,7 @@ class CartController extends Controller
             $product_not_found='Produit inexistant';
             $stock_threshhold='Limite de stock ';
 
-            $product_name = $product->fr_product_name;
+            $product_name = $product->fr_product_ref;
 
         }elseif($lang ==='en'){
 
@@ -95,7 +95,7 @@ class CartController extends Controller
             // errors
             $product_not_found='Non-existent product';
             $stock_threshhold='Stock limit ';
-            $product_name = $product->en_product_name;
+            $product_name = $product->en_product_ref;
 
         }else{ //ar
 
@@ -105,7 +105,7 @@ class CartController extends Controller
             // errors
             $product_not_found='منتج غير موجود';
             $stock_threshhold='حد المخزون ';
-            $product_name = $product->ar_product_name;
+            $product_name = $product->ar_product_ref;
 
         }
 

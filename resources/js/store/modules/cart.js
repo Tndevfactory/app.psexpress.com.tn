@@ -33,6 +33,7 @@ const actions = {
       const response = await axios.get(url, pid);
 
       if (response.data.response_code === 200) {
+        //console.log(response.data.cart);
         commit("setCart", response.data.cart);
         commit("setCompta", response.data.compta);
         commit("setCartCount", response.data.cart_counter);

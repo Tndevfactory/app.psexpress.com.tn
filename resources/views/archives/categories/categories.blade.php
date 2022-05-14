@@ -219,7 +219,7 @@ $currency=session()->get('currency');
   @foreach ($categories as $category)
       <div class="col mb-3">
          <div class="card card-categorie text-white border border-0 h-100">
-              <img src="{{ app()->environment('production') ? asset('public/'.$category->category_image) : asset($category->category_image)}}"
+              <img src="{{ app()->environment('production') ? asset($category->category_image) : asset($category->category_image)}}"
               class="card-img" alt="...">
               <div class="card-img-overlay ">
 
@@ -261,7 +261,7 @@ $currency=session()->get('currency');
 
       <img src="{{
       app()->environment('production') ? asset(isset($product->images[0]->product_image)
-      ? 'public/'.$product->images[0]->product_image : 'public/media/products/support.png') :
+      ? 'public/'.$product->images[0]->product_image : 'media/products/support.png') :
        asset(isset($product->images[0]->product_image) ? $product->images[0]->product_image : 'media/products/support.png')}}"
        class="card-img-top" alt="...">
 

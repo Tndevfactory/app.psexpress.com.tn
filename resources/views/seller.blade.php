@@ -39,7 +39,7 @@
     <div class='row row-cols-1 row-cols-md-2 product-details'>
 
         <div class='col d-flex justify-content-center'>
-        <img id='imgScreen' src="{{ app()->environment('production') ? asset(isset($shop->shop_image) ? 'public/'.$shop->shop_image : 'public/media/products/support.png') :
+        <img id='imgScreen' src="{{ app()->environment('production') ? asset(isset($shop->shop_image) ? $shop->shop_image : 'public/media/products/support.png') :
          asset(isset($shop->shop_image) ? $shop->shop_image : 'media/products/support.png')}}"
          class="card-img-top" alt="...">
        
@@ -314,7 +314,7 @@
                     @for ($i =0 ; $i < 5 ; $i++)
                     <div class="swiper-slide">
                         <a href='#'> 
-                            <img src="{{ app()->environment('production') ? asset('public/media/products/wood-bol-product-img-thumb.png') : asset('media/products/wood-bol-product-img-thumb.png')}}" class="img-fluid" alt="...">
+                            <img src="{{  asset('media/products/wood-bol-product-img-thumb.png')}}" class="img-fluid" alt="...">
                             </a>
                     </div>
                     @endfor

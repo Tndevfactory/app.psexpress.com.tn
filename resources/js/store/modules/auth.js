@@ -47,7 +47,8 @@ const actions = {
         Vue.$cookies.remove("authCheck");
         Vue.$cookies.remove("user");
 
-        window.location.href = "http://127.0.0.1:8000/";
+        // window.location.href = "http://127.0.0.1:8000/";
+        window.location.href = `${window.axios.defaults.url}`;
       } else if (response.data.response_code === 403) {
         console.log(response);
 
@@ -80,12 +81,15 @@ const actions = {
       commit("setLoading", false);
     }, 4000);
   },
+
   async setLogin({ commit }, credentials) {
     let lang = common.state.lang;
     let cred = { ...credentials, lang };
 
     commit("setLoading", true);
     let url = "/login";
+
+    //console.log(common.state.lang);
 
     try {
       const response = await axios.post(url, cred);
@@ -101,7 +105,11 @@ const actions = {
         Vue.$cookies.set("user", response.data.user);
         commit("setLoading", false);
         commit("setSuccess", response.data.backend_response);
-        window.location.href = "http://127.0.0.1:8000/fr/shop";
+
+        window.location.href = `${window.axios.defaults.url}${common.state.lang}/shop`;
+
+        // console.log(`${window.axios.defaults.url}${common.state.lang}/shop`);
+        // console.log(window.axios.defaults.appEnv);
       } else if (response.data.response_code === 403) {
         console.log(response);
         Vue.$cookies.remove("bearerToken");
@@ -183,7 +191,9 @@ const actions = {
           commit("setError", "");
         }, 3000);
 
-        window.location.href = "http://127.0.0.1:8000/fr/shop";
+        // window.location.href = "http://127.0.0.1:8000/fr/shop";
+
+        window.location.href = `${window.axios.defaults.url}${common.state.lang}/shop`;
       } else if (response.data.response_code === 403) {
         console.log(response);
         Vue.$cookies.remove("verifToken");
@@ -255,7 +265,8 @@ const actions = {
 
         commit("setLoading", false);
         commit("setSuccess", response.data.backend_response);
-        window.location.href = "http://127.0.0.1:8000/fr/shop";
+        // window.location.href = "http://127.0.0.1:8000/fr/shop";
+        window.location.href = `${window.axios.defaults.url}${common.state.lang}/shop`;
       } else if (response.data.response_code === 403) {
         console.log(response);
 
@@ -294,7 +305,8 @@ const actions = {
 
         commit("setLoading", false);
         commit("setSuccess", response.data.backend_response);
-        window.location.href = "http://127.0.0.1:8000/fr/shop";
+        // window.location.href = "http://127.0.0.1:8000/fr/shop";
+        window.location.href = `${window.axios.defaults.url}${common.state.lang}/shop`;
       } else if (response.data.response_code === 403) {
         console.log(response);
 
@@ -336,6 +348,7 @@ const actions = {
         commit("setLoading", false);
         commit("setSuccess", response.data.backend_response);
         // window.location.href = "http://127.0.0.1:8000/fr/shop";
+        window.location.href = `${window.axios.defaults.url}${common.state.lang}/shop`;
       } else if (response.data.response_code === 403) {
         console.log(response);
 
@@ -384,6 +397,7 @@ const actions = {
         commit("setLoading", false);
         commit("setSuccess", response.data.backend_response);
         // window.location.href = "http://127.0.0.1:8000/fr/shop";
+        window.location.href = `${window.axios.defaults.url}${common.state.lang}/shop`;
       } else if (response.data.response_code === 403) {
         console.log(response);
 

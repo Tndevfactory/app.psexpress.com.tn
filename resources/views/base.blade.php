@@ -78,7 +78,7 @@ $menu_categories = session()->get('menu');
     <body  class="light" dir="{{App::getLocale() == 'ar' ? 'rtl': 'ltr'}}">
 
 
-     @if(app()->environment('production'))
+     {{-- @if(app()->environment('production'))
         <div id="fb-root"></div>
 
         <div id="fb-customer-chat" class="fb-customerchat">
@@ -109,7 +109,7 @@ $menu_categories = session()->get('menu');
         </script>
       @else
 
-      @endif
+      @endif --}}
  
 
    

@@ -192,7 +192,7 @@ Vue.component(
   "add-to-cart",
   require("./components/cart/AddToCartButton.vue").default
 );
-Vue.component("cart-list", require("./components/cart/CartList.vue").default);
+//Vue.component("cart-list", require("./components/cart/CartList.vue").default);
 
 // vue translation -----------------------------------------------------
 const messages = { ar, fr, en }; // bring all translated files

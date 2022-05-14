@@ -2,7 +2,7 @@
   <div>
     <b-sidebar
       id="sidebar-backdrop"
-      title="Contenu du panier"
+      title="panier"
       :backdrop-variant="variant"
       backdrop
       shadow
@@ -58,7 +58,6 @@
                       v-for="stk in cart.product_stock_quantity"
                       :key="stk"
                       :value="stk"
-                      v-model="selected"
                       :selected="stk === cart.qty ? 'selected' : ''"
                     >
                       {{ stk }}
@@ -157,7 +156,10 @@ export default {
       this.updateQtyItemCart(dt);
     },
     goPay() {
-      window.location.href = "http://127.0.0.1:8000/fr/paiement";
+      // console.log(this.lang);
+      // console.log(window.axios.defaults.url);
+      window.location.href = `${window.axios.defaults.url}${this.lang}/paiement`;
+      //window.location.href = "http://127.0.0.1:8000/fr/paiement";
     },
   },
 

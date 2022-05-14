@@ -24,28 +24,13 @@
             >
               {{ item.product_name }}
             </div>
-
-            <div
-              class="col-5 price badge text-primary d-flex align-items-center justify-content-end"
-            >
-              <span class="text-primary">
-                {{ currency === "euro" ? "€" : "$" }}
-              </span>
-              <span>
-                {{
-                  currency === "euro"
-                    ? euroValue(item.price).toFixed(2)
-                    : dollarValue(item.price)
-                }}
-              </span>
-            </div>
           </li>
 
           <li
             class="row row-cols-2 gx-1 bg-white d-flex align-items-center p-1"
           >
             <span
-              class="col-7 fw-bold d-flex justify-content-start"
+              class="col-7 fw-bold d-flex justify-content-start bg-danger"
               style="font-size: 0.9rem"
               >{{ $t("counter.Items") }}</span
             >
@@ -60,24 +45,8 @@
             <span
               class="col-7 fw-bold d-flex justify-content-start"
               style="font-size: 0.9rem"
-              >{{ $t("counter.Total") }}</span
-            >
-
-            <div
-              class="col-5 price badge text-primary d-flex align-items-center justify-content-end"
-            >
-              <span class="text-primary">
-                {{ currency === "euro" ? "€" : "$" }}
-              </span>
-
-              <span>
-                {{
-                  currency === "euro"
-                    ? euroValue(cartTotal).toFixed(2)
-                    : dollarValue(cartTotal)
-                }}
-              </span>
-            </div>
+              >{{ $t("counter.Total") }}
+            </span>
           </li>
         </ul>
       </div>
@@ -141,6 +110,7 @@ export default {
     this.resetMsg();
     this.$i18n.locale = this.language;
     this.cartCount();
+    console.log(this.cart);
     // let bearerToken = Vue.$cookies.get("bearerToken");
     // console.log(bearerToken);
   },

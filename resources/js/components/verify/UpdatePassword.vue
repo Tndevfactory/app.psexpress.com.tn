@@ -179,7 +179,7 @@ export default {
       };
     },
     publicUrl() {
-      let publicMedia = this.appEnv === "local" ? "media/" : "public/media/";
+      let publicMedia = this.appEnv === "local" ? "media/" : "media/";
       let publicPath = this.url + publicMedia;
       return publicPath;
     },
@@ -220,7 +220,7 @@ export default {
       this.inputTextConfirm = !this.inputTextConfirm;
     },
     signin() {
-      window.location.href = "/";
+      // window.location.href = "/";
     },
   },
 
