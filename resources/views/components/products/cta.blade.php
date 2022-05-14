@@ -3,6 +3,6 @@
 <div class="teasing1 mt-4" >
  
   <img class='img-fluid d-block' style='width:100%;object-fit: cover;'
-  src="{{ app()->environment('production') ? asset('public/media/cta/teasing1.webp') : asset('media/cta/teasing1.webp')}}" class="d-block w-100" alt="...">
+  src="{{ asset('media/cta/teasing1.webp')}}" class="d-block w-100" alt="...">
   
 </div>

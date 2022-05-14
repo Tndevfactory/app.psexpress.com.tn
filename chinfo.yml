@@ -725,6 +725,8 @@ use Symfony\Component\Console\Output\ConsoleOutput;
   to
   ns1.vercel-dns.com
   ns2.vercel-dns.com
+  
+  change A ip only
 
 
   install laravel custom from softaculos inside a folder in chosen domain// change php8 cpanel
@@ -744,11 +746,33 @@ use Symfony\Component\Console\Output\ConsoleOutput;
    </IfModule>
    # php -- END cPanel-generated handler, do not edit
 
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
 
-   ln -s  /home3/hxynpjkf/next.hitcom.com.tn/ch/public/img  /home3/hxynpjkf/next.hitcom.com.tn/
-   ln -s  /home3/hxynpjkf/next.hitcom.com.tn/ch/public/js  /home3/hxynpjkf/next.hitcom.com.tn/
-   ln -s  /home3/hxynpjkf/next.hitcom.com.tn/ch/public/css  /home3/hxynpjkf/next.hitcom.com.tn/
-   ln -s  /home3/hxynpjkf/next.hitcom.com.tn/ch/storage/app/public/storage  /home3/hxynpjkf/next.hitcom.com.tn/
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+
+   ln -s  /home/rlbufmvu/ubei.com.tn/ch/public/media  /home/rlbufmvu/ubei.com.tn/
+   ln -s  /home/rlbufmvu/ubei.com.tn/ch/public/js  /home/rlbufmvu/ubei.com.tn/
+   ln -s  /home/rlbufmvu/ubei.com.tn/ch/public/css  /home/rlbufmvu/ubei.com.tn/
+   ln -s  /home/rlbufmvu/ubei.com.tn/ch/storage/app/public/storage  /home/rlbufmvu/ubei.com.tn/
 
 download version localy
  install package

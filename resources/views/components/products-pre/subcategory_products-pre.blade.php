@@ -9,8 +9,7 @@
 
 
       <img src="{{ 
-      app()->environment('production') ? asset(isset($product->images[0]->product_image) 
-      ? 'public/'.$product->images[0]->product_image : 'public/media/products/p47.png') :
+     
        asset(isset($product->images[0]->product_image) ? $product->images[0]->product_image : 'media/products/p47.png')}}"
        class="card-img-top" alt="...">
 

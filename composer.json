@@ -22,6 +22,7 @@
     "laravel/tinker": "^2.5",
     "laravel/ui": "^3.4",
     "league/csv": "^9.8",
+    "livewire/livewire": "^2.10",
     "paypal/paypal-checkout-sdk": "^1.0",
     "predis/predis": "^1.1",
     "pusher/pusher-php-server": "^7.0",
@@ -74,7 +75,8 @@
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "platform-check": false
   },
   "minimum-stability": "dev",
   "prefer-stable": true

@@ -20,7 +20,7 @@ $currency=session()->get('currency');
     <div class="info d-flex justify-content-center align-items-center">
       <a href="{{ route('seller-agreement', ['language' => Request()->language]) }}" class='text-decoration-none'>
        <i class='mdi mdi-star-circle text-white'></i> 
-       <span class='text-white fs-6'>Vendre sur psexpress</span> 
+       <span class='text-white fs-6'>Vendre sur UBEI</span> 
       </a>
     </div>
      
@@ -69,10 +69,10 @@ $currency=session()->get('currency');
         
         <div class="d-inline-block mb-1 mb-md-0 ">
           <a href="{{ route('home',['language' => Request()->language]) }}">
-            <img src="{{ app()->environment('production') ? asset('public/media/logo/newlogopsexpress.jpg') : 
+            <img src="{{ 
                 asset('/media/logo/newlogopsexpress.jpg')}}"
             alt="logo psexpress" class="logo">
-            <h4 class="d-inline-block text-capitalize" style='color:#000000'>psexpress</h4>
+            <h4 class="d-inline-block text-capitalize" style='color:#000000'>UBEI</h4>
          </a>
         </div>
       </div>

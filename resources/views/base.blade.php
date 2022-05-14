@@ -60,26 +60,26 @@ $menu_categories = session()->get('menu');
         <meta name="app-env" content="{{ config('app.env') }}">
 
         @yield('meta')
-        <title>app.psexpress | @yield('title')</title>
+        <title>ubei | @yield('title')</title>
 
       <link rel="icon"  type="image/x-icon" 
-      href="{{ app()->environment('production') ? asset('public/favicon.ico') : asset('favicon.ico')  }}"/>
+      href="{{  asset('favicon.ico')  }}"/>
       
-      <link rel="canonical" href="https://app.psexpress.com.tn" />
+      <link rel="canonical" href="https://ubei.com.tn" />
        
      
 
 
         @yield('css')  
 
-        <link rel="stylesheet" href="{{ app()->environment('production') ? asset('public/css/app.css') : asset('css/app.css')}}" />
+        <link rel="stylesheet" href="{{  asset('css/app.css') }}" />
     </head>
 {{-- default always light   --}}
     <body  class="light" dir="{{App::getLocale() == 'ar' ? 'rtl': 'ltr'}}">
 
 
      @if(app()->environment('production'))
-        {{-- <div id="fb-root"></div>
+        <div id="fb-root"></div>
 
         <div id="fb-customer-chat" class="fb-customerchat">
         </div>
@@ -106,7 +106,7 @@ $menu_categories = session()->get('menu');
             js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
           }(document, 'script', 'facebook-jssdk'));
-        </script> --}}
+        </script>
       @else
 
       @endif
@@ -276,9 +276,9 @@ $menu_categories = session()->get('menu');
 @yield('js')
      
     
-     <script src="{{ app()->environment('production') ? asset('public/js/manifest.js') : asset('js/manifest.js')}}"></script>
-     <script src="{{ app()->environment('production') ? asset('public/js/vendor.js') : asset('js/vendor.js')}}"></script>
-     <script src="{{ app()->environment('production') ? asset('public/js/app.js') : asset('js/app.js')}}"></script>
+     <script src="{{  asset('js/manifest.js')}}"></script>
+     <script src="{{ asset('js/vendor.js')}}"></script>
+     <script src="{{ asset('js/app.js')}}"></script>
     
     
     </body>

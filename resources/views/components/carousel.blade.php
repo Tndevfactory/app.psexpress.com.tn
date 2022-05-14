@@ -20,7 +20,7 @@ $crs=[1,2,3];
   
       <div class="cover-shadow" 
       style='background-color:rgba(0,0,0,0.0);position:absolute;top:0;left:0;width:100%; min-height:100%'></div>
-      <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-2.webp') : asset('media/ui/carousel/carousel-2.webp')}}" class="d-block w-100" alt="...">
+      <img src="{{  asset('media/ui/carousel/carousel-2.webp')}}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
        
         <a href=#' class='btn btn-warning mb-3 fs-6'>Cliquer pour plus de details</a>
@@ -31,7 +31,7 @@ $crs=[1,2,3];
    
       <div class="cover-shadow" 
       style='background-color:rgba(0,0,0,0.0);position:absolute;top:0;left:0;width:100%; min-height:100%'></div>
-      <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+      <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
      
         <a href=#' class='btn btn-warning mb-3 fs-6'>Cliquer pour plus de details</a>
@@ -42,7 +42,7 @@ $crs=[1,2,3];
     
       <div class="cover-shadow" 
       style='background-color:rgba(0,0,0,0.0);position:absolute;top:0;left:0;width:100%; min-height:100%'></div>
-      <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-3.webp') : asset('media/ui/carousel/carousel-3.webp')}}" class="d-block w-100" alt="...">
+      <img src="{{ asset('media/ui/carousel/carousel-3.webp')}}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
       
         <a href=#' class='btn btn-warning mb-3 fs-6'>Cliquer pour plus de details</a>

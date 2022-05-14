@@ -4,22 +4,22 @@
     
     <div class="row ">
       <div class="col-6 col-md-3  mb-3 d-flex flex-column  justify-content-center align-items-center px-5">
-        <img src="{{ app()->environment('production') ? asset('public/media/png/delivery.png') :
+        <img src="{{ 
         asset('/media/png/delivery.png')}}"  alt="logo psexpress" style='height:35px;width:35px'>
           <span class="value-text  mt-3 text-center" >Livraison gratuite à partir de 300DT</span>
       </div>
       <div class="col-6 col-md-3 mb-3 d-flex flex-column  justify-content-center align-items-center px-5">
-        <img src="{{ app()->environment('production') ? asset('public/media/png/Genuine.png') :
+        <img src="{{ 
         asset('/media/png/Genuine.png')}}"  alt="logo psexpress" style='height:35px;width:35px'>
           <span class="value-text mt-3 text-center">Garantie 1 ans</span>
       </div>
       <div class="col-6 col-md-3 mb-3 d-flex flex-column  justify-content-center align-items-center px-5">
-        <img src="{{ app()->environment('production') ? asset('public/media/png/services.png') :
+        <img src="{{ 
         asset('/media/png/services.png')}}"  alt="logo psexpress" style='height:35px;width:35px'>
           <span class="value-text  mt-3 text-center">Service après-vente 7/7</span>
       </div>
       <div class="col-6 col-md-3 mb-3 d-flex flex-column  justify-content-center align-items-center px-5">
-        <img src="{{ app()->environment('production') ? asset('public/media/png/money.png') :
+        <img src="{{ 
         asset('/media/png/money.png')}}"  alt="logo psexpress" style='height:35px;width:35px'>
           <span class="value-text  mt-3 text-center">Paiement à la livraison, En ligne</span>
       </div>
@@ -28,7 +28,7 @@
     <div class="row ">
       <div class="col-12 col-md-3  mb-3 mb-md-0">
         <div class="d-flex justify-content-start">
-          <img src="{{ app()->environment('production') ? asset('public/media/logo/newlogopsexpress.jpg') : asset('/media/logo/newlogopsexpress.jpg')}}"
+          <img src="{{  asset('/media/logo/newlogopsexpress.jpg')}}"
            alt="logo psexpress" style='height:40px;width:40px;border-radius:50%;vertical-align:middle'>
            <h4 class="d-inline-block text-capitalize h3 mx-1" style='color:rgb(241, 160, 9)'> psexpress</h4>
         </div>
@@ -41,17 +41,16 @@
         </div>
         <div class="social mt-2  d-flex justify-content-center">
           <a href="#">
-          <img src="{{ app()->environment('production') ? 
-          asset('public/media/ui/social-media/facebook.png') : asset('/media/ui/social-media/facebook.png')}}"
+          <img src="{{  asset('/media/ui/social-media/facebook.png')}}"
            alt="logo psexpress" style='height:35px;width:35px'>
           </a>
           <a href="#">
-           <img class="mx-4"  src="{{ app()->environment('production') ? asset('public/media/ui/social-media/instagram.png') : 
+           <img class="mx-4"  src="{{  
            asset('/media/ui/social-media/instagram.png')}}"
            alt="logo psexpress" style='height:35px;width:35px'>
           </a>
           <a href="#">
-           <img src="{{ app()->environment('production') ? asset('public/media/ui/social-media/youtube.png') :
+           <img src="{{ 
             asset('/media/ui/social-media/youtube.png')}}"
            alt="logo psexpress" style='height:35px;width:35px'>
           </a>

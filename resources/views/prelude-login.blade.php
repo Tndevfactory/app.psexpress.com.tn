@@ -182,8 +182,7 @@ $currency=session()->get('currency');
       <div class="col mb-3" style='z-index:0 !important'> 
          <div class="card card-categorie border border-0 ">
              
-             <img src="{{ app()->environment('production') ? 
-              asset('public/'.$stock->stock_photo) : asset($stock->stock_photo)}}" 
+             <img src="{{  asset($stock->stock_photo)}}" 
               class="card-img img-fluid " height=200 width=200 
                style='height:auto;max-width:100%;display:block' alt={{ $stock->fr_stock_name }}
               
@@ -253,9 +252,9 @@ $currency=session()->get('currency');
 
     <div class="my-3  ">
 
-      <h6>Acheter en ligne sur Psexpress:</h6>
+      <h6>Acheter en ligne sur UBEI:</h6>
       <p>
-        Psexpress est le premier site de vente en gros en Tunisie, notre plate-forme permet de mettre en relation les detaillants et les vendeurs dans le but de réaliser de très bonnes affaires tout en bénéficiant de l'expertise Psexpress. Vous cherchez un ordinateur, un smartphone, une tablette, ou encore une paire de chaussure? vous bénéficierez toujours des prix les plus bas, parmi nos milliers de produits en ligne. Psexpress permet l'achat en ligne de manière simple et pratique avec des délais de livraison courts. De plus, nous vous assurons des transactions sécurisées et fiables. Avec Psexpress vous allez pouvoir effectuer vos achats au meilleur prix, en toute sécurité et sans sortir de chez vous!
+        UBEI est le premier site de vente en gros en Tunisie, notre plate-forme permet de mettre en relation les detaillants et les vendeurs dans le but de réaliser de très bonnes affaires tout en bénéficiant de l'expertise UBEI. Vous cherchez un ordinateur, un smartphone, une tablette, ou encore une paire de chaussure? vous bénéficierez toujours des prix les plus bas, parmi nos milliers de produits en ligne. UBEI permet l'achat en ligne de manière simple et pratique avec des délais de livraison courts. De plus, nous vous assurons des transactions sécurisées et fiables. Avec UBEI vous allez pouvoir effectuer vos achats au meilleur prix, en toute sécurité et sans sortir de chez vous!
       </p>
     </div>
 </div> {{-- end container --}}
@@ -266,7 +265,7 @@ $currency=session()->get('currency');
 @section('js')
 <script>
       // Set the date we're counting down to
-    var countDownDate = new Date("Jun 27, 2022 15:37:25").getTime();
+    var countDownDate = new Date("December 30, 2022 15:37:25").getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function() {

@@ -18,16 +18,16 @@
     <div class="row row-cols-1 row-cols-md-4">
 
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/aspor.png') : asset('media/brand/aspor.png')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/brand/aspor.png')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/inkax.png') : asset('media/brand/inkax.png')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/brand/inkax.png')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/jbl.png') : asset('media/brand/jbl.png')}}" class="d-block w-100" alt="...">
+        <img src="{{ asset('media/brand/jbl.png')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/kisonli.png') : asset('media/brand/kisonli.png')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/brand/kisonli.png')}}" class="d-block w-100" alt="...">
       </div>
       
      
@@ -39,16 +39,16 @@
     <div class="row row-cols-1 row-cols-md-4">
 
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/lax.png') : asset('media/brand/lax.png')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/brand/lax.png')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/sandisk.png') : asset('media/brand/sandisk.png')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/brand/sandisk.png')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/smart.png') : asset('media/brand/smart.png')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/brand/smart.png')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/star.png') : asset('media/brand/star.png')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/brand/star.png')}}" class="d-block w-100" alt="...">
       </div>
       
     </div>
@@ -58,16 +58,16 @@
     <div class="row row-cols-1 row-cols-md-4">
 
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/aspor.png') : asset('media/brand/aspor.png')}}" class="d-block w-100" alt="...">
+        <img src="{{ asset('media/brand/aspor.png')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/inkax.png') : asset('media/brand/inkax.png')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/brand/inkax.png')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/jbl.png') : asset('media/brand/jbl.png')}}" class="d-block w-100" alt="...">
+        <img src="{{ asset('media/brand/jbl.png')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/brand/kisonli.png') : asset('media/brand/kisonli.png')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/brand/kisonli.png')}}" class="d-block w-100" alt="...">
       </div>
      
     

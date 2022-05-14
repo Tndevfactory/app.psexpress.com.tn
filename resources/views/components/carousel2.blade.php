@@ -17,28 +17,28 @@
      
     <div class="row row-cols-1 row-cols-md-4">
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{ asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{ asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
     </div>
      
@@ -47,28 +47,28 @@
    
     <div class="row row-cols-1 row-cols-md-4">
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{ asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{ asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
     </div>
      
@@ -76,28 +76,28 @@
   <div class="carousel-item ">
     <div class="row row-cols-1 row-cols-md-4">
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{ asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{ asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
       <div class="col mb-3">
-        <img src="{{ app()->environment('production') ? asset('public/media/ui/carousel/carousel-1.webp') : asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
+        <img src="{{  asset('media/ui/carousel/carousel-1.webp')}}" class="d-block w-100" alt="...">
       </div>
     </div>
     
