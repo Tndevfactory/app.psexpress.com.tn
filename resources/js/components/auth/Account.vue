@@ -38,7 +38,7 @@ export default {
   props: ["csrfToken", "currency", "language", "productId"],
 
   computed: {
-    ...mapGetters(["getUser", "loading", "success", "error", "lang"]),
+    ...mapGetters(["getUser", "loading", "success", "error", "lang", "getAuthCheck"]),
   },
 
   methods: {

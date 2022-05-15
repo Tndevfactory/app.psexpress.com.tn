@@ -37,16 +37,19 @@ Route::get('/update-qty-item-cart', [CartController::class, "updateQtyItemCart"]
 Route::post('/admin-login', [AdminController::class, "adminLogin"]);
 Route::get('/admin-logout', [AdminController::class, "adminLogout"]);
 
-// stock  zone 
+// admin  stock  zone 
 Route::get('/api-all-stocks', [ProductController::class, "apiAllStocks"]);
 Route::post('/api-create-stock', [ProductController::class, "apiCreateStock"]);
 
-// substock  zone 
+// admin  substock  zone 
 Route::get('/api-all-substocks', [ProductController::class, "apiAllSubstocks"]);
 Route::post('/api-create-substock', [ProductController::class, "apiCreateSubstock"]);
 
-// product  zone 
+// admin product  zone 
 Route::get('/api-all-products', [ProductController::class, "apiAllProducts"]);
 Route::post('/api-create-product', [ProductController::class, "apiCreateProduct"]);
+Route::put('/api-update-product', [ProductController::class, "apiUpdateProduct"]);
+Route::delete('/api-delete-product', [ProductController::class, "apiDeleteProduct"]);
+Route::get('/api-search-product', [ProductController::class, "apiSearchProduct"]);
 
 
