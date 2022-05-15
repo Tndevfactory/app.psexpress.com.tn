@@ -9,9 +9,7 @@
     <div class="card card-product h-100 shadow-sm position-relative">
 
 
-      <img src="{{ 
-      
-       asset(isset($product->images[0]->product_image) ? $product->images[0]->product_image : 'media/products/p47.png')}}"
+     <img src="{{ asset(isset($product->photo1 ) ? $product->photo1  : 'media/products/void.webp')}}"
        class="card-img-top" alt="...">
 
        @if($product->discount != '0')

@@ -14,7 +14,7 @@
         <a href="#">
           <img
             class="img-fluid d-block screen-1"
-            :src="publicUrl + p.photo1"
+            :src="publicUrl + photo1"
             @click.stop.prevent="changePhoto"
             alt="..."
           />
@@ -24,7 +24,7 @@
         <a href="#">
           <img
             class="img-fluid d-block screen-2"
-            :src="publicUrl + p.photo2"
+            :src="publicUrl + photo2"
             @click.stop.prevent="changePhoto"
             alt="..."
           />
@@ -34,7 +34,7 @@
         <a href="#">
           <img
             class="img-fluid d-block screen-3"
-            :src="publicUrl + p.photo3"
+            :src="publicUrl + photo3"
             @click.stop.prevent="changePhoto"
             alt="..."
           />
@@ -56,6 +56,9 @@ export default {
       lab: false,
       url: window.axios.defaults.url,
       appEnv: window.axios.defaults.appEnv,
+      photo1: "",
+      photo2: "",
+      photo3: "",
       p: "",
     };
   },
@@ -64,10 +67,9 @@ export default {
 
   computed: {
     ...mapGetters(["getUser", "loading", "success", "error", "lang"]),
+
     publicUrl() {
-      let publicMedia = this.appEnv === "local" ? "" : "";
-      let publicPath = this.url + publicMedia;
-      return publicPath;
+      return this.url;
     },
   },
 
@@ -84,12 +86,18 @@ export default {
     this.$i18n.locale = this.lang;
     this.selectedLanguage = this.lang;
     this.setLang(this.selectedLanguage);
-    // console.log(this.language);
+
     this.url = window.axios.defaults.url;
     this.appEnv = window.axios.defaults.appEnv;
-    // console.log(this.appEnv);
+
     this.p = JSON.parse(this.product);
-    // console.log(this.p.photo1);
+
+    this.photo1 =
+      this.p.photo1 === "" ? "media/products/void.webp" : this.p.photo1;
+    this.photo2 =
+      this.p.photo2 === "" ? "media/products/void.webp" : this.p.photo2;
+    this.photo3 =
+      this.p.photo3 === "" ? "media/products/void.webp" : this.p.photo3;
   },
 };
 </script>

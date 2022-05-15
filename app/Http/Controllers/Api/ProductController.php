@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Substock;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -33,13 +34,13 @@ class ProductController extends Controller
         ];
 
         return view('product', $data);
-       
-       
+
+
     }
 
    public function apiAllProducts(Product $product){
 
-    $products= Product::get();
+    $products= Product::orderby('created_at' , 'DESC')->get();
 
     $data = [
 
@@ -60,33 +61,33 @@ class ProductController extends Controller
 
          ]);
 
-    if($request->hasFile('photo1')) { 
+    if($request->hasFile('photo1')) {
 
         $file = $request->file('photo1');
         $fileName = uniqid().'-'.$file->getClientOriginalName();
-        $destinationPath = public_path().'/media/photos' ;
+        $destinationPath = public_path().'/media/products' ;
         $file->move($destinationPath,$fileName);
-        $path1 = '/media/photos/'.$fileName;
+        $path1 = 'media/products/'.$fileName;
     }
 
-    if($request->hasFile('photo2')) { 
-    
+    if($request->hasFile('photo2')) {
+
         $file = $request->file('photo2');
         $fileName = uniqid().'-'.$file->getClientOriginalName();
-        $destinationPath = public_path().'/media/photos' ;
+        $destinationPath = public_path().'/media/products' ;
         $file->move($destinationPath,$fileName);
-        $path2 = '/media/photos/'.$fileName;
+        $path2 = 'media/products/'.$fileName;
     }
 
-    if($request->hasFile('photo3')) { 
-    
+    if($request->hasFile('photo3')) {
+
         $file = $request->file('photo3');
         $fileName = uniqid().'-'.$file->getClientOriginalName();
-        $destinationPath = public_path().'/media/photos' ;
+        $destinationPath = public_path().'/media/products' ;
         $file->move($destinationPath,$fileName);
-        $path3 = '/media/photos/'.$fileName;
+        $path3 = 'media/products/'.$fileName;
     }
-   
+
     $new_product=[
         'fr_product_ref' => $request->fr_product_ref,
         'en_product_ref' => $request->en_product_ref,
@@ -119,11 +120,11 @@ class ProductController extends Controller
         'weight' => $request->weight,
         'dimension' => $request->dimension,
         'brand'=> $request->brand,
-      
+
 
         'tax' => $request->tax,
         'fee' => $request->fee,
-      
+
         // 'shop_id' => $request->shop_id,
         // 'stock_id' => $request->stock_id,
         // 'substock_id' => $request->substock_id,
@@ -131,10 +132,11 @@ class ProductController extends Controller
         'shop_id' => 1,
         'stock_id' => 1,
         'substock_id' => 1,
-     
+
     ];
 
         $output= Product::create($new_product);
+        // $output= Product::insertGetId($new_product);
 
         $data = [
 

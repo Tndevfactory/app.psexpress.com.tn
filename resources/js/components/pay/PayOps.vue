@@ -14,7 +14,7 @@
                 class="d-inline-block text-capitalize mx-1"
                 style="color: rgb(0, 0, 9)"
               >
-                psexpress
+                UBEI
               </h6>
             </div>
             <div class="info mt-2 p-2">
@@ -30,11 +30,11 @@
               <span class="mdi mdi-email-plus-outline d-none d-md-inline-block">
               </span>
               <a
-                href="mailto:team@psexpress.com.tn"
+                href="mailto:team@ubei.com.tn"
                 target="_blank"
                 class="info-link text-decoration-none text-dark"
               >
-                team@psexpress.com.tn</a
+                team@ubei.com.tn</a
               ><br />
               <span class="mdi mdi-google-maps d-none d-md-inline-block">
               </span>
@@ -70,11 +70,11 @@
               <span class="mdi mdi-email-plus-outline d-none d-md-inline-block">
               </span>
               <a
-                href="mailto:team@psexpress.com.tn"
+                href="mailto:team@ubei.com.tn"
                 target="_blank"
                 class="info-link text-decoration-none text-dark"
               >
-                team@psexpress.com.tn</a
+                team@ubei.com.tn</a
               ><br />
               <span class="mdi mdi-google-maps d-none d-md-inline-block">
               </span>
@@ -160,7 +160,7 @@
         </div>
       </div>
       <div
-        class="col-12 px-4 shadow-sm col-md-4 bg-white blue-card d-flex flex-column justify-content-start align-items-center"
+        class="col-12 px-4 col-md-4 bg-white blue-card d-flex flex-column justify-content-start align-items-center"
       >
         <h6 class="text-center mb-2">paiment method</h6>
         <table class="table" style="font-size: 0.8rem">
